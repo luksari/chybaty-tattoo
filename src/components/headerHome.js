@@ -6,7 +6,6 @@ import posed from "react-pose"
 import Navbar from "./navbar"
 import NavbarMobile from "./navbarMobile"
 import { useWindowWidth } from "../helpers/useWindowWidth"
-import HeaderSVG from '../images/Poznaj.svg'
 
 const HeaderContainer = styled.header`
   position: relative;
@@ -14,7 +13,7 @@ const HeaderContainer = styled.header`
   background-color: black;
 `
 
-const HeaderText = posed.img({
+const HeaderText = posed.h2({
   enter: { 
     opacity: 1,
     delay: 200, 
@@ -24,8 +23,22 @@ const HeaderText = posed.img({
 
 const StyledHeaderText = styled(HeaderText)`
   position: absolute;
-  top: 170px;
-  left: 700px;
+  top: 130px;
+  left: 900px;
+  font-size: 155px;
+  width: 656px;
+  color: #fff;
+  font-family: 'Unica One';
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 31px;
+  line-height: 165px;
+  span {
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #fff;
+  }
+  
 `
 
 const HeaderHome = () => {
@@ -59,7 +72,7 @@ const HeaderHome = () => {
         ) : (
           <Img fluid={data.file.childImageSharp.fluid} />
         )}
-        <StyledHeaderText initialPose="exit" pose="enter" src={HeaderSVG}/>
+        <StyledHeaderText initialPose="exit" pose="enter" >Poznaj <span>naszą ekipę!</span></StyledHeaderText>
       </HeaderContainer>
     </React.Fragment>
   )
