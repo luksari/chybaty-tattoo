@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import CrewSVG from "../images/Ekipa.svg"
+import posed from "react-pose"
+import { useOnScreen } from '../helpers/useOnScreen';
 
 const ArtistBaseContainer = styled.div`
   position: relative;
@@ -46,6 +47,18 @@ const JaroniNameContainer = styled(ArtistNameBase)`
   width: 180px;
 `
 
+const PelikanNameContainer = styled(ArtistNameBase)`
+  bottom: -30px;
+  right: 16%;
+  width: 205px;
+`
+
+const JpegNameContainer = styled(ArtistNameBase)`
+  top: -30px;
+  left: 0;
+  width: 180px;
+`
+
 const ArtistName = styled.p`
   text-align: center;
   font-size: 36px;
@@ -54,6 +67,10 @@ const ArtistName = styled.p`
   position: relative;
   color: white;
   margin: 0;
+`
+
+const ArtistNameAlternative = styled(ArtistName)`
+  top: 7px;
 `
 
 const ContactCTAContainer = styled.div`
@@ -83,46 +100,45 @@ const ContactCTABtn = styled.button`
   background-color: transparent;
   transition: all 0.3s linear;
   cursor: pointer;
-
   :hover {
     color: black;
     background-color: white;
   }
 `
 
+const AnimatedSectionTitle = posed.h2({
+  enter: { 
+    x: 0,
+    delay: 200,
+  },
+  exit: { x: '100vw' }
+});
+
+const StyledSectionTitle = styled(AnimatedSectionTitle)`
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: #fff;
+  font-size: 155px;
+  width: 656px;
+  color: #fff;
+  font-family: 'Unica One';
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 31px;
+  line-height: 165px;
+`
+
 export const Artists = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      luleoneHome: file(relativePath: { eq: "luleone-home.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      kolankoHome: file(relativePath: { eq: "kolanko-home.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      lapiLopiHome: file(relativePath: { eq: "łapi-łopi-home.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      jaroniHome: file(relativePath: { eq: "jaroni.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+  const data = useStaticQuery(artistsImagesQuery)
+  const titleContainerRef = useRef()
+  const isTitleIntersected = useOnScreen(titleContainerRef, '-300px');
+  const [didElementShown, setDidElementShown] = useState(false);
+
+  useEffect(() => {
+    if(isTitleIntersected) {
+      setDidElementShown(true);
     }
-  `)
+  }, [isTitleIntersected])
 
   return (
     <>
@@ -131,8 +147,12 @@ export const Artists = () => {
           fluid={data.luleoneHome.childImageSharp.fluid}
           style={{ flex: "1" }}
         />
-        <div style={{ flex: "2" }}>
-          <img src={CrewSVG} />
+        <div style={{ flex: "2" }} ref={titleContainerRef}>
+        <StyledSectionTitle 
+          initialPose='exit'
+          pose={isTitleIntersected || didElementShown ? 'enter' : 'exit'}>
+            Nasza ekipa
+        </StyledSectionTitle>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
           </LuleoneNameContainer>
@@ -141,7 +161,7 @@ export const Artists = () => {
       <ArtistNormalContainer>
         <div style={{ flex: "1", position: "relative" }}>
           <KolankoNameContainer>
-            <ArtistName>Kolanko</ArtistName>
+            <ArtistName>KOLANKO</ArtistName>
           </KolankoNameContainer>
         </div>
         <Img
@@ -161,6 +181,27 @@ export const Artists = () => {
         </div>
       </ArtistNormalContainer>
       <ArtistContainerHigher>
+        <div style={{ flex: "2"}}></div>
+          <Img
+            fluid={data.pelikanHome.childImageSharp.fluid}
+            style={{ flex: "1", position: "relative", "marginLeft": '65px'}}
+          />
+          <PelikanNameContainer>
+            <ArtistNameAlternative>PELIKAN</ArtistNameAlternative>
+          </PelikanNameContainer>
+      </ArtistContainerHigher>
+      <ArtistContainerHigher>
+      <div style={{ flex: "0.65", position: "relative", 'marginLeft': '140px' }}>
+          <Img
+            fluid={data.jpegHome.childImageSharp.fluid}
+            style={{ flex: "1", position: "relative" }}
+          />
+          <JpegNameContainer>
+            <ArtistName>JPEG13</ArtistName>
+          </JpegNameContainer>
+      </div>
+      </ArtistContainerHigher>
+      <ArtistContainerHigher>
         <div style={{ flex: "1", position: "relative" }}>
           <Img fluid={data.jaroniHome.childImageSharp.fluid} />
           <JaroniNameContainer>
@@ -177,5 +218,52 @@ export const Artists = () => {
     </>
   )
 }
+
+const artistsImagesQuery = graphql`
+query {
+  luleoneHome: file(relativePath: { eq: "luleone-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  kolankoHome: file(relativePath: { eq: "kolanko-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  lapiLopiHome: file(relativePath: { eq: "łapi-łopi-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  jaroniHome: file(relativePath: { eq: "jaroni.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  pelikanHome: file(relativePath: { eq: "pelikan-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  jpegHome: file(relativePath: { eq: "jpeg13-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+}
+`
 
 export default Artists
