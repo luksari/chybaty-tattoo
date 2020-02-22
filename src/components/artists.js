@@ -59,6 +59,18 @@ const JpegNameContainer = styled(ArtistNameBase)`
   width: 180px;
 `
 
+const MokerNameContainer = styled(ArtistNameBase)`
+  top: -30px;
+  left: 0;
+  width: 180px;
+`
+
+const KrzywyNameContainer = styled(ArtistNameBase)`
+  bottom: 0px;
+  right: 0;
+  width: 180px;
+`
+
 const ArtistName = styled.p`
   text-align: center;
   font-size: 36px;
@@ -80,6 +92,14 @@ const ContactCTAContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+`
+
+const FAQContainer = styled(ContactCTAContainer)`
+  padding: 69px 220px;
+  /** @todo Fix when gfx exported */
+  background: gray;
+  height: 466px;
+
 `
 
 const ContactCTAHeader = styled.p`
@@ -172,7 +192,7 @@ export const Artists = () => {
       <ArtistNormalContainer>
         <Img
           fluid={data.lapiLopiHome.childImageSharp.fluid}
-          style={{ flex: "2", marginLeft: "70px" }}
+          style={{ flex: "2", marginLeft: "140px" }}
         />
         <div style={{ flex: "1", position: "relative" }}>
           <LapiLopiNameContainer>
@@ -181,25 +201,61 @@ export const Artists = () => {
         </div>
       </ArtistNormalContainer>
       <ArtistContainerHigher>
-        <div style={{ flex: "2"}}></div>
+        <div style={{ flex: "2" }}></div>
           <Img
             fluid={data.pelikanHome.childImageSharp.fluid}
-            style={{ flex: "1", position: "relative", "marginLeft": '65px'}}
+            style={{ flex: "1", position: "relative", marginLeft: '140px'}}
           />
           <PelikanNameContainer>
             <ArtistNameAlternative>PELIKAN</ArtistNameAlternative>
           </PelikanNameContainer>
       </ArtistContainerHigher>
-      <ArtistContainerHigher>
-      <div style={{ flex: "0.65", position: "relative", 'marginLeft': '140px' }}>
+      <ArtistNormalContainer>
+      <div style={{ flex: "2", position: "relative", marginLeft: '140px' }}>
           <Img
             fluid={data.jpegHome.childImageSharp.fluid}
-            style={{ flex: "1", position: "relative" }}
           />
           <JpegNameContainer>
             <ArtistName>JPEG13</ArtistName>
           </JpegNameContainer>
       </div>
+      <div style={{ flex: "1"}}/>
+      </ArtistNormalContainer>
+      <ArtistContainerHigher style={{ height: '100%' }}>
+      {/**
+        @help
+        Stuck here to place Moker in center vertically to Krzywy
+        possible solutions: margin-bottom
+       */}
+          <div style={{ flex: "1", 'display': 'flex', alignItems: 'flex-end', 'justifyContent': 'flex-end' }}>
+              <div style={{ flex: '1', position: 'relative', marginLeft: '140px' }}>
+                <Img 
+                  fluid={data.mokerHome.childImageSharp.fluid}
+                />
+              <MokerNameContainer>
+                <ArtistName>MOKER</ArtistName>
+              </MokerNameContainer>
+              </div>
+          </div>
+          <div style={{ flex: "1", position: 'relative', marginRight: '140px' }}>
+            <FAQContainer >
+              <ContactCTAHeader>FAQ</ContactCTAHeader>
+              <p>Masz pytania?</p>
+              <p>Wszystkie odpowiedzi w zakładce!</p>
+              <ContactCTABtn>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
+            </FAQContainer>
+            <Img 
+              fluid={data.krzywyHome.childImageSharp.fluid}
+            />
+            <KrzywyNameContainer>
+              <ArtistName>KRZYWY</ArtistName>
+            </KrzywyNameContainer>
+          </div>
+      {/**
+        @help
+        Stuck here to place Krzywy in the right upper corner 
+        to Jaroni
+       */}
       </ArtistContainerHigher>
       <ArtistContainerHigher>
         <div style={{ flex: "1", position: "relative" }}>
@@ -257,6 +313,20 @@ query {
     }
   }
   jpegHome: file(relativePath: { eq: "jpeg13-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  mokerHome: file(relativePath: { eq: "moker-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  krzywyHome: file(relativePath: { eq: "krzywy-home.png" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
