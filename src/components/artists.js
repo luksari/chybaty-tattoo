@@ -126,15 +126,7 @@ const ContactCTABtn = styled.button`
   }
 `
 
-const AnimatedSectionTitle = posed.h2({
-  enter: { 
-    x: 0,
-    delay: 200,
-  },
-  exit: { x: '100vw' }
-});
-
-const StyledSectionTitle = styled(AnimatedSectionTitle)`
+const StyledSectionTitle = styled.h2`
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: #fff;
@@ -150,27 +142,24 @@ const StyledSectionTitle = styled(AnimatedSectionTitle)`
 
 export const Artists = () => {
   const data = useStaticQuery(artistsImagesQuery)
-  const titleContainerRef = useRef()
-  const isTitleIntersected = useOnScreen(titleContainerRef, '-300px');
-  const [didElementShown, setDidElementShown] = useState(false);
-
-  useEffect(() => {
-    if(isTitleIntersected) {
-      setDidElementShown(true);
-    }
-  }, [isTitleIntersected])
 
   return (
     <>
-      <ArtistNormalContainer>
+      <ArtistNormalContainer
+        data-sal="slide-right"
+        data-sal-delay="200"
+      >
         <Img
           fluid={data.luleoneHome.childImageSharp.fluid}
-          style={{ flex: "1" }}
+          style={{ flex: "1" }}a
+          alt='Luleone'
         />
-        <div style={{ flex: "2" }} ref={titleContainerRef}>
+        <div 
+          style={{ flex: "2" }}>
         <StyledSectionTitle 
-          initialPose='exit'
-          pose={isTitleIntersected || didElementShown ? 'enter' : 'exit'}>
+          data-sal="slide-right"
+          data-sal-delay="400"
+          >
             Nasza ekipa
         </StyledSectionTitle>
           <LuleoneNameContainer>
@@ -178,7 +167,10 @@ export const Artists = () => {
           </LuleoneNameContainer>
         </div>
       </ArtistNormalContainer>
-      <ArtistNormalContainer>
+      <ArtistNormalContainer           
+        data-sal="slide-left"
+        data-sal-delay="200"
+      >
         <div style={{ flex: "1", position: "relative" }}>
           <KolankoNameContainer>
             <ArtistName>KOLANKO</ArtistName>
@@ -189,7 +181,10 @@ export const Artists = () => {
           style={{ flex: "2" }}
         />
       </ArtistNormalContainer>
-      <ArtistNormalContainer>
+      <ArtistNormalContainer
+        data-sal="slide-right"
+        data-sal-delay="200"
+      >
         <Img
           fluid={data.lapiLopiHome.childImageSharp.fluid}
           style={{ flex: "2", marginLeft: "140px" }}
@@ -200,8 +195,11 @@ export const Artists = () => {
           </LapiLopiNameContainer>
         </div>
       </ArtistNormalContainer>
-      <ArtistContainerHigher>
-        <div style={{ flex: "2" }}></div>
+      <ArtistContainerHigher         
+        data-sal="slide-left"
+        data-sal-delay="200"
+        >
+        <div style={{ flex: "2" }}/>
           <Img
             fluid={data.pelikanHome.childImageSharp.fluid}
             style={{ flex: "1", position: "relative", marginLeft: '140px'}}
@@ -210,7 +208,10 @@ export const Artists = () => {
             <ArtistNameAlternative>PELIKAN</ArtistNameAlternative>
           </PelikanNameContainer>
       </ArtistContainerHigher>
-      <ArtistNormalContainer>
+      <ArtistNormalContainer
+          data-sal="slide-right"
+          data-sal-delay="200"
+      >
       <div style={{ flex: "2", position: "relative", marginLeft: '140px' }}>
           <Img
             fluid={data.jpegHome.childImageSharp.fluid}
@@ -227,8 +228,11 @@ export const Artists = () => {
         Stuck here to place Moker in center vertically to Krzywy
         possible solutions: margin-bottom
        */}
-          <div style={{ flex: "1", 'display': 'flex', alignItems: 'flex-end', 'justifyContent': 'flex-end' }}>
-              <div style={{ flex: '1', position: 'relative', marginLeft: '140px' }}>
+          <div 
+            data-sal="slide-right"
+            data-sal-delay="200"
+            style={{ flex: "1", 'display': 'flex', alignItems: 'flex-end', 'justifyContent': 'flex-end' }}>
+              <div style={{ flex: '1', position: 'relative', marginLeft: '140px', marginBottom: '140px' }}>
                 <Img 
                   fluid={data.mokerHome.childImageSharp.fluid}
                 />
@@ -237,7 +241,10 @@ export const Artists = () => {
               </MokerNameContainer>
               </div>
           </div>
-          <div style={{ flex: "1", position: 'relative', marginRight: '140px' }}>
+          <div 
+              data-sal="slide-left"
+            data-sal-delay="350"
+            style={{ flex: "1", position: 'relative', marginRight: '140px' }}>
             <FAQContainer >
               <ContactCTAHeader>FAQ</ContactCTAHeader>
               <p>Masz pytania?</p>
@@ -258,7 +265,10 @@ export const Artists = () => {
        */}
       </ArtistContainerHigher>
       <ArtistContainerHigher>
-        <div style={{ flex: "1", position: "relative" }}>
+        <div 
+            data-sal="slide-right"
+            data-sal-delay="200"
+          style={{ flex: "1", position: "relative" }}>
           <Img fluid={data.jaroniHome.childImageSharp.fluid} />
           <JaroniNameContainer>
             <ArtistName>JARONI</ArtistName>
