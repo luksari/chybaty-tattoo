@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useState } from "react"
+import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import posed from "react-pose"
-import { useOnScreen } from '../helpers/useOnScreen';
+import { CircleArrowButton, BtnContainer }  from '../components/CircleArrowButton';
 
 const ArtistBaseContainer = styled.div`
   position: relative;
@@ -131,13 +130,28 @@ const StyledSectionTitle = styled.h2`
   -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: #fff;
   font-size: 155px;
-  width: 656px;
+  width: 650px;
+  margin-left: 40px;
   color: #fff;
   font-family: 'Unica One';
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 31px;
   line-height: 165px;
+`
+
+const OurCrewContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  div {
+    display: flex;
+    ${BtnContainer} {
+      justify-content: flex-end;
+      margin-bottom: 55px;
+    }
+  }
 `
 
 export const Artists = () => {
@@ -151,34 +165,37 @@ export const Artists = () => {
       >
         <Img
           fluid={data.luleoneHome.childImageSharp.fluid}
-          style={{ flex: "1" }}a
+          style={{ flex: 1 }}
           alt='Luleone'
         />
-        <div 
-          style={{ flex: "2" }}>
-        <StyledSectionTitle 
-          data-sal="slide-right"
-          data-sal-delay="400"
-          >
-            Nasza ekipa
-        </StyledSectionTitle>
+        <OurCrewContainer
+            style={{ flex: 2 }}>
+            <div>
+              <StyledSectionTitle 
+              data-sal="slide-right"
+              data-sal-delay="400"
+              >
+                Nasza ekipa
+              </StyledSectionTitle>
+              <CircleArrowButton label='Poznaj' />
+            </div>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
           </LuleoneNameContainer>
-        </div>
+        </OurCrewContainer>
       </ArtistNormalContainer>
       <ArtistNormalContainer           
         data-sal="slide-left"
         data-sal-delay="200"
       >
-        <div style={{ flex: "1", position: "relative" }}>
+        <div style={{ flex: 1, position: "relative" }}>
           <KolankoNameContainer>
             <ArtistName>KOLANKO</ArtistName>
           </KolankoNameContainer>
         </div>
         <Img
           fluid={data.kolankoHome.childImageSharp.fluid}
-          style={{ flex: "2" }}
+          style={{ flex: 2 }}
         />
       </ArtistNormalContainer>
       <ArtistNormalContainer
