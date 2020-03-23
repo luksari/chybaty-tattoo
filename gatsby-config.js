@@ -28,6 +28,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-scroll-reveal`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

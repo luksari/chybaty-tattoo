@@ -25,17 +25,18 @@ const AboutUsItem = styled.div`
     color: white;
   }
 
-  a {
+  button {
+    background: none;
+    border: none;
     color: white;
     padding-bottom: 10px;
     font-size: 20px;
-    align-self: flex-end;
-    cursor: pointer;
+    align-self: flex-end;   
   }
 
   span {
     width: 100%;
-    height: 7px;
+    height: 5px;
     background-color: #303030;
     margin-bottom: 15px;
     position: relative;
@@ -44,10 +45,11 @@ const AboutUsItem = styled.div`
       content: "";
       position: absolute;
       width: 50%;
-      right: ${props => (props.clickMore ? "0" : "-100")};
-      height: 7px;
+      /* right: ${({ clickMore }) => (clickMore ? "0" : "-100")}; */
+      transform: ${({  clickMore }) => clickMore ? `translateX(100%)` : `translateX(0)`};
+      height: 4px;
       background-color: #707070;
-      transition: all 2s linear;
+      transition: transform .2s ease-in-out;
     }
   }
 
@@ -77,10 +79,10 @@ const AboutUs = () => {
     <AboutUsContainer>
       <AboutUsItem clickMore={isClick}>
         <h1>O NAS</h1>
-        <a onClick={() => setIsClick(!isClick)}>
+        <button onClick={() => setIsClick(!isClick)}>
           {isClick ? "MNIEJ" : "WIĘCEJ"}
-        </a>
-        <span></span>
+        </button>
+        <span/>
         {!isClick ? (
           <p>
             Chyba Ty Tattoo, to miejsce w którym zajmiemy się Twoim tatuażem,

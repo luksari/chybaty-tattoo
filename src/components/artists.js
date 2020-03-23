@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import CrewSVG from "../images/Ekipa.svg"
+import { CircleArrowButton, BtnContainer }  from '../components/CircleArrowButton';
 
 const ArtistBaseContainer = styled.div`
   position: relative;
@@ -46,6 +46,30 @@ const JaroniNameContainer = styled(ArtistNameBase)`
   width: 180px;
 `
 
+const PelikanNameContainer = styled(ArtistNameBase)`
+  bottom: -30px;
+  right: 16%;
+  width: 205px;
+`
+
+const JpegNameContainer = styled(ArtistNameBase)`
+  top: -30px;
+  left: 0;
+  width: 180px;
+`
+
+const MokerNameContainer = styled(ArtistNameBase)`
+  top: -30px;
+  left: 0;
+  width: 180px;
+`
+
+const KrzywyNameContainer = styled(ArtistNameBase)`
+  bottom: 0px;
+  right: 0;
+  width: 180px;
+`
+
 const ArtistName = styled.p`
   text-align: center;
   font-size: 36px;
@@ -56,6 +80,10 @@ const ArtistName = styled.p`
   margin: 0;
 `
 
+const ArtistNameAlternative = styled(ArtistName)`
+  top: 7px;
+`
+
 const ContactCTAContainer = styled.div`
   flex: 1;
   display: flex;
@@ -63,6 +91,14 @@ const ContactCTAContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+`
+
+const FAQContainer = styled(ContactCTAContainer)`
+  padding: 69px 220px;
+  /** @todo Fix when gfx exported */
+  background: gray;
+  height: 466px;
+
 `
 
 const ContactCTAHeader = styled.p`
@@ -83,76 +119,92 @@ const ContactCTABtn = styled.button`
   background-color: transparent;
   transition: all 0.3s linear;
   cursor: pointer;
-
   :hover {
     color: black;
     background-color: white;
   }
 `
 
-export const Artists = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      luleoneHome: file(relativePath: { eq: "luleone-home.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      kolankoHome: file(relativePath: { eq: "kolanko-home.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      lapiLopiHome: file(relativePath: { eq: "łapi-łopi-home.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      jaroniHome: file(relativePath: { eq: "jaroni.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
+const StyledSectionTitle = styled.h2`
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: #fff;
+  font-size: 155px;
+  width: 650px;
+  margin-left: 40px;
+  color: #fff;
+  font-family: 'Unica One';
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 31px;
+  line-height: 165px;
+`
+
+const OurCrewContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  div {
+    display: flex;
+    ${BtnContainer} {
+      justify-content: flex-end;
+      margin-bottom: 55px;
     }
-  `)
+  }
+`
+
+export const Artists = () => {
+  const data = useStaticQuery(artistsImagesQuery)
 
   return (
     <>
-      <ArtistNormalContainer>
+      <ArtistNormalContainer
+        data-sal="slide-right"
+        data-sal-delay="200"
+      >
         <Img
           fluid={data.luleoneHome.childImageSharp.fluid}
-          style={{ flex: "1" }}
+          style={{ flex: 1 }}
+          alt='Luleone'
         />
-        <div style={{ flex: "2" }}>
-          <img src={CrewSVG} />
+        <OurCrewContainer
+            style={{ flex: 2 }}>
+            <div>
+              <StyledSectionTitle 
+              data-sal="slide-right"
+              data-sal-delay="400"
+              >
+                Nasza ekipa
+              </StyledSectionTitle>
+              <CircleArrowButton label='Poznaj' />
+            </div>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
           </LuleoneNameContainer>
-        </div>
+        </OurCrewContainer>
       </ArtistNormalContainer>
-      <ArtistNormalContainer>
-        <div style={{ flex: "1", position: "relative" }}>
+      <ArtistNormalContainer           
+        data-sal="slide-left"
+        data-sal-delay="200"
+      >
+        <div style={{ flex: 1, position: "relative" }}>
           <KolankoNameContainer>
-            <ArtistName>Kolanko</ArtistName>
+            <ArtistName>KOLANKO</ArtistName>
           </KolankoNameContainer>
         </div>
         <Img
           fluid={data.kolankoHome.childImageSharp.fluid}
-          style={{ flex: "2" }}
+          style={{ flex: 2 }}
         />
       </ArtistNormalContainer>
-      <ArtistNormalContainer>
+      <ArtistNormalContainer
+        data-sal="slide-right"
+        data-sal-delay="200"
+      >
         <Img
           fluid={data.lapiLopiHome.childImageSharp.fluid}
-          style={{ flex: "2", marginLeft: "70px" }}
+          style={{ flex: "2", marginLeft: "140px" }}
         />
         <div style={{ flex: "1", position: "relative" }}>
           <LapiLopiNameContainer>
@@ -160,8 +212,80 @@ export const Artists = () => {
           </LapiLopiNameContainer>
         </div>
       </ArtistNormalContainer>
+      <ArtistContainerHigher         
+        data-sal="slide-left"
+        data-sal-delay="200"
+        >
+        <div style={{ flex: "2" }}/>
+          <Img
+            fluid={data.pelikanHome.childImageSharp.fluid}
+            style={{ flex: "1", position: "relative", marginLeft: '140px'}}
+          />
+          <PelikanNameContainer>
+            <ArtistNameAlternative>PELIKAN</ArtistNameAlternative>
+          </PelikanNameContainer>
+      </ArtistContainerHigher>
+      <ArtistNormalContainer
+          data-sal="slide-right"
+          data-sal-delay="200"
+      >
+      <div style={{ flex: "2", position: "relative", marginLeft: '140px' }}>
+          <Img
+            fluid={data.jpegHome.childImageSharp.fluid}
+          />
+          <JpegNameContainer>
+            <ArtistName>JPEG13</ArtistName>
+          </JpegNameContainer>
+      </div>
+      <div style={{ flex: "1"}}/>
+      </ArtistNormalContainer>
+      <ArtistContainerHigher style={{ height: '100%' }}>
+      {/**
+        @help
+        Stuck here to place Moker in center vertically to Krzywy
+        possible solutions: margin-bottom
+       */}
+          <div 
+            data-sal="slide-right"
+            data-sal-delay="200"
+            style={{ flex: "1", 'display': 'flex', alignItems: 'flex-end', 'justifyContent': 'flex-end' }}>
+              <div style={{ flex: '1', position: 'relative', marginLeft: '140px', marginBottom: '140px' }}>
+                <Img 
+                  fluid={data.mokerHome.childImageSharp.fluid}
+                />
+              <MokerNameContainer>
+                <ArtistName>MOKER</ArtistName>
+              </MokerNameContainer>
+              </div>
+          </div>
+          <div 
+              data-sal="slide-left"
+            data-sal-delay="350"
+            style={{ flex: "1", position: 'relative', marginRight: '140px' }}>
+            <FAQContainer >
+              <ContactCTAHeader>FAQ</ContactCTAHeader>
+              <p>Masz pytania?</p>
+              <p>Wszystkie odpowiedzi w zakładce!</p>
+              <ContactCTABtn>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
+            </FAQContainer>
+            <Img 
+              fluid={data.krzywyHome.childImageSharp.fluid}
+            />
+            <KrzywyNameContainer>
+              <ArtistName>KRZYWY</ArtistName>
+            </KrzywyNameContainer>
+          </div>
+      {/**
+        @help
+        Stuck here to place Krzywy in the right upper corner 
+        to Jaroni
+       */}
+      </ArtistContainerHigher>
       <ArtistContainerHigher>
-        <div style={{ flex: "1", position: "relative" }}>
+        <div 
+            data-sal="slide-right"
+            data-sal-delay="200"
+          style={{ flex: "1", position: "relative" }}>
           <Img fluid={data.jaroniHome.childImageSharp.fluid} />
           <JaroniNameContainer>
             <ArtistName>JARONI</ArtistName>
@@ -177,5 +301,66 @@ export const Artists = () => {
     </>
   )
 }
+
+const artistsImagesQuery = graphql`
+query {
+  luleoneHome: file(relativePath: { eq: "luleone-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  kolankoHome: file(relativePath: { eq: "kolanko-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  lapiLopiHome: file(relativePath: { eq: "łapi-łopi-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  jaroniHome: file(relativePath: { eq: "jaroni.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  pelikanHome: file(relativePath: { eq: "pelikan-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  jpegHome: file(relativePath: { eq: "jpeg13-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  mokerHome: file(relativePath: { eq: "moker-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  krzywyHome: file(relativePath: { eq: "krzywy-home.png" }) {
+    childImageSharp {
+      fluid {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+}
+`
 
 export default Artists
