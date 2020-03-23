@@ -1,131 +1,156 @@
 import React, { useState } from "react"
-import posed from "react-pose"
+import { motion } from 'framer-motion';
 import styled from "styled-components"
 
-const NavbarMobileWrapper = styled.nav`
-  display: block;
-`
 
-const NavbarMobileContainer = styled.div`
-  display: block;
-  position: relative;
-  float: right;
-  z-index: 1;
-  top: 15px;
-  right: 15px;
+const NavbarMobileContainer = styled.nav`
+  display: flex;
+  z-index: 12;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
   -webkit-user-select: none;
   user-select: none;
+  justify-content: flex-end;
 `
 
-const NavbarInput = styled.input`
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -8px;
-  cursor: pointer;
-  opacity: 0;
-  z-index: 2;
-  -webkit-touch-callout: none;
-
-  &:checked ~ ul {
-    transform: none;
-  }
-
-  &:checked ~ span {
-    opacity: 1;
-    transform: rotate(45deg) translate(-2px, -1px);
-    background: #232323;
-  }
-
-  &:checked ~ span:nth-last-child(3) {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-  }
-
-  &:checked ~ span:nth-last-child(2) {
-    transform: rotate(-45deg) translate(0, -1px);
-  }
-`
-
-const HamburgerLine = styled.span`
+const HamburgerLines = styled.span`
   display: block;
   width: 33px;
   height: 4px;
-  margin-bottom: 5px;
-  position: relative;
   background: white;
   border-radius: 3px;
-  z-index: 1;
-  transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  position: relative;
+  margin: 5px 0;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 0;
 
-  &:first-child {
-    transform-origin: 0% 0%;
+  &:before, &::after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 33px;
+    height: 4px;
+    background: white;
+    border-radius: 3px;
+    z-index: 0;
+    transition-duration: 0s;
+    transition-delay: 0.1s;
+    transition-timing-function: linear;
   }
 
-  &:nth-last-child(2) {
-    transform-origin: 0% 100%;
+  &::before {
+    top: -8px;
+    transition-property: bottom, transform;
+  }
+  &::after {
+    bottom: -8px;
+    transition-property: top, opacity;
   }
 `
-
-const MobileMenu = posed.ul({
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    delayChildren: 200,
-    staggerChildren: 50,
-  },
-})
-
-const StyledMobileMenu = styled(MobileMenu)`
+const NavbarInput = styled.input.attrs({ type: 'checkbox' })`
   position: absolute;
+  display: block;
+  width: 40px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  -webkit-touch-callout: none;
+  
+  &:checked ~ ${HamburgerLines} {
+    background: #232323;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    transform: rotate(765deg);
+    &::before, &::after {
+      background: #232323;
+      transition-delay: 0s;
+    }
+    &::before {
+      top: 0;
+      opacity: 0;
+    }
+
+    &::after {
+      bottom: 0;
+      transform: rotate(90deg);
+    }
+  }
+
+`
+
+const HamburgerContainer = styled.div`
+  position: relative;
+  z-index: 10;
+`
+
+const menuVartiant = {
+  enter: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.05,
+    },
+ 
+  },
+  exit: { opacity: 0 },
+}
+
+
+const StyledMobileMenu = styled(motion.ul)`
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  top: -32px;
-  right: -15px;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
+
 `
 
-const MobileMenuItem = posed.li({
-  visible: { y: 0, opacity: 1 },
-  hidden: { y: 20, opacity: 0 },
-})
+const itemVariants = {
+  enter: { y: 0, opacity: 1 },
+  exit: { y: 20, opacity: 0 },
+}
 
-const StyledMobileMenuItem = styled(MobileMenuItem)`
+const StyledMobileMenuItem = styled(motion.li).attrs({ variants: itemVariants })`
   text-align: center;
+  text-transform: uppercase;
+  font-size: 36px;
+  padding: 15px 0;
 `
 
 const NavbarMobile = () => {
   const [mobileMenu, setMobileMenu] = useState(false)
   return (
-    <NavbarMobileWrapper role="navigation">
-      <NavbarMobileContainer>
-        <NavbarInput
-          type="checkbox"
-          onClick={e => setMobileMenu(e.target.checked)}
-        />
+      <NavbarMobileContainer role="navigation">
+        <HamburgerContainer>
+          <NavbarInput
+            onClick={e => setMobileMenu(e.target.checked)}
+          />
+            <HamburgerLines />
+        </HamburgerContainer>
 
-        <HamburgerLine />
-        <HamburgerLine />
-        <HamburgerLine />
-
-        <StyledMobileMenu pose={mobileMenu ? "visible" : "hidden"}>
-          <StyledMobileMenuItem>Home</StyledMobileMenuItem>
-          <StyledMobileMenuItem>About</StyledMobileMenuItem>
-          <StyledMobileMenuItem>Info</StyledMobileMenuItem>
-          <StyledMobileMenuItem>Contact</StyledMobileMenuItem>
-          <StyledMobileMenuItem>Show me more</StyledMobileMenuItem>
-        </StyledMobileMenu>
+      {mobileMenu && (
+          <StyledMobileMenu variants={menuVartiant} initial='exit' animate='enter'>
+            <StyledMobileMenuItem>O nas</StyledMobileMenuItem>
+            <StyledMobileMenuItem>Ekipa</StyledMobileMenuItem>
+            <StyledMobileMenuItem>Faq</StyledMobileMenuItem>
+            <StyledMobileMenuItem>Kup Voucher</StyledMobileMenuItem>
+            <StyledMobileMenuItem>Kontakt</StyledMobileMenuItem>
+          </StyledMobileMenu>
+          )
+        }
       </NavbarMobileContainer>
-    </NavbarMobileWrapper>
   )
 }
 

@@ -2,42 +2,83 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import posed from "react-pose"
 import Navbar from "./navbar"
 import NavbarMobile from "./navbarMobile"
 import { useWindowWidth } from "../helpers/useWindowWidth"
+import { device } from '../helpers/mediaQueries'
+import { motion } from "framer-motion"
 
 const HeaderContainer = styled.header`
   position: relative;
   height: 100vh;
   background-color: black;
+  width: 100%;
+`
+const HeaderImg = styled(Img)`
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    @media ${device.tablet} {
+      height: auto;
+      bottom: 0;
+    }
+    @media ${device.laptop} {
+      height: 75%;
+      width: 57%;
+      bottom: 0;
+    }
+    
 `
 
-const HeaderText = posed.h2({
+const headerVariants = {
   enter: { 
     opacity: 1,
-    delay: 200, 
+    transition: {
+      delay: 0.4,
+    },
   },
   exit: { opacity: 0 }
-});
+}
 
-const StyledHeaderText = styled(HeaderText)`
+const StyledHeaderText = styled(motion.h2).attrs({ variants: headerVariants, initial: 'exit', animate: 'enter'})`
   position: absolute;
-  top: 130px;
-  left: 900px;
-  font-size: 155px;
-  width: 656px;
-  color: #fff;
-  font-family: 'Unica One';
-  text-transform: uppercase;
   font-weight: 500;
-  letter-spacing: 31px;
-  line-height: 165px;
+  color: #fff;
+  text-transform: uppercase;
+  top: 100px;
+  left: 0;
+  text-align: center;
+  font-size: 100px;
+  margin-top: 35px;
+  background-color: #000000cb;
+  width: 100%;
+  padding: 55px 0;
   span {
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 5px;
-    -webkit-text-stroke-color: #fff;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-color: #fff;
+      -webkit-text-stroke-width: 1px;
+
+   }
+  @media ${device.tablet} {
+    width: 656px;
+    text-align: left;
+    padding: 55px;
   }
+  @media ${device.laptop} {
+    letter-spacing: 31px;
+    line-height: 165px;
+    padding: 0;
+    top: 12%;
+    left: 45%;
+    font-size: 155px;
+    width: 750px;
+    background: transparent;
+    span {
+      -webkit-text-stroke-width: 5px;
+    }
+  }
+
+
   
 `
 
@@ -54,27 +95,17 @@ const HeaderHome = () => {
       }
     }
   `)
-
   return (
-    <React.Fragment>
+    <>
       <HeaderContainer>
         {width >= 600 ? <Navbar /> : <NavbarMobile />}
-        {width >= 1025 ? (
-          <Img
-            fluid={data.file.childImageSharp.fluid}
-            style={{
-              position: "absolute",
-              height: "700px",
-              width: "1000px",
-              bottom: 0,
-            }}
+        <HeaderImg
+          fluid={data.file.childImageSharp.fluid} 
+          style={{  position: 'absolute' }}
           />
-        ) : (
-          <Img fluid={data.file.childImageSharp.fluid} />
-        )}
-        <StyledHeaderText initialPose="exit" pose="enter" >Poznaj <span>naszą ekipę!</span></StyledHeaderText>
+        <StyledHeaderText>Poznaj <span>naszą ekipę!</span></StyledHeaderText>
       </HeaderContainer>
-    </React.Fragment>
+    </>
   )
 }
 

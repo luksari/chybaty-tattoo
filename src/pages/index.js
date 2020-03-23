@@ -15,8 +15,14 @@ import "../styles/styles.css"
 const GoogleMapContainer = styled.div`
   height: 700px;
 `
+const Layout = styled.main`
+  max-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+`;
 const IndexPage = () => (
-  <React.Fragment>
+  <>
     <SEO title="Home" />
     <Helmet>
       <link
@@ -31,22 +37,24 @@ const IndexPage = () => (
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
     </Helmet>
-    <HeaderHome />
-    <AboutUs />
-    <TestimonialCarousel />
-    <Artists />
-    <GoogleMapContainer>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={{
-          lat: 59.95,
-          lng: 30.33,
-        }}
-        defaultZoom={11}
-      ></GoogleMapReact>
-    </GoogleMapContainer>
-    <Footer />
-  </React.Fragment>
+    <Layout>
+      <HeaderHome />
+      <AboutUs />
+      <TestimonialCarousel />
+      <Artists />
+      <GoogleMapContainer>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "" }}
+          defaultCenter={{
+            lat: 59.95,
+            lng: 30.33,
+          }}
+          defaultZoom={11}
+        ></GoogleMapReact>
+      </GoogleMapContainer>
+      <Footer />
+    </Layout>
+  </>
 )
 
 export default IndexPage

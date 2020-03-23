@@ -13,7 +13,7 @@ const NavItem = styled.a`
   color: white;
   margin: 0px 20px;
   cursor: pointer;
-
+  text-transform: uppercase;
   &::after {
     content: "";
     display: block;
@@ -27,7 +27,7 @@ const NavItem = styled.a`
     width: 100%;
   }
 `
-const Navbar = props => {
+const Navbar = () => {
   return (
     <Nav>
       <NavItem>O NAS</NavItem>

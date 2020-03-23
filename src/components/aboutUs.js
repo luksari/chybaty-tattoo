@@ -1,68 +1,80 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby";
+import { device } from '../helpers/mediaQueries.js';
 import Img from "gatsby-image"
 
 const AboutUsContainer = styled.div`
   display: flex;
-  height: 600px;
+  height: 100%;
+  flex-direction: column;
+  width: 100%;
+  @media ${device.laptop} {
+    flex-direction: row;
+  }
+`
+const ExpandButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  padding-bottom: 10px;
+  font-size: 20px;
+  align-self: flex-end;  
+  cursor: pointer; 
 `
 
+const AboutUsTitle = styled.h1`
+  font-size: 55px;
+  letter-spacing: 10px;
+  font-weight: 500;
+  margin: 0;
+  align-self: flex-start;
+  color: white;
+  text-transform: uppercase;
+  width: 100%;
+`
+
+const DescriptionTabs = styled.span`
+  width: 100%;
+  height: 5px;
+  background-color: #303030;
+  margin-bottom: 15px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    transform: ${({  clickMore }) => clickMore ? `translateX(100%)` : `translateX(0)`};
+    height: 4px;
+    background-color: #707070;
+    transition: transform .2s ease-in-out;
+  }
+`;
+const Description = styled.p`
+  font-size: 20px;
+  color: white;
+  line-height: 2;
+`
 const AboutUsItem = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45%;
   align-items: center;
   padding: 75px;
   background-color: black;
-
-  h1 {
-    font-family: "Unica One", cursive;
-    font-size: 55px;
-    letter-spacing: 10px;
-    font-weight: bold;
-    align-self: flex-start;
-    color: white;
-  }
-
-  button {
-    background: none;
-    border: none;
-    color: white;
-    padding-bottom: 10px;
-    font-size: 20px;
-    align-self: flex-end;   
-  }
-
-  span {
-    width: 100%;
-    height: 5px;
-    background-color: #303030;
-    margin-bottom: 15px;
-    position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 50%;
-      /* right: ${({ clickMore }) => (clickMore ? "0" : "-100")}; */
-      transform: ${({  clickMore }) => clickMore ? `translateX(100%)` : `translateX(0)`};
-      height: 4px;
-      background-color: #707070;
-      transition: transform .2s ease-in-out;
-    }
-  }
-
-  p {
-    font-family: "Unica One", cursive;
-    font-size: 20px;
-    color: white;
-    line-height: 2;
+  width: 100%;
+  height: 100%;
+  @media ${device.laptop} {
+    width: 45%;
   }
 `
 
+const StyledImg = styled(Img)`
+  width: 100%;
+  height: 600px;
+`
+
 const AboutUs = () => {
-  const [isClick, setIsClick] = useState(false)
+  const [isMore, setIsMore] = useState(false)
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "ekipa-chybatytattoo.png" }) {
@@ -77,21 +89,21 @@ const AboutUs = () => {
 
   return (
     <AboutUsContainer>
-      <AboutUsItem clickMore={isClick}>
-        <h1>O NAS</h1>
-        <button onClick={() => setIsClick(!isClick)}>
-          {isClick ? "MNIEJ" : "WIĘCEJ"}
-        </button>
-        <span/>
-        {!isClick ? (
-          <p>
+      <AboutUsItem clickMore={isMore}>
+        <AboutUsTitle>O NAS</AboutUsTitle>
+        <ExpandButton onClick={() => setIsMore(!isMore)}>
+          {isMore ? "MNIEJ" : "WIĘCEJ"}
+        </ExpandButton>
+        <DescriptionTabs clickMore={isMore}/>
+        {!isMore ? (
+          <Description>
             Chyba Ty Tattoo, to miejsce w którym zajmiemy się Twoim tatuażem,
             zaczynając od rozmowy, po stworzenie projektu i wykonanie wzoru na
             ciele, poza tym miło spędzisz z nami czas, poznasz ciekawych ludzi,
             dużo się u nas dzieje!
-          </p>
+          </Description>
         ) : (
-          <p style={{ fontSize: "16px" }}>
+          <Description style={{ fontSize: "17px" }}>
             Tatuaż to często wiele stresu, a dla niektórych jedno z bardziej
             ekstremalnych przeżyć. Wiemy ile wątpliwości pojawia się przy
             wyborze odpowiedniego wzoru i miejsca na ciele. Co będzie dobrze
@@ -103,10 +115,10 @@ const AboutUs = () => {
             wspólnie obiady, rozmawiamy, świętujemy. Dla nas to drugi dom i
             chcielibyśmy, żebyście i Wy czuli się tu swobodnie. Przyjdź, zobacz
             jak pracujemy i daj się wydziarać!
-          </p>
+          </Description>
         )}
       </AboutUsItem>
-      <Img fluid={data.file.childImageSharp.fluid} style={{ flex: "1" }} />
+      <StyledImg fluid={data.file.childImageSharp.fluid} style={{ flex: "1", overflow: 'visible' }} />
     </AboutUsContainer>
   )
 }
