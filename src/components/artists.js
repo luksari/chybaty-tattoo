@@ -3,18 +3,71 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { CircleArrowButton, BtnContainer }  from '../components/CircleArrowButton';
+import { device } from "../helpers/mediaQueries";
 
 const ArtistBaseContainer = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 25px;
+  @media ${device.laptop} {
+    flex-direction: row;
+    padding: 0;
+  }
 `
 
 const ArtistNormalContainer = styled(ArtistBaseContainer)`
-  height: 550px;
+  @media ${device.laptop} {
+    height: 550px;
+    padding: 0;
+  }
 `
 
 const ArtistContainerHigher = styled(ArtistBaseContainer)`
-  height: 750px;
+  @media ${device.laptop} {
+    height: 750px;
+    padding: 0;
+  }
+`
+
+const MokerContainer = styled(ArtistNormalContainer)`
+  align-items: center;
+  flex: 1 1 100%;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  @media ${device.laptop} {
+    margin-bottom: 0;
+    margin-left: 140px;
+    margin-top: 140px;
+    max-height: 550px;
+    height: 100%;
+  }
+`
+
+const JpegContainer = styled.div`
+  flex: 2;
+  position: relative;
+  @media ${device.laptop} {
+    margin-left: 140px;
+  }
+`;
+
+const KrzywyContainer = styled(ArtistNormalContainer)`
+  padding: 0;
+  flex-direction: column;
+  height: 600px;
+  flex: 1 1 100%;
+  @media ${device.tablet} {
+    height: 730px;
+    margin-right: 0;
+  }
+  @media ${device.laptop} {
+    margin-right: 140px;
+    flex-direction: column;
+    height: 960px;
+  }
 `
 
 const ArtistNameBase = styled.div`
@@ -23,17 +76,33 @@ const ArtistNameBase = styled.div`
   background-color: #4f4f4f;
 `
 
+const NameWrapper = styled.div`
+  position: relative;
+  flex: 1 1 100%;
+  z-index: 10;
+`
+
+const KolankoNameWrapper = styled(NameWrapper)`
+  order: 1;
+  @media ${device.laptop} {
+    order: 0;
+  }
+`;
+
 const LuleoneNameContainer = styled(ArtistNameBase)`
   bottom: 0;
   width: 200px;
 `
 
 const KolankoNameContainer = styled(ArtistNameBase)`
-  bottom: 0;
-  right: 0;
+  bottom: -30px;
   width: 200px;
+  right: 0;
+  @media ${device.laptop} {
+    bottom: 0;
+    right: 0;
+  }
 `
-
 const LapiLopiNameContainer = styled(ArtistNameBase)`
   left: 0;
   top: 50%;
@@ -47,21 +116,32 @@ const JaroniNameContainer = styled(ArtistNameBase)`
 `
 
 const PelikanNameContainer = styled(ArtistNameBase)`
-  bottom: -30px;
-  right: 16%;
+  bottom: 0;
+  right: 15%;
   width: 205px;
+  @media ${device.laptop} {
+    bottom: -30px;
+    right: 16%;
+  }
 `
 
 const JpegNameContainer = styled(ArtistNameBase)`
-  top: -30px;
-  left: 0;
+  bottom: -25px;
+  left: 25px;
   width: 180px;
+  @media ${device.laptop} {
+    top: -30px;
+    left: 0;
+  }
 `
 
 const MokerNameContainer = styled(ArtistNameBase)`
-  top: -30px;
+  bottom: 15px;
   left: 0;
   width: 180px;
+  @media ${device.laptop} {
+    top: 0;
+  }
 `
 
 const KrzywyNameContainer = styled(ArtistNameBase)`
@@ -91,13 +171,18 @@ const ContactCTAContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  padding: 20px 0;
 `
 
 const FAQContainer = styled(ContactCTAContainer)`
-  padding: 69px 220px;
   /** @todo Fix when gfx exported */
+  padding: 20px 0;
   background: gray;
-  height: 466px;
+  @media ${device.laptop} {
+    height: 466px;
+    padding: 40px 0;
+  }
+
 
 `
 
@@ -127,29 +212,90 @@ const ContactCTABtn = styled.button`
 
 const StyledSectionTitle = styled.h2`
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: #fff;
   font-size: 155px;
-  width: 650px;
-  margin-left: 40px;
   color: #fff;
-  font-family: 'Unica One';
   text-transform: uppercase;
   font-weight: 500;
-  letter-spacing: 31px;
-  line-height: 165px;
+  width: 100%;
+  font-size: 100px;
+  -webkit-text-stroke-width: 2px;
+  margin-left: 0px;
+  letter-spacing: 15px;
+  line-height: 121px;
+  text-align: center;
+  @media ${device.laptop} {
+    width: 600px;
+    font-size: 155px;
+    -webkit-text-stroke-width: 5px;
+    text-align: left;
+    line-height: 165px;
+    letter-spacing: 31px;
+    margin-left: 40px;
+
+  }
 `
 
 const OurCrewContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  div {
+  @media ${device.laptop} {
+      justify-content: flex-start;
+  }
+  section {
     display: flex;
+    flex-direction: column;
+    @media ${device.laptop} {
+      flex-direction: row;
+    }
     ${BtnContainer} {
       justify-content: flex-end;
       margin-bottom: 55px;
+    }
+  }
+`
+
+const ArtistImg = styled(Img)`
+  flex: 1 1 100%;
+  width: 100%;
+  @media ${device.laptop} {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+`
+
+const ArtistImgWide = styled(ArtistImg).attrs({ style: { flex: '2 1 100%'}})`
+  flex: 2 1 100%;
+  width: 100%;
+  @media ${device.tablet} {
+    flex: 2 1 0;
+    width: 100%;
+  }
+`
+
+const MarginLeftImageWide = styled(ArtistImgWide)`
+  margin-left: 0;
+  @media ${device.laptop} {
+    margin-left: 140px;
+  }
+`
+
+const MainArtistContainer = styled(ArtistNormalContainer)`
+  height: 100%;
+  ${ArtistImg} {
+    order: 1;
+    flex: 100%;
+    @media ${device.laptop} {
+      height: 100%;
+      order: 0;
+    }
+  }
+  ${OurCrewContainer} {
+    order: 0;
+    @media ${device.laptop} {
+      order: 1;
     }
   }
 `
@@ -159,18 +305,16 @@ export const Artists = () => {
 
   return (
     <>
-      <ArtistNormalContainer
+      <MainArtistContainer
         data-sal="slide-right"
         data-sal-delay="200"
       >
-        <Img
+        <ArtistImg
           fluid={data.luleoneHome.childImageSharp.fluid}
-          style={{ flex: 1 }}
           alt='Luleone'
         />
-        <OurCrewContainer
-            style={{ flex: 2 }}>
-            <div>
+        <OurCrewContainer>
+            <section>
               <StyledSectionTitle 
               data-sal="slide-right"
               data-sal-delay="400"
@@ -178,35 +322,33 @@ export const Artists = () => {
                 Nasza ekipa
               </StyledSectionTitle>
               <CircleArrowButton label='Poznaj' />
-            </div>
+            </section>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
           </LuleoneNameContainer>
         </OurCrewContainer>
-      </ArtistNormalContainer>
-      <ArtistNormalContainer           
+      </MainArtistContainer>
+      <ArtistNormalContainer
         data-sal="slide-left"
         data-sal-delay="200"
       >
-        <div style={{ flex: 1, position: "relative" }}>
+        <KolankoNameWrapper>
           <KolankoNameContainer>
             <ArtistName>KOLANKO</ArtistName>
           </KolankoNameContainer>
-        </div>
-        <Img
+        </KolankoNameWrapper>
+        <ArtistImgWide
           fluid={data.kolankoHome.childImageSharp.fluid}
-          style={{ flex: 2 }}
         />
       </ArtistNormalContainer>
       <ArtistNormalContainer
         data-sal="slide-right"
         data-sal-delay="200"
       >
-        <Img
+        <MarginLeftImageWide
           fluid={data.lapiLopiHome.childImageSharp.fluid}
-          style={{ flex: "2", marginLeft: "140px" }}
         />
-        <div style={{ flex: "1", position: "relative" }}>
+        <div style={{ flex: "1 1 50%", position: "relative" }}>
           <LapiLopiNameContainer>
             <ArtistName>ŁAPI ŁOPI</ArtistName>
           </LapiLopiNameContainer>
@@ -216,10 +358,9 @@ export const Artists = () => {
         data-sal="slide-left"
         data-sal-delay="200"
         >
-        <div style={{ flex: "2" }}/>
-          <Img
+        <div style={{ flex: '2 1 100%' }} />
+          <ArtistImg
             fluid={data.pelikanHome.childImageSharp.fluid}
-            style={{ flex: "1", position: "relative", marginLeft: '140px'}}
           />
           <PelikanNameContainer>
             <ArtistNameAlternative>PELIKAN</ArtistNameAlternative>
@@ -229,64 +370,52 @@ export const Artists = () => {
           data-sal="slide-right"
           data-sal-delay="200"
       >
-      <div style={{ flex: "2", position: "relative", marginLeft: '140px' }}>
-          <Img
+      <JpegContainer>
+          <ArtistImgWide
             fluid={data.jpegHome.childImageSharp.fluid}
           />
           <JpegNameContainer>
             <ArtistName>JPEG13</ArtistName>
           </JpegNameContainer>
-      </div>
+      </JpegContainer>
       <div style={{ flex: "1"}}/>
       </ArtistNormalContainer>
       <ArtistContainerHigher style={{ height: '100%' }}>
-      {/**
-        @help
-        Stuck here to place Moker in center vertically to Krzywy
-        possible solutions: margin-bottom
-       */}
-          <div 
+          <MokerContainer 
             data-sal="slide-right"
             data-sal-delay="200"
-            style={{ flex: "1", 'display': 'flex', alignItems: 'flex-end', 'justifyContent': 'flex-end' }}>
-              <div style={{ flex: '1', position: 'relative', marginLeft: '140px', marginBottom: '140px' }}>
-                <Img 
-                  fluid={data.mokerHome.childImageSharp.fluid}
-                />
-              <MokerNameContainer>
-                <ArtistName>MOKER</ArtistName>
-              </MokerNameContainer>
-              </div>
-          </div>
-          <div 
+            >
+              <ArtistImg 
+                fluid={data.mokerHome.childImageSharp.fluid}
+              />
+            <MokerNameContainer>
+              <ArtistName>MOKER</ArtistName>
+            </MokerNameContainer>
+          </MokerContainer>
+          <KrzywyContainer 
               data-sal="slide-left"
-            data-sal-delay="350"
-            style={{ flex: "1", position: 'relative', marginRight: '140px' }}>
+              data-sal-delay="350"
+            >
             <FAQContainer >
               <ContactCTAHeader>FAQ</ContactCTAHeader>
               <p>Masz pytania?</p>
               <p>Wszystkie odpowiedzi w zakładce!</p>
               <ContactCTABtn>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
             </FAQContainer>
-            <Img 
+            <ArtistImg 
               fluid={data.krzywyHome.childImageSharp.fluid}
             />
             <KrzywyNameContainer>
               <ArtistName>KRZYWY</ArtistName>
             </KrzywyNameContainer>
-          </div>
-      {/**
-        @help
-        Stuck here to place Krzywy in the right upper corner 
-        to Jaroni
-       */}
+          </KrzywyContainer>
       </ArtistContainerHigher>
       <ArtistContainerHigher>
         <div 
             data-sal="slide-right"
             data-sal-delay="200"
-          style={{ flex: "1", position: "relative" }}>
-          <Img fluid={data.jaroniHome.childImageSharp.fluid} />
+          style={{ flex: "1", position: 'relative'}}>
+          <ArtistImg fluid={data.jaroniHome.childImageSharp.fluid} />
           <JaroniNameContainer>
             <ArtistName>JARONI</ArtistName>
           </JaroniNameContainer>

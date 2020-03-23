@@ -10,6 +10,7 @@ export const CircleOutline = styled.button`
     width: 100px;
     height: 100px;
     transition: background .1s ease-in-out;
+    cursor: pointer;
     &:hover, &:focus {
         background: #7070702b;
     }
