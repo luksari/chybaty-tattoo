@@ -1,40 +1,52 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from 'gatsby';
+import { Routes } from "../helpers/routes";
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 30px 0;
+  padding: 70px;
   height: 90px;
   background-color: black;
 `
-const NavItem = styled.a`
+const NavItem = styled(Link)`
   color: white;
   margin: 0px 20px;
   cursor: pointer;
   text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 6px;
+  position: relative;
+  text-decoration: none;
   &::after {
+    position: absolute;
+    width: 100%;
     content: "";
-    display: block;
-    width: 0;
     height: 1px;
+    left: 0;
+    bottom: -5px;
     background: white;
-    transition: width 0.3s;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 0.3s;
   }
 
-  &:hover::after {
-    width: 100%;
+  &:hover {
+    &::after {
+     transform: scaleX(1);
+    }
   }
 `
 const Navbar = () => {
   return (
     <Nav>
-      <NavItem>O NAS</NavItem>
-      <NavItem>EKIPA</NavItem>
-      <NavItem>FAQ</NavItem>
-      <NavItem>KUP VOUCHER</NavItem>
-      <NavItem>KONTAKT</NavItem>
+      <NavItem to={Routes.AboutUs()}>O nas</NavItem>
+      <NavItem to={Routes.Crew()}>Ekipa</NavItem>
+      <NavItem to={Routes.FAQ()}>FAQ</NavItem>
+      <NavItem to={Routes.Voucher()}>Kup voucher</NavItem>
+      <NavItem to={Routes.Contact()}>Kontakt</NavItem>
     </Nav>
   )
 }

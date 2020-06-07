@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Chyba Ty Tattoo`,
+    description: `Chyba Ty Tattoo | Styl | Nagrania | Ubrania`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Chyba Ty Tattoo`,
+        short_name: `Chyba Ty`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -36,7 +36,7 @@ module.exports = {
           {
             family: `Unica One`,
             subsets: [`latin-ext`],
-            variants: [`400`]
+            variants: [`400`, `500`]
           },
           {
             family: `Exo 2`,
