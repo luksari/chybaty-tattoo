@@ -129,6 +129,12 @@ const StyledMobileMenuItem = styled(motion.custom(Link)).attrs({ variants: itemV
   text-transform: uppercase;
   font-size: 36px;
   padding: 15px 0;
+  text-decoration: none;
+  color: #2e2e2e;
+  transition: color 0.2s;
+  &:hover {
+    color: #000;
+  }
 `
 
 const NavbarMobile = () => {
@@ -144,7 +150,7 @@ const NavbarMobile = () => {
 
       {mobileMenu && (
           <StyledMobileMenu variants={menuVartiant} initial='exit' animate='enter'>
-            <StyledMobileMenuItem to={Routes.AboutUs()}>O nas</StyledMobileMenuItem>
+            <StyledMobileMenuItem to={Routes.Root()}>O nas</StyledMobileMenuItem>
             <StyledMobileMenuItem to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
             <StyledMobileMenuItem to={Routes.FAQ()}>Faq</StyledMobileMenuItem>
             <StyledMobileMenuItem to={Routes.Voucher()}>Kup Voucher</StyledMobileMenuItem>

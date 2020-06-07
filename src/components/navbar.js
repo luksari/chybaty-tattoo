@@ -7,8 +7,8 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 70px;
-  height: 90px;
+  padding: 45px 75px;
+  height: auto;
   background-color: black;
 `
 const NavItem = styled(Link)`
@@ -20,6 +20,9 @@ const NavItem = styled(Link)`
   letter-spacing: 6px;
   position: relative;
   text-decoration: none;
+  &:last-of-type {
+    margin-right: 0;
+  }
   &::after {
     position: absolute;
     width: 100%;
@@ -42,7 +45,7 @@ const NavItem = styled(Link)`
 const Navbar = () => {
   return (
     <Nav>
-      <NavItem to={Routes.AboutUs()}>O nas</NavItem>
+      <NavItem to={Routes.Root()}>O nas</NavItem>
       <NavItem to={Routes.Crew()}>Ekipa</NavItem>
       <NavItem to={Routes.FAQ()}>FAQ</NavItem>
       <NavItem to={Routes.Voucher()}>Kup voucher</NavItem>

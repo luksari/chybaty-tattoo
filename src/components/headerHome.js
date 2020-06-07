@@ -2,9 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import Navbar from "./navbar"
-import NavbarMobile from "./navbarMobile"
-import { useWindowWidth } from "../helpers/useWindowWidth"
 import { device } from '../helpers/mediaQueries'
 import { motion } from "framer-motion"
 
@@ -83,7 +80,6 @@ const StyledHeaderText = styled(motion.h2).attrs({ variants: headerVariants, ini
 `
 
 const HeaderHome = () => {
-  const width = useWindowWidth()
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "chybatytattoo-header.png" }) {
@@ -98,7 +94,6 @@ const HeaderHome = () => {
   return (
     <>
       <HeaderContainer>
-        {width >= 600 ? <Navbar /> : <NavbarMobile />}
         <HeaderImg
           fluid={data.file.childImageSharp.fluid} 
           style={{  position: 'absolute' }}
