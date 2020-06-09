@@ -4,6 +4,7 @@ import { Layout } from "../components/Layout"
 import { useStaticQuery } from "gatsby"
 import Image from 'gatsby-image';
 import styled from 'styled-components';
+import { ContactSteps } from '../components/ContactSteps';
 
 const MainWrapper = styled.div`
   margin-top: 75px;
@@ -56,8 +57,9 @@ const ContactPage = () => {
             <Headline>Kontakt</Headline>
             <MainParagraph>Dobrze napisana wiadomość uprości nasz kontakt, co jest dla nas istotne</MainParagraph>
           </TextWrapper>
-          <MainImage fluid={data.file.childImageSharp.fluid}/>
+          <MainImage fluid={data.file.childImageSharp.fluid} />
         </MainWrapper>
+        <ContactSteps />
       </Layout>
     </>
   )

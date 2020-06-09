@@ -54,7 +54,6 @@ const StyledHeaderText = styled(motion.h2).attrs({ variants: headerVariants, ini
       -webkit-text-fill-color: transparent;
       -webkit-text-stroke-color: #fff;
       -webkit-text-stroke-width: 1px;
-
    }
   @media ${device.tablet} {
     width: 656px;
