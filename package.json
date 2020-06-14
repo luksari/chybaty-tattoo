@@ -10,6 +10,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
+    "@hapi/joi": "^17.1.1",
+    "@hookform/resolvers": "^0.0.3",
     "babel-plugin-styled-components": "^1.10.6",
     "framer": "^1.1.7",
     "framer-motion": "^1.8.4",
@@ -30,9 +32,11 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-hook-form": "^5.7.2",
     "react-slick": "^0.25.2",
     "react-star-ratings": "^2.3.0",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.0",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

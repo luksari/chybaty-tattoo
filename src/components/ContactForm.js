@@ -1,6 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import { ContactFormInput } from './ContactFormInput';
+import { useForm, FormContext } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers';
+
 
 const FormWrapper = styled.div`
   display: flex;
@@ -30,32 +34,39 @@ const StyledForm = styled.form`
   flex-direction: column;
 `
 
-export const ContactForm = () => {
-  const [state, setState] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    description: '',
-  });
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
-  const handleChange = useCallback((event) => {
-    setState((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-  }, [])
-  
+const tReq = 'Pole wymagane';
+const tEmail = 'Nieprawidłowy adres email';
+const tPhone = 'Nieprawidłowy numer telefonu';
+
+const validationSchema = yup.object().shape({
+  name: yup.string().required(tReq).max(25, 'Nie uwierzę że masz tak długie imie'),
+  email: yup.string().required(tReq).email(tEmail),
+  phone: yup.string().matches(phoneRegExp, tPhone),
+  description: yup.string().required(tReq).max(1000)
+})
+
+export const ContactForm = () => {
+  const methods = useForm({ mode: 'onChange'});
+  const onSubmit = data => console.log(data);
   return (
     <FormWrapper>
       <FormHeading>Gotowy?</FormHeading>
       <FormSubHeading>Napisz do nas</FormSubHeading>
-      <StyledForm>
-        <ContactFormInput name='name' label='Twoje imię'/>
-        <ContactFormInput name='email' label='Twój adres email' />
-        <ContactFormInput name='phone' label='Twój numer telefonu' />
-        <ContactFormInput name='description' label='Twoja wiadomość' type='textarea'/>
-        <div>
-          <label htmlFor="file">Dodaj załącznik</label>
-          <input id="file" name="file" type="file" />
-        </div>
-      </StyledForm>
+      <FormContext {...methods}>
+        <StyledForm onSubmit={methods.handleSubmit(onSubmit)}>
+          <ContactFormInput name='name' label='Twoje imię' register={methods.register} />
+          <ContactFormInput name='email' label='Twój adres email' register={methods.register} />
+          <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' register={methods.register} />
+          <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' register={methods.register} />
+          <div>
+            <label htmlFor="file">Dodaj załącznik</label>
+            <input id="file" name="file" type="file" />
+          </div>
+          <button>Submit</button>
+        </StyledForm>
+      </FormContext>
     </FormWrapper>
   )
 }

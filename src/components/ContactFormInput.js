@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
+import React, { useMemo } from 'react'
+import styled, { css } from 'styled-components';
+import { useFormContext } from 'react-hook-form';
+
 
 const InputWrapper = styled.div`
   display: flex;
@@ -13,7 +15,7 @@ const InputWrapper = styled.div`
   font-weight: 200;
   font-family: 'Exo 2', sans-serif;
   cursor: text;
-  ${({ isActive }) => isActive && css`
+  ${({ isFine }) => isFine && css`
     ${InputLabel} {
       transform:translateY(-35px) translateX(-40px) scale(0.8);
       border-color: #ffffff;
@@ -44,17 +46,22 @@ const StyledInput = styled.input`
   position: absolute;
 `
 
+// export const ContactFormInput = (props) => {
+//   const context = useFormContext();
+
+//   return <ContactFormInputComponent {...props} {...context} />
+// }
+
 export const ContactFormInput = ({ name, label, icon, type = 'text' }) => {
-  const ref = useRef(null);
-  const [isFocused, setIsFocused] = useState()
-  /** @TODO proper validation of value */
-  const isInputActive = isFocused || (ref.current && ref.current.value.length > 0)
+  const { register, errors, watch } = useFormContext();
+  const value = watch(name);
+  const isFine = value && value.length;
 
   return (
-    <InputWrapper isActive={isInputActive}>
-      <span></span>
-      <StyledInput onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} id={name} name={name} type={type} ref={ref} />
+    <InputWrapper isFine={isFine}>
+      <span>{JSON.stringify(errors[name])}</span>
+      <StyledInput id={name} name={name} type={type} ref={register}/>
       <InputLabel htmlFor={name}>{label}</InputLabel>
     </InputWrapper>
   )
-}
+};
