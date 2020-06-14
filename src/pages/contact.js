@@ -5,6 +5,7 @@ import { useStaticQuery } from "gatsby"
 import Image from 'gatsby-image';
 import styled from 'styled-components';
 import { ContactSteps } from '../components/ContactSteps';
+import { ContactForm } from '../components/ContactForm';
 
 const MainWrapper = styled.div`
   margin-top: 75px;
@@ -60,6 +61,7 @@ const ContactPage = () => {
           <MainImage fluid={data.file.childImageSharp.fluid} />
         </MainWrapper>
         <ContactSteps />
+        <ContactForm />
       </Layout>
     </>
   )
