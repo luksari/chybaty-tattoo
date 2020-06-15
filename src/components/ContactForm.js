@@ -48,18 +48,19 @@ const validationSchema = yup.object().shape({
 })
 
 export const ContactForm = () => {
-  const methods = useForm({ mode: 'onChange'});
+  const methods = useForm({ mode: 'onChange' });
   const onSubmit = data => console.log(data);
+  console.log(methods.errors);
   return (
     <FormWrapper>
       <FormHeading>Gotowy?</FormHeading>
       <FormSubHeading>Napisz do nas</FormSubHeading>
       <FormContext {...methods}>
         <StyledForm onSubmit={methods.handleSubmit(onSubmit)}>
-          <ContactFormInput name='name' label='Twoje imię' register={methods.register} />
-          <ContactFormInput name='email' label='Twój adres email' register={methods.register} />
-          <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' register={methods.register} />
-          <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' register={methods.register} />
+          <ContactFormInput name='name' label='Twoje imię' validate={{ required: tReq }}/>
+          <ContactFormInput name='email' label='Twój adres email' type='email' validate={{ required: tReq }}/>
+          <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' validate={{ required: tReq}}/>
+          <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' validate={{ required: tReq}}/>
           <div>
             <label htmlFor="file">Dodaj załącznik</label>
             <input id="file" name="file" type="file" />
