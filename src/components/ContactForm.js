@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { ContactFormInput } from './ContactFormInput';
-import { useForm, FormContext } from 'react-hook-form';
+import { FormContext } from 'react-hook-form';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers';
-
 
 const FormWrapper = styled.div`
   display: flex;
@@ -28,7 +27,7 @@ const FormSubHeading = styled.h3`
   text-transform: uppercase;
 `;
 
-const StyledForm = styled.form`
+const StyledForm = styled(Form)`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -43,31 +42,32 @@ const tPhone = 'Nieprawidłowy numer telefonu';
 const validationSchema = yup.object().shape({
   name: yup.string().required(tReq).max(25, 'Nie uwierzę że masz tak długie imie'),
   email: yup.string().required(tReq).email(tEmail),
-  phone: yup.string().matches(phoneRegExp, tPhone),
+  phone: yup.string().required(tReq).matches(phoneRegExp, tPhone),
   description: yup.string().required(tReq).max(1000)
 })
 
 export const ContactForm = () => {
-  const methods = useForm({ mode: 'onChange' });
   const onSubmit = data => console.log(data);
-  console.log(methods.errors);
+
   return (
     <FormWrapper>
       <FormHeading>Gotowy?</FormHeading>
       <FormSubHeading>Napisz do nas</FormSubHeading>
-      <FormContext {...methods}>
-        <StyledForm onSubmit={methods.handleSubmit(onSubmit)}>
-          <ContactFormInput name='name' label='Twoje imię' validate={{ required: tReq }}/>
-          <ContactFormInput name='email' label='Twój adres email' type='email' validate={{ required: tReq }}/>
-          <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' validate={{ required: tReq}}/>
-          <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' validate={{ required: tReq}}/>
+      <Formik onSubmit={onSubmit} initialValues={{ name: '', email: '', phone: '', description: '' }} validateOnChange validationSchema={validationSchema}>
+        {({ handleSubmit }) => (  
+        <StyledForm onSubmit={handleSubmit}>
+          <ContactFormInput name='name' label='Twoje imię' />
+          <ContactFormInput name='email' label='Twój adres email' type='email' />
+          <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' />
+          <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' />
           <div>
             <label htmlFor="file">Dodaj załącznik</label>
             <input id="file" name="file" type="file" />
           </div>
           <button>Submit</button>
         </StyledForm>
-      </FormContext>
+        )}
+      </Formik>
     </FormWrapper>
   )
 }

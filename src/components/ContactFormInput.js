@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components';
-import { useFormContext } from 'react-hook-form';
+import { useField } from 'formik';
+import { motion, useAnimation } from 'framer-motion';
 
 
 const InputWrapper = styled.div`
@@ -33,7 +34,7 @@ const InputWrapper = styled.div`
   `}
 `
 
-const InputLabel = styled.label`
+const InputLabel = styled(motion.label)`
   position: absolute;
   bottom: 5px;
   left: 30px;
@@ -50,7 +51,7 @@ const InputLabel = styled.label`
   }
 `
 
-const StyledInput = styled.input`
+const StyledInput = styled(motion.input)`
   background: none;
   color: #ffffff;
   bottom: 0;
@@ -70,20 +71,41 @@ const ErrorWrapper = styled.div`
   color: #CD5C5C;
 `
 
+const errorVariants = {
+  initial: { 
+    x: 0
+  },
+  error: {
+    x: [0, -10, 0, 10, 0] 
+  }
+}
+
 export const ContactFormInput = ({ name, label, icon, type = 'text', validate }) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const { register, errors, watch } = useFormContext();
-  const value = watch(name);
-  const isFine = (value && value.length) || isFocused;
-  const hasError = errors[name]?.message !== undefined;
-  console.log(hasError)
+  const [isFocused, setIsFocused] = useState(false)
+  const [{ onBlur, ...field }, meta] = useField({ name });
+  const isFine = field.value.length || isFocused;
+  const hasError = meta.error;
 
   return (
     <InputWrapper isFine={isFine} hasError={hasError}>
       <span>{icon}</span>
-      <StyledInput onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} id={name} name={name} type={type} ref={register(validate)}/>
-      <InputLabel htmlFor={name}>{label}</InputLabel>
-      <ErrorWrapper>{errors[name]?.message}</ErrorWrapper>
+      <StyledInput
+        onBlur={(e) => {
+          setIsFocused(false);
+          onBlur(e);
+        }}
+        onFocus={() => setIsFocused(true)}
+        id={name}
+        name={name}
+        type={type} 
+        {...field}
+        />
+      <InputLabel 
+        initial={hasError ? 'error' : 'initial'}
+        animate={hasError ? 'error' : 'initial'}
+        variants={errorVariants} 
+        htmlFor={name}>{label}</InputLabel>
+      <ErrorWrapper>{meta.touched && meta.error}</ErrorWrapper>
     </InputWrapper>
   )
 };
