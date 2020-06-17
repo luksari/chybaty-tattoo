@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components';
 import { useField } from 'formik';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { device } from "../helpers/mediaQueries";
 
 
 const InputWrapper = styled.div`
@@ -11,7 +12,7 @@ const InputWrapper = styled.div`
   border-bottom: 1px solid #4f4f4f; 
   width: 100%;
   height: 45px;
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 45px;
   font-weight: 200;
   font-family: 'Exo 2', sans-serif;
@@ -39,15 +40,19 @@ const InputLabel = styled(motion.label)`
   bottom: 5px;
   left: 30px;
   z-index: 1;
-  width: auto;
-  transition: transform 0.15s ease-out;
   cursor: text;
+  font-size: 13px;
   &::after {
     opacity: 0;
     color: #CD5C5C;
     content: '*';
     margin-left: 5px;
     transition: opacity 0.3s ease-out;
+  }
+  @media ${device.laptop} {
+    flex-direction: row;
+    padding: 0;
+    font-size: 16px;
   }
 `
 
@@ -73,10 +78,12 @@ const ErrorWrapper = styled.div`
 
 const errorVariants = {
   initial: { 
-    x: 0
+    x: -35,
+    y: -35
   },
   error: {
-    x: [0, -10, 0, 10, 0] 
+    x: [-45, -35, -25, -35],
+    y: -35
   }
 }
 
@@ -86,7 +93,7 @@ export const ContactFormInput = ({ name, label, icon, type = 'text', validate })
   const isFine = field.value.length || isFocused;
   const hasError = meta.error;
 
-  return (
+    return (
     <InputWrapper isFine={isFine} hasError={hasError}>
       <span>{icon}</span>
       <StyledInput

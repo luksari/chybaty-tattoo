@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { CircleArrowButton, BtnContainer }  from '../components/CircleArrowButton';
@@ -194,7 +194,7 @@ const ContactCTAHeader = styled.p`
   margin-bottom: 33px;
 `
 
-const ContactCTABtn = styled.button`
+const ContactCTABtn = styled(Link)`
   color: white;
   font-size: 14px;
   letter-spacing: 3px;
@@ -204,6 +204,8 @@ const ContactCTABtn = styled.button`
   background-color: transparent;
   transition: all 0.3s linear;
   cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
   :hover {
     color: black;
     background-color: white;
@@ -400,7 +402,7 @@ export const Artists = () => {
               <ContactCTAHeader>FAQ</ContactCTAHeader>
               <p>Masz pytania?</p>
               <p>Wszystkie odpowiedzi w zakładce!</p>
-              <ContactCTABtn>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
+              <ContactCTABtn to='/faq'>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
             </FAQContainer>
             <ArtistImg 
               fluid={data.krzywyHome.childImageSharp.fluid}
@@ -422,9 +424,8 @@ export const Artists = () => {
         </div>
         <ContactCTAContainer>
           <ContactCTAHeader>KONTAKT</ContactCTAHeader>
-          <p>Lorem ipsum</p>
-          <p>dolor sit amet auwktaiurm</p>
-          <ContactCTABtn>DOWIEDZ SIĘ WIĘCEJ</ContactCTABtn>
+          <p>Skontaktuj się z nami</p>
+          <ContactCTABtn to='/contact'>Dowiedz się więcej</ContactCTABtn>
         </ContactCTAContainer>
       </ArtistContainerHigher>
     </>

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import { ContactFormInput } from './ContactFormInput';
-import { FormContext } from 'react-hook-form';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
+import { device } from "../helpers/mediaQueries";
 
 const FormWrapper = styled.div`
   display: flex;
@@ -25,15 +25,21 @@ const FormSubHeading = styled.h3`
   font-size: 26px;
   font-family: 'Unica one', sans-serif;
   text-transform: uppercase;
+  margin-bottom: 35px;
 `;
 
 const StyledForm = styled(Form)`
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  @media ${device.laptop} {
+    width: 30%;
+  }
+  
 `
 
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const tReq = 'Pole wymagane';
 const tEmail = 'Nieprawidłowy adres email';
@@ -60,10 +66,6 @@ export const ContactForm = () => {
           <ContactFormInput name='email' label='Twój adres email' type='email' />
           <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' />
           <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' />
-          <div>
-            <label htmlFor="file">Dodaj załącznik</label>
-            <input id="file" name="file" type="file" />
-          </div>
           <button>Submit</button>
         </StyledForm>
         )}
