@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Navbar from "./navbar"
 import NavbarMobile from "./navbarMobile"
 import { useWindowWidth } from "../helpers/useWindowWidth"
+import Footer from './footer'
 
 const LayoutWrapper = styled.main`
   max-width: 100vw;
@@ -17,6 +18,7 @@ export const Layout = ({ children }) =>{
     <LayoutWrapper>
       {width >= 700 ? <Navbar /> : <NavbarMobile />}
       {children}
+      <Footer />
     </LayoutWrapper>
   )
 }

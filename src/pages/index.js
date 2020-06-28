@@ -47,7 +47,6 @@ const IndexPage = () => (
           defaultZoom={11}
         ></GoogleMapReact>
       </GoogleMapContainer>
-      <Footer />
     </Layout>
   </>
 )

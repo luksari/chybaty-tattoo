@@ -12,8 +12,9 @@ const InputWrapper = styled.div`
   border-bottom: 1px solid #4f4f4f; 
   width: 100%;
   height: 45px;
+
   font-size: 14px;
-  margin-bottom: 45px;
+  margin-bottom: 65px;
   font-weight: 200;
   font-family: 'Exo 2', sans-serif;
   cursor: text;
@@ -21,6 +22,11 @@ const InputWrapper = styled.div`
     ${InputLabel} {
       transform: translateY(-35px) translateX(-40px) scale(0.8);
     }
+  `}
+  ${({ isTextarea }) => isTextarea && css`
+    border: 1px solid #4f4f4f;
+    height: 180px;
+    border-radius: 8px;
   `}
   ${({ hasError }) => hasError && css`
     border-color: #CD5C5C;
@@ -42,6 +48,7 @@ const InputLabel = styled(motion.label)`
   z-index: 1;
   cursor: text;
   font-size: 13px;
+  top: 20px;
   &::after {
     opacity: 0;
     color: #CD5C5C;
@@ -56,7 +63,7 @@ const InputLabel = styled(motion.label)`
   }
 `
 
-const StyledInput = styled(motion.input)`
+const StyledInput = styled.input`
   background: none;
   color: #ffffff;
   bottom: 0;
@@ -65,8 +72,23 @@ const StyledInput = styled(motion.input)`
   outline: none;
   overflow-y: hidden;
   border: none;
-  width: 100%;
   position: absolute;
+  width: calc(100% - 30px);
+`
+
+const StyledTextarea = styled.textarea.attrs({ rows: 8 })`
+  background: none;
+  color: #ffffff;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  outline: none;
+  overflow-y: auto;
+  border: none;
+  width: 100%;
+  resize: none;
+  position: absolute;
+  padding: 8px;
 `
 
 const ErrorWrapper = styled.div`
@@ -79,11 +101,11 @@ const ErrorWrapper = styled.div`
 const errorVariants = {
   initial: { 
     x: -35,
-    y: -35
+    y: -45
   },
   error: {
     x: [-45, -35, -25, -35],
-    y: -35
+    y: -45
   }
 }
 
@@ -92,11 +114,12 @@ export const ContactFormInput = ({ name, label, icon, type = 'text', validate })
   const [{ onBlur, ...field }, meta] = useField({ name });
   const isFine = field.value.length || isFocused;
   const hasError = meta.error;
+  const Component = type === 'textarea' ? StyledTextarea : StyledInput;
 
     return (
-    <InputWrapper isFine={isFine} hasError={hasError}>
+    <InputWrapper isFine={isFine} hasError={hasError} isTextarea={type === 'textarea'}>
       <span>{icon}</span>
-      <StyledInput
+      <Component
         onBlur={(e) => {
           setIsFocused(false);
           onBlur(e);

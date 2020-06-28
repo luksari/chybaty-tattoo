@@ -39,6 +39,15 @@ const StyledForm = styled(Form)`
   
 `
 
+const SendButton = styled.button`
+  padding: 13px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+`
+
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const tReq = 'Pole wymagane';
@@ -66,7 +75,7 @@ export const ContactForm = () => {
           <ContactFormInput name='email' label='Twój adres email' type='email' />
           <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' />
           <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' />
-          <button>Submit</button>
+          <SendButton>Submit</SendButton>
         </StyledForm>
         )}
       </Formik>
