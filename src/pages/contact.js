@@ -104,7 +104,7 @@ const ContactPage = () => {
 
 const contactImageQuery = graphql`
   query contactImageQuery {
-    file(relativePath: { eq: "contact.png" }) {
+    file(relativePath: { eq: "contact/main.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

@@ -27,6 +27,7 @@ const InputWrapper = styled.div`
     border: 1px solid #4f4f4f;
     height: 180px;
     border-radius: 8px;
+    margin-bottom: 15px;
   `}
   ${({ hasError }) => hasError && css`
     border-color: #CD5C5C;

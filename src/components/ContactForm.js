@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react';
+
 import styled from 'styled-components';
+import axios from 'axios';
 import { ContactFormInput } from './ContactFormInput';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { device } from "../helpers/mediaQueries";
+import { isEmpty } from 'lodash';
 
 const FormWrapper = styled.div`
   display: flex;
@@ -40,12 +43,21 @@ const StyledForm = styled(Form)`
 `
 
 const SendButton = styled.button`
-  padding: 13px 30px;
+  padding: 8px 30px;
+  margin-left: auto;
   background: #fff;
+  font-size: 13px;
+  font-weight: 700;
   color: #000;
   border-radius: 20px;
   outline: none;
   border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
 `
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -56,26 +68,56 @@ const tPhone = 'Nieprawidłowy numer telefonu';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required(tReq).max(25, 'Nie uwierzę że masz tak długie imie'),
-  email: yup.string().required(tReq).email(tEmail),
+  _replyTo: yup.string().required(tReq).email(tEmail),
   phone: yup.string().required(tReq).matches(phoneRegExp, tPhone),
   description: yup.string().required(tReq).max(1000)
 })
 
 export const ContactForm = () => {
-  const onSubmit = data => console.log(data);
+  const [serverState, setServerState] = useState();
+
+  const handleOnSubmit = (values, actions) => {
+    axios({
+      method: 'POST',
+      url: "https://formspree.io/moqkkqjp",
+      data: values
+    })
+      .then(response => {
+        actions.setSubmitting(false);
+        actions.resetForm();
+        handleServerResponse(true, "Thanks!");
+      })
+      .catch(error => {
+        actions.setSubmitting(false);
+        handleServerResponse(false, error.response);
+      });
+  };
+
+  const handleServerResponse = (ok, msg) => {
+    setServerState({ok, msg});
+  };
 
   return (
     <FormWrapper>
       <FormHeading>Gotowy?</FormHeading>
       <FormSubHeading>Napisz do nas</FormSubHeading>
-      <Formik onSubmit={onSubmit} initialValues={{ name: '', email: '', phone: '', description: '' }} validateOnChange validationSchema={validationSchema}>
-        {({ handleSubmit }) => (  
-        <StyledForm onSubmit={handleSubmit}>
+      <Formik 
+        onSubmit={handleOnSubmit} 
+        initialValues={{ name: '', _replyTo: '', phone: '', description: '' }} 
+        validateOnChange 
+        validationSchema={validationSchema}>
+        {({ handleSubmit, isSubmitting, errors }) => (  
+        <StyledForm 
+          action="https://formspree.io/moqkkqjp"
+          onSubmit={handleSubmit}
+          method="POST"
+        >
           <ContactFormInput name='name' label='Twoje imię' />
-          <ContactFormInput name='email' label='Twój adres email' type='email' />
+          <ContactFormInput name='_replyTo' label='Twój adres email' type='email' />
           <ContactFormInput name='phone' label='Twój numer telefonu' type='tel' />
           <ContactFormInput name='description' label='Twoja wiadomość' type='textarea' />
-          <SendButton>Submit</SendButton>
+          <SendButton type='submit' disabled={isSubmitting || !isEmpty(errors)}>Wyślij</SendButton>
+          <input type="text" name="_gotcha" style={{ display: 'none' }} />
         </StyledForm>
         )}
       </Formik>

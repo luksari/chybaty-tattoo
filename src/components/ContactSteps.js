@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { content } from '../content/contactSteps.json';
 import { ContactStep } from './ContactStep';
 import { device } from '../helpers/mediaQueries';
+import { useStaticQuery } from 'gatsby';
 
 const StepsWrapper = styled.div`
   width: 100%;
@@ -29,6 +30,7 @@ const StepOne = styled(ContactStep)`
 const StepTwo = styled(ContactStep)`
   align-self: flex-start;
   background: #1D1D1D;
+
   @media ${device.laptop} {
     width: 750px;
     margin-left: 75px;
@@ -38,7 +40,10 @@ const StepTwo = styled(ContactStep)`
 const StepThree = styled(ContactStep)`
   align-self: flex-end;
   margin-left: auto;
-  background: #0e0e0e;
+  background: url(${({ bgImage }) => bgImage }) #000000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   @media ${device.laptop} {
     width: 950px;
     margin-right: 45px;
@@ -58,10 +63,13 @@ const StepFour = styled(ContactStep)`
 `
 
 export const ContactSteps = () => {
+  const data = useStaticQuery(textureImageQuery);
+
   const stepOne = content[0];
   const stepTwo = content[1];
   const stepThree = content[2];
   const stepFour = content[3];
+  console.log(data);
   return (
     <StepsWrapper>
       <StepOne 
@@ -78,6 +86,7 @@ export const ContactSteps = () => {
         index={3}
         title={stepThree.title}
         paragraph={stepThree.paragraph}
+        bgImage={data.file.childImageSharp.fluid.src}
       />
       <StepFour
         index={4}
@@ -87,3 +96,16 @@ export const ContactSteps = () => {
     </StepsWrapper>
   )
 }
+
+const textureImageQuery = graphql`
+  query textureQuery {
+    file(relativePath: { eq: "contact/texture.png" }) {
+      childImageSharp {
+        fluid {
+          src
+        }
+      }
+    }
+  }
+`
+
