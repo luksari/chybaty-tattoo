@@ -108,7 +108,7 @@ export const ContactForm = () => {
         validationSchema={validationSchema}>
         {({ handleSubmit, isSubmitting, errors }) => (  
         <StyledForm 
-          action="https://formspree.io/moqkkqjp"
+          action={`https://formspree.io/${process.env.GATSBY_FORMSPREE_API_KEY}`}
           onSubmit={handleSubmit}
           method="POST"
         >
