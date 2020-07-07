@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { content } from '../content/contactSteps.json';
+import { content } from '../data/contactSteps.json';
 import { ContactStep } from './ContactStep';
 import { device } from '../helpers/mediaQueries';
 import { useStaticQuery } from 'gatsby';
