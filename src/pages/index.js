@@ -9,18 +9,13 @@ import Footer from "../components/footer"
 import AboutUs from "../components/aboutUs"
 import Artists from "../components/artists"
 import TestimonialCarousel from "../components/testimonialCarousel"
+import { Layout } from '../components/Layout';
 
 import "../styles/styles.css"
 
 const GoogleMapContainer = styled.div`
   height: 700px;
 `
-const Layout = styled.main`
-  max-width: 100vw;
-  width: 100%;
-  min-height: 100vh;
-  max-height: 100%;
-`;
 const IndexPage = () => (
   <>
     <SEO title="Home" />
@@ -52,7 +47,6 @@ const IndexPage = () => (
           defaultZoom={11}
         ></GoogleMapReact>
       </GoogleMapContainer>
-      <Footer />
     </Layout>
   </>
 )

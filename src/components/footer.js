@@ -7,17 +7,27 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faClock } from "@fortawesome/free-solid-svg-icons"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons"
+import { device } from "../helpers/mediaQueries"
 
 const FooterWrapper = styled.footer`
-  display: flex;
+  display: grid;
   background-color: black;
   padding: 50px 0;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
+  @media ${device.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media ${device.laptop} {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `
 const FooterItem = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 300px;
+  justify-self: center;
   flex-direction: ${props => (props.displeyColumn ? "column" : "row")};
-  flex: 1;
 `
 const FooterTextContainer = styled.div`
   display: ${props => (props.displeyBlock ? "block" : "flex")};
@@ -28,11 +38,10 @@ const FooterTextContainerCenter = styled(FooterTextContainer)`
   align-items: center;
 `
 const FooterText = styled.p`
-  color: white;
+  color: #fff;
   font-family: "Exo 2", sans-serif;
   padding-left: 10px;
   margin: 0;
-  margin-bottom: ${props => (props.marginBottom ? "10px" : "0")};
 `
 const Footer = () => {
   return (

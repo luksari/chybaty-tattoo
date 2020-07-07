@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { motion } from 'framer-motion';
+import { Link } from 'gatsby';
+import { Routes } from '../helpers/routes'
 import styled from "styled-components"
 
 
@@ -122,11 +124,17 @@ const itemVariants = {
   exit: { y: 20, opacity: 0 },
 }
 
-const StyledMobileMenuItem = styled(motion.li).attrs({ variants: itemVariants })`
+const StyledMobileMenuItem = styled(motion.custom(Link)).attrs({ variants: itemVariants })`
   text-align: center;
   text-transform: uppercase;
   font-size: 36px;
   padding: 15px 0;
+  text-decoration: none;
+  color: #2e2e2e;
+  transition: color 0.2s;
+  &:hover {
+    color: #000;
+  }
 `
 
 const NavbarMobile = () => {
@@ -142,11 +150,11 @@ const NavbarMobile = () => {
 
       {mobileMenu && (
           <StyledMobileMenu variants={menuVartiant} initial='exit' animate='enter'>
-            <StyledMobileMenuItem>O nas</StyledMobileMenuItem>
-            <StyledMobileMenuItem>Ekipa</StyledMobileMenuItem>
-            <StyledMobileMenuItem>Faq</StyledMobileMenuItem>
-            <StyledMobileMenuItem>Kup Voucher</StyledMobileMenuItem>
-            <StyledMobileMenuItem>Kontakt</StyledMobileMenuItem>
+            <StyledMobileMenuItem to={Routes.Root()}>O nas</StyledMobileMenuItem>
+            <StyledMobileMenuItem to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
+            <StyledMobileMenuItem to={Routes.FAQ()}>Faq</StyledMobileMenuItem>
+            <StyledMobileMenuItem to={Routes.Voucher()}>Kup Voucher</StyledMobileMenuItem>
+            <StyledMobileMenuItem to={Routes.Contact()}>Kontakt</StyledMobileMenuItem>
           </StyledMobileMenu>
           )
         }
