@@ -4,6 +4,7 @@ import Navbar from "./navbar"
 import NavbarMobile from "./navbarMobile"
 import { useWindowWidth } from "../helpers/useWindowWidth"
 import Footer from './footer'
+import SEO from './seo';
 
 const LayoutWrapper = styled.main`
   max-width: 100vw;
@@ -12,13 +13,16 @@ const LayoutWrapper = styled.main`
   max-height: 100%;
 `;
 
-export const Layout = ({ children }) =>{ 
+export const Layout = ({ children, title }) =>{ 
   const width = useWindowWidth();
   return (
-    <LayoutWrapper>
-      {width >= 700 ? <Navbar /> : <NavbarMobile />}
-      {children}
-      <Footer />
-    </LayoutWrapper>
+    <>
+      <SEO title={title} />
+      <LayoutWrapper>
+        {width >= 700 ? <Navbar /> : <NavbarMobile />}
+        {children}
+        <Footer />
+      </LayoutWrapper>
+    </>
   )
 }

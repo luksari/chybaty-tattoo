@@ -10,15 +10,9 @@ exports.createPages = async ({
 
   const artistTemplate = path.resolve('src/templates/Artist.jsx');
 
-  const result = await graphql(``)
-
-  if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query', result.errors)
-  }
-
   artistsData.forEach((artist) => {
     createPage({
-      path: `artists/${artist.name}`,
+      path: `/artists/${artist.name}`,
       component: artistTemplate,
       context: artist
     })

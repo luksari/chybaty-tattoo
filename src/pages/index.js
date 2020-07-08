@@ -18,7 +18,6 @@ const GoogleMapContainer = styled.div`
 `
 const IndexPage = () => (
   <>
-    <SEO title="Home" />
     <Helmet>
       <link
         rel="stylesheet"
@@ -32,7 +31,7 @@ const IndexPage = () => (
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
     </Helmet>
-    <Layout>
+    <Layout title="O nas">
       <HeaderHome />
       <AboutUs />
       <TestimonialCarousel />

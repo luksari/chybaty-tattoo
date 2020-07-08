@@ -2,10 +2,11 @@ import React from 'react';
 import { Layout } from "../components/Layout";
 import { graphql } from 'gatsby';
 
-export default () => {
+export default ({ data }) => {
+  const artist = data.allSitePage.edges[0].node.context
   return (
-    <Layout>
-      Dupa
+    <Layout title={artist.name}>
+      {artist.name}
     </Layout>
   );
 }
@@ -20,7 +21,9 @@ export const query = graphql`
             profilePicture
             mainDescription
             socialLink
-            images
+            images {
+              src
+            }
           }
         }
       }

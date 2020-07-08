@@ -86,8 +86,7 @@ const ContactPage = () => {
   const data = useStaticQuery(contactImageQuery);
   return (
     <>
-      <SEO title="Kontakt" />
-      <Layout>
+      <Layout title="Kontakt">
         <MainWrapper>
           <TextWrapper>
             <Headline>Kontakt</Headline>
