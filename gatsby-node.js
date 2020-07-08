@@ -13,6 +13,7 @@ exports.createPages = async ({
   artistsData.forEach((artist) => {
     createPage({
       path: `/artists/${artist.name}`,
+      regex: `/${artist.name}/${artist.name}/`,
       component: artistTemplate,
       context: artist
     })
