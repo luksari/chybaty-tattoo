@@ -11,11 +11,14 @@ exports.createPages = async ({
   const artistTemplate = path.resolve('src/templates/Artist.jsx');
 
   artistsData.forEach((artist) => {
+    const path = `/artists/${artist.name}`;
     createPage({
-      path: `/artists/${artist.name}`,
-      regex: `/${artist.name}/${artist.name}/`,
+      path,
       component: artistTemplate,
-      context: artist
+      context: {
+        path,
+        ...artist
+      }
     })
   }) 
   
