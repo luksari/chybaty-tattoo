@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import SEO from "../components/seo"
@@ -31,6 +31,11 @@ const Layout = styled.main`
   width: 100%;
   min-height: 100vh;
   max-height: 100%;
+`
+
+const FaqContainer = styled.div`
+  position: relative;
+  padding-bottom: 50px;
 `
 
 const FaqCategoriesContainer = styled.div`
@@ -89,14 +94,19 @@ const FaqCategoriesItem = styled.div`
 `
 
 const FaqSearch = styled.input`
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: -25px;
+  z-index: 1;
+  display: block;
   color: white;
-  background: #000000 0% 0% no-repeat padding-box;
   border: 1px solid #707070;
   border-radius: 42px 42px 41px 42px;
   height: 53px;
   width: 80%;
   padding: 0 20px;
-  background: url(${Search}) no-repeat;
+  background: #000000 url(${Search}) no-repeat;
   background-position: 98% 50%;
   background-size: 25px 25px;
   outline: none;
@@ -105,7 +115,9 @@ const FaqSearch = styled.input`
 const FaqAnswersContainer = styled.div`
   background: url(${FaqAnswersBackground}) repeat;
   background-size: cover;
+  background-position: center;
   padding: 5rem 0;
+  position: relative;
 `
 
 const FaqSearchItem = styled.div`
@@ -128,13 +140,35 @@ const FaqSearchItemAnswer = styled.p`
 `
 
 const FaqPage = () => {
-  const [category, setCategory] = useState("Project")
+  const [category, setCategory] = useState("")
+  const [searchResults, setSearchResults] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
+  const handleChange = event => {
+    if (event.target.value === "") {
+      setSearchTerm(event.target.value.toLowerCase())
+      return handleClean()
+    }
+    setCategory("Search")
+    setSearchTerm(event.target.value.toLowerCase())
+  }
+
+  const handleClean = () => {
+    setCategory("");
+  }
+
+  useEffect(() => {
+    const results = JSONData.filter(item =>
+      item.answer.toLowerCase().includes(searchTerm)
+    )
+    setSearchResults(results)
+  }, [searchTerm])
 
   return (
     <>
       <SEO title="FAQ" />
       <Layout>
         <HeaderFaq />
+        <FaqContainer>
         <FaqCategoriesContainer>
           <FaqCategorieTextContainer>
             <FaqHeadline>FAQ</FaqHeadline>
@@ -200,20 +234,43 @@ const FaqPage = () => {
             </FaqCategoriesItemContainer>
           </FaqCategoriesOptions>
         </FaqCategoriesContainer>
-        <FaqSearch placeholder="Nie wiesz do jakiej kategorii zajrzeć? w poszukiwaniu odpowiedzi wpisz słowo klucz wyszukiwarkę!" />
-        <FaqAnswersContainer>
-          {JSONData.filter(item => item.category === category).map(item => {
-            const random = Math.floor(Math.random() * (25 - 5)) + 5
-            return (
-              <FaqSearchItem paddingSize={random}>
-                <FaqSearchItemQuestion>
-                  {item.question.toUpperCase()}
-                </FaqSearchItemQuestion>
-                <FaqSearchItemAnswer>{item.answer}</FaqSearchItemAnswer>
-              </FaqSearchItem>
-            )
-          })}
-        </FaqAnswersContainer>
+        <FaqSearch
+          placeholder="Nie wiesz do jakiej kategorii zajrzeć? w poszukiwaniu odpowiedzi wpisz słowo klucz wyszukiwarkę!"
+          value={searchTerm}
+          onChange={handleChange}
+          onBlur={handleClean}
+        />
+        </FaqContainer>
+        
+        {category !== ""  ? (
+          <FaqAnswersContainer>
+            {category !== "Search"
+              ? JSONData.filter(item => item.category === category).map(
+                  item => {
+                    const random = Math.floor(Math.random() * (25 - 5)) + 5
+                    return (
+                      <FaqSearchItem paddingSize={random}>
+                        <FaqSearchItemQuestion>
+                          {item.question.toUpperCase()}
+                        </FaqSearchItemQuestion>
+                        <FaqSearchItemAnswer>{item.answer}</FaqSearchItemAnswer>
+                      </FaqSearchItem>
+                    )
+                  }
+                )
+              : searchResults.map(item => {
+                  const random = Math.floor(Math.random() * (25 - 5)) + 5
+                  return (
+                    <FaqSearchItem paddingSize={random}>
+                      <FaqSearchItemQuestion>
+                        {item.question.toUpperCase()}
+                      </FaqSearchItemQuestion>
+                      <FaqSearchItemAnswer>{item.answer}</FaqSearchItemAnswer>
+                    </FaqSearchItem>
+                  )
+                })}
+          </FaqAnswersContainer>
+        ) : null}
         <Footer />
       </Layout>
     </>

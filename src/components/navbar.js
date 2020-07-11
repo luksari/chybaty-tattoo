@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Nav = styled.nav`
@@ -9,10 +10,11 @@ const Nav = styled.nav`
   height: 90px;
   background-color: black;
 `
-const NavItem = styled.a`
+const NavItem = styled(Link)`
   color: white;
   margin: 0px 20px;
   cursor: pointer;
+  text-decoration: none;
   text-transform: uppercase;
   &::after {
     content: "";
@@ -32,7 +34,7 @@ const Navbar = () => {
     <Nav>
       <NavItem>O NAS</NavItem>
       <NavItem>EKIPA</NavItem>
-      <NavItem>FAQ</NavItem>
+      <NavItem to="/faq">FAQ</NavItem>
       <NavItem>KUP VOUCHER</NavItem>
       <NavItem>KONTAKT</NavItem>
     </Nav>

@@ -124,10 +124,6 @@ html {
     font-weight: 700;
   }
   button,
-  input {
-    overflow: visible;
-  }
-  button,
   select {
     text-transform: none;
   }
