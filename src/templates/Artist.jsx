@@ -4,9 +4,11 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Image from 'gatsby-image';
 import { CircleArrowButton } from '../components/CircleArrowButton';
+import { ArtistPhotosGrid } from '../components/ArtistPhotosGrid';
 
 const Wrapper = styled.section`
   display: flex;
+  flex-direction: column;
 `
 
 const Heading = styled.h1`
@@ -23,9 +25,8 @@ const Heading = styled.h1`
 `;
 
 const ProfileImage = styled(Image)`
-  width: 100%;
+  width: 50%;
   flex: 1;
-
 `
 
 const HeaderWrapper = styled.div`
@@ -51,14 +52,20 @@ const SideWrapper = styled.div`
   grid-template-rows: 300px auto auto;
   grid-column-gap: 15px;
   grid-row-gap: 25px;
-  flex: 0.5;
   margin-right: 70px;
-  height: 90%;
+  height: 80%;
+  max-width: 40%;
+  margin-bottom: 150px;
 `
 
 const SocialLink = styled.a`
   color: #fff;
   font-family: 'Exo 2', sans-serif;
+  text-decoration: none;
+  width: auto;
+`
+
+const SocialLinkWrapper = styled.div`
   grid-row: 3/3;
   grid-column: 2/2;
 `
@@ -72,27 +79,36 @@ const StyledCircleButton = styled(CircleArrowButton)`
 `
 
 export default ({ data }) => {
+  console.log(data)
   const artist = data.allSitePage.edges[0].node.context;
-  const artistPhotos = data.allFile.edges[0].node.childImageSharp.fluid;
+  const artistPhotos = data.photos.edges;
+  const backPhotos = data.backPhotos.edges;
+  const artistProfile = data.file.childImageSharp.fluid;
   return (
     <Layout title={artist.name}>
       <Wrapper>
         <HeaderWrapper>
-          <ProfileImage fluid={artistPhotos} />
+          <ProfileImage fluid={artistProfile} />
           <SideWrapper>
             <Heading>{artist.name}</Heading>
             <StyledCircleButton label='Zobacz prace'/>
             <MainParagraph>{artist.mainDescription}</MainParagraph>
-            <SocialLink>{artist.socialLink}</SocialLink>
+            <SocialLinkWrapper>
+              <SocialLink href={`https://${artist.socialLink}`}>{artist.socialLink}</SocialLink>
+            </SocialLinkWrapper>
           </SideWrapper>
         </HeaderWrapper>
+        <ArtistPhotosGrid 
+          backPhotos={backPhotos}
+          photos={artistPhotos}
+        />
       </Wrapper>
     </Layout>
   );
 }
 
 export const query = graphql`
-  query($path: String!, $imagesRegex: String!) {
+  query($path: String!, $imagesRegex: String!, $profilePicture: String!, $backImagesRegex: String!) {
     allSitePage(filter: { path: { eq: $path } }) {
       edges {
         node {
@@ -103,15 +119,35 @@ export const query = graphql`
           }
         }
       }
-    }
-    allFile(filter: { absolutePath: { regex: $imagesRegex }}) {
+    },
+    photos: allFile(sort: {fields: name}, filter: { absolutePath: { regex: $imagesRegex }}) {
       edges {
         node {
+          name,
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid
             }
           }
+        }
+      }
+    }
+    backPhotos: allFile(sort: {fields: name}, filter: { absolutePath: { regex: $backImagesRegex }}) {
+      edges {
+        node {
+          name,
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+    file(absolutePath: { regex: $profilePicture }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
         }
       }
     }

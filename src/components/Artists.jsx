@@ -1,9 +1,9 @@
 import React from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery, Link, navigate } from "gatsby"
 import styled from "styled-components"
-import Img from "gatsby-image"
-import { CircleArrowButton, BtnContainer }  from '../components/CircleArrowButton';
+import { CircleArrowButton, BtnContainer }  from './CircleArrowButton';
 import { device } from "../helpers/mediaQueries";
+import { ClickableImage } from './ClickableImage';
 
 const ArtistBaseContainer = styled.div`
   position: relative;
@@ -74,6 +74,7 @@ const ArtistNameBase = styled.div`
   position: absolute;
   height: 30px;
   background-color: #4f4f4f;
+  z-index: 2;
 `
 
 const NameWrapper = styled.div`
@@ -182,8 +183,6 @@ const FAQContainer = styled(ContactCTAContainer)`
     height: 466px;
     padding: 40px 0;
   }
-
-
 `
 
 const ContactCTAHeader = styled.p`
@@ -259,22 +258,20 @@ const OurCrewContainer = styled.div`
   }
 `
 
-const ArtistImg = styled(Img)`
+const ArtistImg = styled(ClickableImage)`
   flex: 1 1 100%;
   width: 100%;
+  height: 100%;
   @media ${device.laptop} {
     flex: 1 1 100%;
     width: 100%;
   }
+
 `
 
-const ArtistImgWide = styled(ArtistImg).attrs({ style: { flex: '2 1 100%'}})`
+const ArtistImgWide = styled(ArtistImg)`
   flex: 2 1 100%;
   width: 100%;
-  @media ${device.tablet} {
-    flex: 2 1 0;
-    width: 100%;
-  }
 `
 
 const MarginLeftImageWide = styled(ArtistImgWide)`
@@ -314,6 +311,7 @@ export const Artists = () => {
         <ArtistImg
           fluid={data.luleoneHome.childImageSharp.fluid}
           alt='Luleone'
+          onClick={() => navigate('/artists/luleone')}
         />
         <OurCrewContainer>
             <section>
@@ -491,6 +489,4 @@ query {
     }
   }
 }
-`
-
-export default Artists
+`;

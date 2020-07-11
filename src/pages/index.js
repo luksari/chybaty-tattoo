@@ -3,13 +3,11 @@ import styled from "styled-components"
 import GoogleMapReact from "google-map-react"
 import { Helmet } from "react-helmet"
 
-import SEO from "../components/seo"
 import HeaderHome from "../components/headerHome"
-import Footer from "../components/footer"
 import AboutUs from "../components/aboutUs"
-import Artists from "../components/artists"
 import TestimonialCarousel from "../components/testimonialCarousel"
 import { Layout } from '../components/Layout';
+import { Artists } from '../components/Artists';
 
 import "../styles/styles.css"
 

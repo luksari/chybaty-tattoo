@@ -55,6 +55,4 @@ export const CircleArrowButton = memo(({ rotation = 90, label, handleClick, clas
             </Arrow>
         </CircleOutline>
     </BtnContainer>
-))
-
-;
+));
