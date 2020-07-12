@@ -85,7 +85,7 @@ export const ContactForm = () => {
       .then(response => {
         actions.setSubmitting(false);
         actions.resetForm();
-        handleServerResponse(true, "Thanks!");
+        handleServerResponse(true, "Wiadomość została wysłana!");
       })
       .catch(error => {
         actions.setSubmitting(false);

@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import { navigate } from 'gatsby';
-
+import { device } from '../helpers/mediaQueries';
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,64 +12,76 @@ const Wrapper = styled.div`
 `
 
 const StyledImage = styled(Image)`
-  width: 50%;
-  margin-left: auto;
-  
-  ${({ index }) => index % 2 === 1 && css`
-    margin-left: 0;
-    margin-right: auto;
-  `}
+  width: 100%;
+  img {
+    padding: 0 45px;
+    padding-bottom: 45px;
+  }
 
-  ${({ index }) => [1,3,5].includes(index) && css`
-    margin-left: 70px;
-    img {
-      padding-right: 70px;
-    }
-  `}
-  ${({ index }) => [4,6].includes(index) && css`
-    margin-right: 70px;
-    img {
-      padding-left: 70px;
-    }
-  `}
-
-  ${({ index }) => index === 0 && css`
-    margin-top: -80px;
-    width: 45%;
-  `}
-
-  ${({ index }) => index === 1 && css`
-    width: 55%;
-    margin-top: -350px;
-  `}
-
-  ${({ index }) => index === 2 && css`
-    width: 60%;
-    margin-top: 35px;
-  `}
-
-  ${({ index }) => index === 3 && css`
-    width: 40%;
-  `}
-
-  ${({ index }) => index === 4 && css`
-    width: 60%;
-    margin-right: 150px;
-    margin-top: -400px;
-    position: relative;
-    img {
-      padding-left: 150px;
-    }
-  `}
-
-  ${({ index }) => index === 5 && css`
+  @media ${device.laptop} {
     width: 50%;
-    height: 800px
-  `}
+    margin-left: auto;
+    img {
+      padding: 0;
+    }
 
-  ${({ index, total }) => index === total - 1 && css`
-    width: 75%;
-  `}
+    ${({ index }) => index % 2 === 1 && css`
+      margin-left: 0;
+      margin-right: auto;
+    `}
+  
+    ${({ index }) => [1,3,5].includes(index) && css`
+      margin-left: 70px;
+      img {
+        padding-right: 70px;
+      }
+    `}
+    ${({ index }) => [4,6].includes(index) && css`
+      margin-right: 70px;
+      img {
+        padding-left: 70px;
+      }
+    `}
+  
+    ${({ index }) => index === 0 && css`
+      margin-top: -80px;
+      width: 45%;
+    `}
+  
+    ${({ index }) => index === 1 && css`
+      width: 55%;
+      margin-top: -350px;
+    `}
+  
+    ${({ index }) => index === 2 && css`
+      width: 60%;
+      margin-top: 35px;
+    `}
+  
+    ${({ index }) => index === 3 && css`
+      width: 40%;
+    `}
+  
+    ${({ index }) => index === 4 && css`
+      width: 60%;
+      position: relative;
+      margin-top: -400px;
+      margin-right: 150px;
+      img {
+        padding-left: 150px;
+      }
+    `}
+  
+    ${({ index }) => index === 5 && css`
+      width: 50%;
+      height: 800px
+    `}
+  
+    ${({ index, total }) => index === total - 1 && css`
+      width: 75%;
+    `}
+  }
+  
 `
 
 export const BackgroundImage = styled(Image)`
@@ -102,12 +114,21 @@ const CTAContainer = styled.div`
   padding: 100px 72px;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  bottom: 1000px;
-  right: 300px;
   box-shadow: 0px 10px 25px -10px #000;
   justify-content: center;
   align-items: center;
+  right: 50%;
+  bottom: 0;
+  z-index: 5;
+  margin: 0 45px;
+  margin-bottom: 45px;
+  @media ${device.laptop} {
+    position: absolute;
+    margin: 0;
+    bottom: 1000px;
+    padding: 100px 72px;
+    right: 300px;
+  }
 `
 
 const CTATitle = styled.h2`
@@ -118,10 +139,11 @@ const CTATitle = styled.h2`
   letter-spacing: 8px;
   font-size: 64px;
   font-weight: 400;
+  text-align: center;
 `
 
 const CTAButton = styled.button`
-  width: 70%;
+  width: 100%;
   color: #000;
   font-family: 'Unica One', sans-serif;
   text-transform: uppercase;
@@ -138,6 +160,9 @@ const CTAButton = styled.button`
     color: #fff;
     background: #000;
     outline: none;
+  }
+  @media ${device.laptop} {
+    width: 70%;
   }
 `
 
