@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { CircleArrowButton, BtnContainer }  from './CircleArrowButton';
 import { device } from "../helpers/mediaQueries";
 import { ClickableImage } from './ClickableImage';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const ArtistBaseContainer = styled.div`
   position: relative;
@@ -321,7 +322,7 @@ export const Artists = () => {
               >
                 Nasza ekipa
               </StyledSectionTitle>
-              <CircleArrowButton label='Poznaj' />
+              <CircleArrowButton label='Poznaj' onClick={() => scrollTo('#next-artist')} />
             </section>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
@@ -329,6 +330,7 @@ export const Artists = () => {
         </OurCrewContainer>
       </MainArtistContainer>
       <ArtistNormalContainer
+        id='next-artist'
         data-sal="slide-left"
         data-sal-delay="200"
       >

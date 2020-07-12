@@ -6,6 +6,7 @@ import Image from 'gatsby-image';
 import { CircleArrowButton } from '../components/CircleArrowButton';
 import { ArtistPhotosGrid } from '../components/ArtistPhotosGrid';
 import { device } from "../helpers/mediaQueries";
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const Wrapper = styled.section`
   display: flex;
@@ -148,7 +149,7 @@ export default ({ data }) => {
           <ProfileImage fluid={artistProfile} />
           <SideWrapper>
             <Heading>{artist.name}</Heading>
-            <StyledCircleButton label='Zobacz prace'/>
+            <StyledCircleButton label='Zobacz prace' onClick={() => scrollTo('#photo-3')}/>
             <MainParagraph>{artist.mainDescription}</MainParagraph>
             <SocialLinkWrapper>
               <SocialLink href={`https://${artist.socialLink}`}>{artist.socialLink}</SocialLink>

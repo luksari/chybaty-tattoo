@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import { navigate } from 'gatsby';
@@ -170,9 +170,8 @@ export const ArtistPhotosGrid = ({ photos, backPhotos }) => {
   return (
     <Wrapper>
       {photos.map(({ node }, index) => (
-        <>
-          <StyledImage 
-            key={node.name}
+        <Fragment key={node.name}>
+          <StyledImage
             fluid={node.childImageSharp.fluid}
             index={index}
             total={photos.length}
@@ -180,13 +179,13 @@ export const ArtistPhotosGrid = ({ photos, backPhotos }) => {
           {index === 0 && <BackgroundImage key={backPhotos[0].node.name} fluid={backPhotos[0].node.childImageSharp.fluid} index={index} />}
           {index === 3 && <BackgroundImage key={backPhotos[1].node.name} fluid={backPhotos[1].node.childImageSharp.fluid} index={index} />}
           {index === 5 && (
-            <CTAContainer >
+            <CTAContainer key={index}>
               <CTATitle>Chcesz podobny?</CTATitle>
               <CTAButton onClick={() => navigate('/contact')}>Skontaktuj się z nami</CTAButton>
             </CTAContainer>)
           }
           {index === 6 && <BackgroundImage key={backPhotos[2].node.name} fluid={backPhotos[2].node.childImageSharp.fluid} index={index} />}
-        </>
+        </Fragment>
       
       ))}
     </Wrapper>

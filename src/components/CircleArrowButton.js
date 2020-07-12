@@ -46,10 +46,10 @@ const BtnLabel = styled.p`
     text-align: center;
     width: 80%;
 `
-export const CircleArrowButton = memo(({ rotation = 90, label, handleClick, className }) => (
+export const CircleArrowButton = memo(({ rotation = 90, label, onClick, className }) => (
     <BtnContainer className={className}>
         {label && <BtnLabel>{label}</BtnLabel>}
-        <CircleOutline onClick={handleClick} rotation={rotation}>
+        <CircleOutline onClick={onClick} rotation={rotation}>
             <Arrow >
                 >
             </Arrow>
