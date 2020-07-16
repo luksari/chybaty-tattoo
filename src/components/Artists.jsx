@@ -3,7 +3,7 @@ import { graphql, useStaticQuery, Link, navigate } from "gatsby"
 import styled from "styled-components"
 import { CircleArrowButton, BtnContainer }  from './CircleArrowButton';
 import { device } from "../helpers/mediaQueries";
-import { ClickableImage } from './ClickableImage';
+import { CustomImage } from './CustomImage';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const ArtistBaseContainer = styled.div`
@@ -259,7 +259,7 @@ const OurCrewContainer = styled.div`
   }
 `
 
-const ArtistImg = styled(ClickableImage)`
+const ArtistImg = styled(CustomImage).attrs({ isClickable: true, isParallax: true })`
   flex: 1 1 100%;
   width: 100%;
   height: 100%;
