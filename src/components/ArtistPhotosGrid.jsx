@@ -175,6 +175,7 @@ export const ArtistPhotosGrid = ({ photos, backPhotos }) => {
             fluid={node.childImageSharp.fluid}
             index={index}
             total={photos.length}
+            id={`image_${index}`}
           />
           {index === 0 && <BackgroundImage key={backPhotos[0].node.name} fluid={backPhotos[0].node.childImageSharp.fluid} index={index} />}
           {index === 3 && <BackgroundImage key={backPhotos[1].node.name} fluid={backPhotos[1].node.childImageSharp.fluid} index={index} />}

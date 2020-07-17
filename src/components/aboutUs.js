@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby";
 import { device } from '../helpers/mediaQueries.js';
@@ -74,10 +74,18 @@ const StyledImg = styled(Img)`
 `
 
 const AboutUs = () => {
-  const [isMore, setIsMore] = useState(false)
+  const [isMore, setIsMore] = useState(false);
+
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "ekipa-chybatytattoo.png" }) {
+      descMain: file(relativePath: { regex: "/desc_1/" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      descAlt: file(relativePath: { regex: "/desc_2/" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -86,6 +94,16 @@ const AboutUs = () => {
       }
     }
   `)
+
+  const [image, setImage] = useState(data.descMain.childImageSharp.fluid);
+
+  useEffect(() => {
+    if(isMore) {
+      setImage(data.descAlt.childImageSharp.fluid);
+    } else {
+      setImage(data.descMain.childImageSharp.fluid);
+    }
+  }, [isMore])
 
   return (
     <AboutUsContainer>
@@ -118,7 +136,7 @@ const AboutUs = () => {
           </Description>
         )}
       </AboutUsItem>
-      <StyledImg fluid={data.file.childImageSharp.fluid} style={{ flex: "1", overflow: 'visible' }} />
+      <StyledImg fluid={image} style={{ flex: "1", overflow: 'visible' }} />
     </AboutUsContainer>
   )
 }

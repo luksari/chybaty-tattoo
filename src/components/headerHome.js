@@ -81,7 +81,7 @@ const StyledHeaderText = styled(motion.h2).attrs({ variants: headerVariants, ini
 const HeaderHome = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "chybatytattoo-header.png" }) {
+      hero: file(relativePath: { regex: "/hero.png/" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -94,7 +94,7 @@ const HeaderHome = () => {
     <>
       <HeaderContainer>
         <HeaderImg
-          fluid={data.file.childImageSharp.fluid} 
+          fluid={data.hero.childImageSharp.fluid} 
           style={{  position: 'absolute' }}
           />
         <StyledHeaderText>Poznaj <span>naszą ekipę!</span></StyledHeaderText>

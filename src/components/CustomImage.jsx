@@ -1,13 +1,11 @@
-import React, { useRef, useState, useLayoutEffect } from 'react';
+import React from 'react';
 import Image from 'gatsby-image';
 import styled, { css } from 'styled-components';
 import {
-  useViewportScroll,
-  useTransform,
   motion
 } from "framer-motion";
 
-const ImageWrapper = styled(motion.div)`
+const ImageWrapper = styled.div`
   .gatsby-image-wrapper {
       width: 100%;
       height: 100%;
@@ -71,42 +69,19 @@ const ImageWrapper = styled(motion.div)`
   }
 `
 
-const calculateMinHeight = (height, range) => {
-  return height + height * range;
-};
-
-const rand = (min = 0, max = 100) => {
-  return Math.floor(Math.random() * (+max - +min)) + +min;
-};
-
 export const CustomImage = ({ 
   className, 
   onClick, 
   id, 
   isClickable, 
   ...rest
- }) => {
-  const [elementTop, setElementTop] = useState(0);
-  const ref = useRef(null);
-  const { scrollY } = useViewportScroll();
-
-  const y = useTransform(scrollY, [elementTop, elementTop + 1], [0, -1], {
-    clamp: false
-  });
-
-  useLayoutEffect(() => {
-    const element = ref.current;
-    setElementTop(element.offsetTop);
-  }, [ref]);
-  
+ }) => {  
   return (
     <ImageWrapper
       isClickable={isClickable}
       onClick={onClick ? onClick : undefined} 
       id={id}
       className={className}
-      ref={ref} 
-      style={{ y }}
     >
       <Image {...rest}/>
     </ImageWrapper>

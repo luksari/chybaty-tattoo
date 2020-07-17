@@ -32,7 +32,7 @@ const ArtistContainerHigher = styled(ArtistBaseContainer)`
   }
 `
 
-const MokerContainer = styled(ArtistNormalContainer)`
+const EvolContainer = styled(ArtistNormalContainer)`
   align-items: center;
   flex: 1 1 100%;
   padding-left: 0;
@@ -55,7 +55,7 @@ const JpegContainer = styled.div`
   }
 `;
 
-const KrzywyContainer = styled(ArtistNormalContainer)`
+const MigotContainer = styled(ArtistNormalContainer)`
   padding: 0;
   flex-direction: column;
   height: 600px;
@@ -84,7 +84,7 @@ const NameWrapper = styled.div`
   z-index: 10;
 `
 
-const KolankoNameWrapper = styled(NameWrapper)`
+const KrzywyNameWrapper = styled(NameWrapper)`
   order: 1;
   @media ${device.laptop} {
     order: 0;
@@ -96,7 +96,7 @@ const LuleoneNameContainer = styled(ArtistNameBase)`
   width: 200px;
 `
 
-const KolankoNameContainer = styled(ArtistNameBase)`
+const KrzywyNameContainer = styled(ArtistNameBase)`
   bottom: -30px;
   width: 200px;
   right: 0;
@@ -111,13 +111,13 @@ const LapiLopiNameContainer = styled(ArtistNameBase)`
   width: 230px;
 `
 
-const JaroniNameContainer = styled(ArtistNameBase)`
+const MichalNameContainer = styled(ArtistNameBase)`
   top: 0;
   right: 0;
   width: 180px;
 `
 
-const PelikanNameContainer = styled(ArtistNameBase)`
+const SzoszekNameContainer = styled(ArtistNameBase)`
   bottom: 0;
   right: 15%;
   width: 205px;
@@ -137,7 +137,7 @@ const JpegNameContainer = styled(ArtistNameBase)`
   }
 `
 
-const MokerNameContainer = styled(ArtistNameBase)`
+const EvolNameContainer = styled(ArtistNameBase)`
   bottom: 15px;
   left: 0;
   width: 180px;
@@ -146,7 +146,7 @@ const MokerNameContainer = styled(ArtistNameBase)`
   }
 `
 
-const KrzywyNameContainer = styled(ArtistNameBase)`
+const MigotNameContainer = styled(ArtistNameBase)`
   bottom: 0px;
   right: 0;
   width: 180px;
@@ -259,7 +259,7 @@ const OurCrewContainer = styled.div`
   }
 `
 
-const ArtistImg = styled(CustomImage).attrs({ isClickable: true, isParallax: true })`
+const ArtistImg = styled(CustomImage).attrs({ isClickable: true })`
   flex: 1 1 100%;
   width: 100%;
   height: 100%;
@@ -314,7 +314,7 @@ export const Artists = () => {
           alt='Luleone'
           onClick={() => navigate('/artists/luleone')}
         />
-        <OurCrewContainer>
+        <OurCrewContainer id='crew'>
             <section>
               <StyledSectionTitle 
               data-sal="slide-right"
@@ -322,7 +322,7 @@ export const Artists = () => {
               >
                 Nasza ekipa
               </StyledSectionTitle>
-              <CircleArrowButton label='Poznaj' onClick={() => scrollTo('#next-artist')} />
+              <CircleArrowButton label='Poznaj' onClick={() => scrollTo('#faq')} />
             </section>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
@@ -334,13 +334,13 @@ export const Artists = () => {
         data-sal="slide-left"
         data-sal-delay="200"
       >
-        <KolankoNameWrapper>
-          <KolankoNameContainer>
-            <ArtistName>KOLANKO</ArtistName>
-          </KolankoNameContainer>
-        </KolankoNameWrapper>
+        <KrzywyNameWrapper>
+          <KrzywyNameContainer>
+            <ArtistName>KRZYWY</ArtistName>
+          </KrzywyNameContainer>
+        </KrzywyNameWrapper>
         <ArtistImgWide
-          fluid={data.kolankoHome.childImageSharp.fluid}
+          fluid={data.krzywyHome.childImageSharp.fluid}
         />
       </ArtistNormalContainer>
       <ArtistNormalContainer
@@ -362,11 +362,11 @@ export const Artists = () => {
         >
         <div style={{ flex: '2 1 100%' }} />
           <ArtistImg
-            fluid={data.pelikanHome.childImageSharp.fluid}
+            fluid={data.szoszekHome.childImageSharp.fluid}
           />
-          <PelikanNameContainer>
-            <ArtistNameAlternative>PELIKAN</ArtistNameAlternative>
-          </PelikanNameContainer>
+          <SzoszekNameContainer>
+            <ArtistNameAlternative>SZOSZEK</ArtistNameAlternative>
+          </SzoszekNameContainer>
       </ArtistContainerHigher>
       <ArtistNormalContainer
           data-sal="slide-right"
@@ -383,44 +383,44 @@ export const Artists = () => {
       <div style={{ flex: "1"}}/>
       </ArtistNormalContainer>
       <ArtistContainerHigher style={{ height: '100%' }}>
-          <MokerContainer 
+          <EvolContainer 
             data-sal="slide-right"
             data-sal-delay="200"
             >
               <ArtistImg 
-                fluid={data.mokerHome.childImageSharp.fluid}
+                fluid={data.evolHome.childImageSharp.fluid}
               />
-            <MokerNameContainer>
-              <ArtistName>MOKER</ArtistName>
-            </MokerNameContainer>
-          </MokerContainer>
-          <KrzywyContainer 
+            <EvolNameContainer>
+              <ArtistName>EVOL</ArtistName>
+            </EvolNameContainer>
+          </EvolContainer>
+          <MigotContainer 
               data-sal="slide-left"
               data-sal-delay="350"
             >
-            <FAQContainer >
+            <FAQContainer id='faq'>
               <ContactCTAHeader>FAQ</ContactCTAHeader>
               <p>Masz pytania?</p>
               <p>Wszystkie odpowiedzi w zakładce!</p>
               <ContactCTABtn to='/faq'>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
             </FAQContainer>
             <ArtistImg 
-              fluid={data.krzywyHome.childImageSharp.fluid}
+              fluid={data.migotHome.childImageSharp.fluid}
             />
-            <KrzywyNameContainer>
-              <ArtistName>KRZYWY</ArtistName>
-            </KrzywyNameContainer>
-          </KrzywyContainer>
+            <MigotNameContainer>
+              <ArtistName>MIGOT</ArtistName>
+            </MigotNameContainer>
+          </MigotContainer>
       </ArtistContainerHigher>
       <ArtistContainerHigher>
         <div 
             data-sal="slide-right"
             data-sal-delay="200"
           style={{ flex: "1", position: 'relative'}}>
-          <ArtistImg fluid={data.jaroniHome.childImageSharp.fluid} />
-          <JaroniNameContainer>
-            <ArtistName>JARONI</ArtistName>
-          </JaroniNameContainer>
+          <ArtistImg fluid={data.michalHome.childImageSharp.fluid} />
+          <MichalNameContainer>
+            <ArtistName>MICHAŁ</ArtistName>
+          </MichalNameContainer>
         </div>
         <ContactCTAContainer>
           <ContactCTAHeader>KONTAKT</ContactCTAHeader>
@@ -434,56 +434,56 @@ export const Artists = () => {
 
 const artistsImagesQuery = graphql`
 query {
-  luleoneHome: file(relativePath: { eq: "luleone-home.png" }) {
+  luleoneHome: file(relativePath: { regex: "/luleone_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  kolankoHome: file(relativePath: { eq: "kolanko-home.png" }) {
+  krzywyHome: file(relativePath: { regex: "/krzywy_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  lapiLopiHome: file(relativePath: { eq: "łapi-łopi-home.png" }) {
+  jpegHome: file(relativePath: { regex: "/jpg_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  jaroniHome: file(relativePath: { eq: "jaroni.png" }) {
+  lapiLopiHome: file(relativePath: { regex: "/lapilopi_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  pelikanHome: file(relativePath: { eq: "pelikan-home.png" }) {
+  szoszekHome: file(relativePath: { regex: "/szoszek_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  jpegHome: file(relativePath: { eq: "jpeg13-home.png" }) {
+  migotHome: file(relativePath: { regex: "/migot_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  mokerHome: file(relativePath: { eq: "moker-home.png" }) {
+  evolHome: file(relativePath: { regex: "/evol_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
       }
     }
   }
-  krzywyHome: file(relativePath: { eq: "krzywy-home.png" }) {
+  michalHome: file(relativePath: { regex: "/michal_main/" }) {
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
