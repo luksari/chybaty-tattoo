@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavItem to={Routes.Root()}>O nas</NavItem>
-      <NavItemAnchor onClick={() => scrollTo('#crew')}>Ekipa</NavItemAnchor>
+      <NavItem to={Routes.Crew()} onClick={() => scrollTo('#crew')}>Ekipa</NavItem>
       <NavItem to={Routes.FAQ()}>FAQ</NavItem>
       <NavItem to={Routes.Voucher()}>Kup voucher</NavItem>
       <NavItem to={Routes.Contact()}>Kontakt</NavItem>

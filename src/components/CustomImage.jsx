@@ -10,37 +10,37 @@ const ImageWrapper = styled.div`
       width: 100%;
       height: 100%;
       overflow: hidden;
-      &::after {
-        content: '';
-        z-index: 1;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: #000;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transition: opacity 0.2s ease-out;
-      }
-      img {
-        transform: scale(1);
-        transform-origin: center center;
-        transition: transform 0.2s ease-out, opacity 500ms ease !important;
-      }
-      &:hover {
-        &::after {
-          opacity: 0.3;
-        }
-        &::before {
-          transform: scale(1.1);
-        }
-        img {
-          transform: scale(1.3);
-        }
-      }
       ${({ onClick, isClickable }) => isClickable 
          ? css`
             cursor: ${onClick ? 'pointer' : 'not-allowed'};
+            &::after {
+              content: '';
+              z-index: 1;
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: #000;
+              top: 0;
+              left: 0;
+              opacity: 0;
+              transition: opacity 0.2s ease-out;
+            }
+            img {
+              transform: scale(1);
+              transform-origin: center center;
+              transition: transform 0.2s ease-out, opacity 500ms ease !important;
+            }
+            &:hover {
+              &::after {
+                opacity: 0.3;
+              }
+              &::before {
+                transform: scale(1.1);
+              }
+              img {
+                transform: scale(1.3);
+              }
+            }
          ` 
          : css`
             cursor: 'default';

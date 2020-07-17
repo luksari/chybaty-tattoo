@@ -3,15 +3,13 @@ const artistsData = require('./src/data/artists.json');
 
 exports.createPages = async ({
   actions,
-  graphql,
-  reporter
 }) => {
   const { createPage } = actions;
 
   const artistTemplate = path.resolve('src/templates/Artist.jsx');
 
   artistsData.forEach((artist) => {
-    const path = `/artists/${artist.name}`;
+    const path = `/artists/${artist.slug}`;
     createPage({
       path,
       component: artistTemplate,

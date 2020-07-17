@@ -61,7 +61,7 @@ const MainParagraph = styled.p`
   letter-spacing: 2.1px;
   margin-bottom: 0;
   grid-column: 1/-1;
-  grid-row: 2/2;
+  grid-row: 3/3;
   text-align: center;
   width: 70%;
   font-size: 14px;
@@ -91,16 +91,27 @@ const SideWrapper = styled.div`
     height: 80%;
     padding: 35px;
     grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     max-width: 60%;
     margin-left: -50px;
     background: none;
     padding: 0;
   }
   @media ${device.laptopL} {
-    margin-left: 0;
+    margin-left: -75px;
     margin-right: 75px;
     max-width: 40%;
+  }
+`
+
+const Categories = styled.p`
+  margin: 0;
+  font-size: 20px;
+  color: #4b4b4b;
+  font-family: 'Exo 2', sans-serif;
+  grid-row: 2/2;
+  @media ${device.laptop} {
+    margin-left: 75px;
   }
 `
 
@@ -109,14 +120,18 @@ const SocialLink = styled.a`
   font-family: 'Exo 2', sans-serif;
   text-decoration: none;
   width: auto;
+  @media ${device.laptop} {
+    text-align: center;
+  }
 `
 
 const SocialLinkWrapper = styled.div`
   display: flex;
   justify-content: center;
   grid-column: 1/-1;
-  grid-row: 3/3;
+  grid-row: 4/4;
   font-size: 14px;
+  width: 100%;
   @media ${device.tablet} {
     font-size: 16px;
   }
@@ -128,10 +143,10 @@ const SocialLinkWrapper = styled.div`
 
 const StyledCircleButton = styled(CircleArrowButton)`
   align-self: start;
-  grid-row: 4/4;
+  grid-row: 5/5;
   @media ${device.laptop} {
     grid-column: 1/1;
-    grid-row: 2/2;
+    grid-row: 3/3;
     margin-left: -20px;
     z-index: 1;
   }
@@ -149,7 +164,8 @@ export default ({ data }) => {
           <ProfileImage fluid={artistProfile} />
           <SideWrapper>
             <Heading>{artist.name}</Heading>
-            <StyledCircleButton label='Zobacz prace' onClick={() => scrollTo('#photo-3')}/>
+            <Categories>{artist.categories}</Categories>
+            <StyledCircleButton label='Zobacz prace' onClick={() => scrollTo('#image_2')}/>
             <MainParagraph>{artist.mainDescription}</MainParagraph>
             <SocialLinkWrapper>
               <SocialLink href={`https://${artist.socialLink}`}>{artist.socialLink}</SocialLink>
@@ -174,6 +190,7 @@ export const query = graphql`
             name
             mainDescription
             socialLink
+            categories
           }
         }
       }

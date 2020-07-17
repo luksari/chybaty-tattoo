@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import { navigate } from 'gatsby';
 import { device } from '../helpers/mediaQueries';
+import { CustomImage } from './CustomImage';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(CustomImage)`
   width: 100%;
   img {
     padding: 0 45px;

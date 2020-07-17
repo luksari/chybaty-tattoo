@@ -340,6 +340,7 @@ export const Artists = () => {
           </KrzywyNameContainer>
         </KrzywyNameWrapper>
         <ArtistImgWide
+          onClick={() => navigate('/artists/krzywy')}
           fluid={data.krzywyHome.childImageSharp.fluid}
         />
       </ArtistNormalContainer>
@@ -348,6 +349,7 @@ export const Artists = () => {
         data-sal-delay="200"
       >
         <MarginLeftImageWide
+          onClick={() => navigate('/artists/lapi-lopi')}
           fluid={data.lapiLopiHome.childImageSharp.fluid}
         />
         <div style={{ flex: "1 1 50%", position: "relative" }}>
@@ -362,6 +364,7 @@ export const Artists = () => {
         >
         <div style={{ flex: '2 1 100%' }} />
           <ArtistImg
+            onClick={() => navigate('/artists/szoszek')}
             fluid={data.szoszekHome.childImageSharp.fluid}
           />
           <SzoszekNameContainer>
@@ -374,6 +377,7 @@ export const Artists = () => {
       >
       <JpegContainer>
           <ArtistImgWide
+            onClick={() => navigate('/artists/jpeg13')}
             fluid={data.jpegHome.childImageSharp.fluid}
           />
           <JpegNameContainer>
@@ -405,6 +409,7 @@ export const Artists = () => {
               <ContactCTABtn to='/faq'>DOWIEDZ SIĘ WIĘCEJ!</ContactCTABtn>
             </FAQContainer>
             <ArtistImg 
+            onClick={() => navigate('/artists/migot')}
               fluid={data.migotHome.childImageSharp.fluid}
             />
             <MigotNameContainer>
@@ -417,7 +422,7 @@ export const Artists = () => {
             data-sal="slide-right"
             data-sal-delay="200"
           style={{ flex: "1", position: 'relative'}}>
-          <ArtistImg fluid={data.michalHome.childImageSharp.fluid} />
+          <ArtistImg fluid={data.michalHome.childImageSharp.fluid} onClick={() => navigate('/artists/michal')} />
           <MichalNameContainer>
             <ArtistName>MICHAŁ</ArtistName>
           </MichalNameContainer>
