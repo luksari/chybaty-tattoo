@@ -33,6 +33,18 @@ const AboutUsTitle = styled.h1`
   text-transform: uppercase;
   width: 100%;
 `
+const Description = styled.p`
+  font-size: 20px;
+  color: white;
+  line-height: 2;
+  font-family: 'Unica One', sans-serif;
+`
+
+const AltDescription = styled(Description)`
+  font-size: 17px;
+  font-family: 'Exo 2', sans-serif;
+`
+
 
 const DescriptionTabs = styled.span`
   width: 100%;
@@ -50,11 +62,7 @@ const DescriptionTabs = styled.span`
     transition: transform .2s ease-in-out;
   }
 `;
-const Description = styled.p`
-  font-size: 20px;
-  color: white;
-  line-height: 2;
-`
+
 const AboutUsItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -121,7 +129,7 @@ const AboutUs = () => {
             dużo się u nas dzieje!
           </Description>
         ) : (
-          <Description style={{ fontSize: "17px" }}>
+          <AltDescription>
             Tatuaż to często wiele stresu, a dla niektórych jedno z bardziej
             ekstremalnych przeżyć. Wiemy ile wątpliwości pojawia się przy
             wyborze odpowiedniego wzoru i miejsca na ciele. Co będzie dobrze
@@ -133,7 +141,7 @@ const AboutUs = () => {
             wspólnie obiady, rozmawiamy, świętujemy. Dla nas to drugi dom i
             chcielibyśmy, żebyście i Wy czuli się tu swobodnie. Przyjdź, zobacz
             jak pracujemy i daj się wydziarać!
-          </Description>
+          </AltDescription>
         )}
       </AboutUsItem>
       <StyledImg fluid={image} style={{ flex: "1", overflow: 'visible' }} />
