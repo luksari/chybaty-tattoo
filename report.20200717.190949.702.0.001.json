@@ -1,0 +1,729 @@
+
+{
+  "header": {
+    "reportVersion": 2,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200717.190949.702.0.001.json",
+    "dumpEventTime": "2020-07-17T19:09:49Z",
+    "dumpEventTimeStamp": "1595005789246",
+    "processId": 702,
+    "threadId": null,
+    "cwd": "/mnt/f/Projects/chyba-ty-tattoo",
+    "commandLine": [
+      "/usr/bin/node",
+      "/mnt/f/Projects/chyba-ty-tattoo/node_modules/.bin/gatsby",
+      "develop"
+    ],
+    "nodejsVersion": "v12.16.2",
+    "glibcVersionRuntime": "2.27",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.16.2",
+      "v8": "7.8.279.23-node.34",
+      "uv": "1.34.2",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1e",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.2/node-v12.16.2-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.2/node-v12.16.2.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.4.0-18362-Microsoft",
+    "osVersion": "#836-Microsoft Mon May 05 16:04:00 PST 2020",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 1491500,
+        "nice": 0,
+        "sys": 1655300,
+        "idle": 15385300,
+        "irq": 150600
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 517500,
+        "nice": 0,
+        "sys": 209000,
+        "idle": 17805600,
+        "irq": 7000
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 2828700,
+        "nice": 0,
+        "sys": 1227800,
+        "idle": 14475600,
+        "irq": 15000
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 508200,
+        "nice": 0,
+        "sys": 331000,
+        "idle": 17692800,
+        "irq": 6000
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 1625900,
+        "nice": 0,
+        "sys": 851700,
+        "idle": 16054500,
+        "irq": 12800
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 596700,
+        "nice": 0,
+        "sys": 280400,
+        "idle": 17655000,
+        "irq": 4800
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 1426500,
+        "nice": 0,
+        "sys": 687500,
+        "idle": 16418100,
+        "irq": 11400
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 846200,
+        "nice": 0,
+        "sys": 299200,
+        "idle": 17386700,
+        "irq": 3900
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 1434600,
+        "nice": 0,
+        "sys": 908100,
+        "idle": 16189300,
+        "irq": 10000
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 880100,
+        "nice": 0,
+        "sys": 279200,
+        "idle": 17372800,
+        "irq": 7000
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 3241700,
+        "nice": 0,
+        "sys": 1000000,
+        "idle": 14290400,
+        "irq": 13400
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 468200,
+        "nice": 0,
+        "sys": 213200,
+        "idle": 17850600,
+        "irq": 5400
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 1789800,
+        "nice": 0,
+        "sys": 792500,
+        "idle": 15949800,
+        "irq": 13500
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 523500,
+        "nice": 0,
+        "sys": 327500,
+        "idle": 17681000,
+        "irq": 5000
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 1627800,
+        "nice": 0,
+        "sys": 1118100,
+        "idle": 15786200,
+        "irq": 9600
+      },
+      {
+        "model": "AMD Ryzen 7 2700 Eight-Core Processor          ",
+        "speed": 3200,
+        "user": 653700,
+        "nice": 0,
+        "sys": 368900,
+        "idle": 17509500,
+        "irq": 6200
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wifi0",
+        "internal": false,
+        "mac": "7c:b2:7d:86:87:d3",
+        "address": "192.168.0.101",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "wifi0",
+        "internal": false,
+        "mac": "7c:b2:7d:86:87:d3",
+        "address": "2a02:a316:4040:db00:f8dd:572:e221:df30",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wifi0",
+        "internal": false,
+        "mac": "7c:b2:7d:86:87:d3",
+        "address": "2a02:a316:4040:db00:dd21:12f0:e4dc:d04b",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wifi0",
+        "internal": false,
+        "mac": "7c:b2:7d:86:87:d3",
+        "address": "fe80::f8dd:572:e221:df30",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 9
+      }
+    ],
+    "host": "DESKTOP-SDK36MD"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b40285",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000a033ef",
+      "symbol": "node::OnFatalError(char const*, char const*) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b76ffe",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b77379",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d23ad5",
+      "symbol": " [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d24166",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d309e5",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d31895",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000d3434c",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cfaf1b",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x000000000103d85e",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/usr/bin/node]"
+    },
+    {
+      "pc": "0x00000000013c03d9",
+      "symbol": " [/usr/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2154274816,
+    "totalCommittedMemory": 2151077200,
+    "usedMemory": 2137845952,
+    "availableMemory": 50691000,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 8388608,
+        "committedMemory": 5737032,
+        "capacity": 4189824,
+        "used": 1254280,
+        "available": 2935544
+      },
+      "old_space": {
+        "memorySize": 2035949568,
+        "committedMemory": 2035850296,
+        "capacity": 2030406648,
+        "used": 2030381496,
+        "available": 25152
+      },
+      "code_space": {
+        "memorySize": 3313664,
+        "committedMemory": 3096608,
+        "capacity": 2815840,
+        "used": 2815840,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 6557696,
+        "committedMemory": 6557040,
+        "capacity": 3826240,
+        "used": 3826240,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 98856960,
+        "committedMemory": 98856960,
+        "capacity": 98680728,
+        "used": 98680728,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 946176,
+        "committedMemory": 946176,
+        "capacity": 854560,
+        "used": 854560,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 4189824,
+        "used": 0,
+        "available": 4189824
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 185.484,
+    "kernelCpuSeconds": 183.156,
+    "cpuConsumptionPercent": 20.6869,
+    "maxRss": 3219746816,
+    "pageFaults": {
+      "IORequired": 0,
+      "IONotRequired": 1795729
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 91.4531,
+    "kernelCpuSeconds": 51.3125,
+    "cpuConsumptionPercent": 8.01154,
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "workers": [
+  ],
+  "environmentVariables": {
+    "npm_config_cache_lock_stale": "60000",
+    "npm_config_ham_it_up": "",
+    "npm_config_legacy_bundling": "",
+    "npm_config_sign_git_tag": "",
+    "USER": "tychuu",
+    "npm_package_dependencies_node_sass": "^4.13.1",
+    "npm_config_user_agent": "yarn/1.22.4 npm/? node/v12.16.2 linux x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_always_auth": "",
+    "npm_package_dependencies_formik": "^2.1.4",
+    "npm_package_bugs_url": "https://github.com/gatsbyjs/gatsby/issues",
+    "npm_config_bin_links": "true",
+    "npm_config_key": "",
+    "SSH_AGENT_PID": "214",
+    "GIT_ASKPASS": "/home/tychuu/.vscode-server/bin/485c41f9460bdb830c4da12c102daff275415b53/extensions/git/dist/askpass.sh",
+    "npm_package_dependencies_react_slick": "^0.25.2",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_allow_same_version": "",
+    "npm_config_description": "true",
+    "npm_config_fetch_retries": "2",
+    "npm_config_heading": "npm",
+    "npm_config_if_present": "",
+    "npm_config_user": "",
+    "npm_node_execpath": "/usr/bin/node",
+    "SHLVL": "2",
+    "npm_package_dependencies_gatsby": "^2.18.12",
+    "npm_package_dependencies_gatsby_plugin_react_helmet": "^3.1.16",
+    "npm_config_prefer_online": "",
+    "npm_config_noproxy": "",
+    "HOME": "/home/tychuu",
+    "OLDPWD": "/mnt/f/Projects/chyba-ty-tattoo",
+    "LESS": "-R",
+    "npm_config_force": "",
+    "VSCODE_IPC_HOOK_CLI": "/tmp/vscode-ipc-505370e4-ce30-401d-9645-80b2a6f082e7.sock",
+    "TERM_PROGRAM_VERSION": "1.47.1",
+    "npm_package_dependencies__hookform_resolvers": "^0.0.3",
+    "npm_config_only": "",
+    "npm_config_read_only": "",
+    "ZSH": "/home/tychuu/.oh-my-zsh",
+    "LSCOLORS": "Gxfxcxdxbxegedabagacad",
+    "npm_package_dependencies_framer_motion": "^1.8.4",
+    "npm_config_init_license": "MIT",
+    "npm_config_cache_min": "10",
+    "PAGER": "less",
+    "VSCODE_GIT_ASKPASS_MAIN": "/home/tychuu/.vscode-server/bin/485c41f9460bdb830c4da12c102daff275415b53/extensions/git/dist/askpass-main.js",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_package_dependencies_gatsby_plugin_styled_components": "^3.1.17",
+    "npm_config_version_tag_prefix": "v",
+    "npm_config_editor": "vi",
+    "npm_config_rollback": "true",
+    "npm_config_tag_version_prefix": "v",
+    "VSCODE_GIT_ASKPASS_NODE": "/home/tychuu/.vscode-server/bin/485c41f9460bdb830c4da12c102daff275415b53/node",
+    "npm_package_dependencies_gatsby_plugin_web_font_loader": "^1.0.4",
+    "npm_package_scripts_serve": "gatsby serve",
+    "npm_config_cache_max": "Infinity",
+    "npm_config_timing": "",
+    "npm_config_userconfig": "/home/tychuu/.npmrc",
+    "P9K_TTY": "old",
+    "npm_package_keywords_0": "gatsby",
+    "npm_config_engine_strict": "",
+    "npm_config_init_author_name": "",
+    "npm_config_init_author_url": "",
+    "npm_config_preid": "",
+    "npm_config_tmp": "/tmp",
+    "WSL_DISTRO_NAME": "Ubuntu-18.04",
+    "PIPE_LOGGING": "true",
+    "COLORTERM": "truecolor",
+    "npm_package_description": "Chyba Ty Tattoo",
+    "npm_package_dependencies__fortawesome_free_solid_svg_icons": "^5.12.0",
+    "npm_config_depth": "Infinity",
+    "npm_config_package_lock_only": "",
+    "npm_config_save_dev": "",
+    "npm_config_usage": "",
+    "npm_package_dependencies_google_map_react": "^1.1.5",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_homepage": "https://github.com/gatsbyjs/gatsby-starter-default#readme",
+    "npm_config_metrics_registry": "https://registry.yarnpkg.com/",
+    "npm_config_cafile": "",
+    "npm_config_otp": "",
+    "npm_config_package_lock": "true",
+    "npm_config_progress": "true",
+    "npm_config_https_proxy": "",
+    "npm_config_save_prod": "",
+    "npm_package_devDependencies_prettier": "^1.19.1",
+    "npm_config_audit": "true",
+    "npm_config_cidr": "",
+    "npm_config_onload_script": "",
+    "npm_config_sso_type": "oauth",
+    "LOGNAME": "tychuu",
+    "npm_package_scripts_clean": "gatsby clean",
+    "npm_config_rebuild_bundle": "true",
+    "npm_config_save_bundle": "",
+    "npm_config_shell": "/usr/bin/zsh",
+    "NAME": "DESKTOP-SDK36MD",
+    "_": "/usr/bin/yarn",
+    "npm_package_private": "true",
+    "npm_package_dependencies_gatsby_plugin_scroll_reveal": "^0.0.6",
+    "npm_config_dry_run": "",
+    "npm_config_format_package_lock": "true",
+    "npm_config_prefix": "/usr",
+    "npm_package_dependencies_babel_plugin_styled_components": "^1.10.6",
+    "npm_package_dependencies_yup": "^0.29.1",
+    "npm_package_scripts_develop": "gatsby develop",
+    "npm_config_scope": "",
+    "npm_config_registry": "https://registry.yarnpkg.com/",
+    "npm_config_browser": "",
+    "npm_config_cache_lock_wait": "10000",
+    "npm_config_ignore_prepublish": "",
+    "npm_config_save_optional": "",
+    "npm_config_searchopts": "",
+    "npm_config_versions": "",
+    "TERM": "xterm-256color",
+    "npm_config_cache": "/home/tychuu/.npm",
+    "npm_config_proxy": "",
+    "npm_config_send_metrics": "",
+    "npm_package_scripts_start": "npm run develop",
+    "npm_config_global_style": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_version": "",
+    "npm_package_dependencies__fortawesome_react_fontawesome": "^0.1.8",
+    "npm_package_dependencies_axios": "^0.19.2",
+    "npm_config_local_address": "",
+    "npm_config_viewer": "man",
+    "npm_config_node_gyp": "/usr/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
+    "PATH": "/usr/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/mnt/f/Projects/chyba-ty-tattoo/node_modules/.bin:/tmp/yarn--1595004006016-0.04766484187690412:/mnt/f/Projects/chyba-ty-tattoo/node_modules/.bin:/home/tychuu/.config/yarn/link/node_modules/.bin:/home/tychuu/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/home/tychuu/.vscode-server/bin/485c41f9460bdb830c4da12c102daff275415b53/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/cmder:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/Yarn/bin/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Users/luksa/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/luksa/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/luksa/AppData/Local/hyper/app-3.0.2/resources/bin:/mnt/c/Users/luksa/AppData/Roaming/npm:/mnt/c/Users/luksa/AppData/Local/Yarn/bin:/mnt/c/adb-fastboot/platform-tools",
+    "NODE": "/usr/bin/node",
+    "npm_package_name": "chyba-ty-tattoo",
+    "npm_package_repository_type": "git",
+    "npm_config_audit_level": "low",
+    "npm_config_prefer_offline": "",
+    "npm_package_dependencies_gatsby_cli": "^2.12.56",
+    "npm_config_color": "true",
+    "npm_config_sign_git_commit": "",
+    "npm_config_fetch_retry_mintimeout": "10000",
+    "npm_config_maxsockets": "50",
+    "npm_config_offline": "",
+    "npm_config_sso_poll_frequency": "500",
+    "LANG": "C.UTF-8",
+    "npm_package_dependencies_react_dom": "^16.12.0",
+    "npm_config_umask": "0000",
+    "LS_COLORS": "ow=01;36;40",
+    "TERM_PROGRAM": "vscode",
+    "VSCODE_GIT_IPC_HANDLE": "/tmp/vscode-git-7ab20c1a71.sock",
+    "npm_package_gitHead": "25dbe87ccd6956d6d3696e4cb72094f93ccf2332",
+    "npm_config_fund": "true",
+    "npm_config_fetch_retry_maxtimeout": "60000",
+    "npm_config_loglevel": "notice",
+    "npm_config_logs_max": "10",
+    "npm_config_message": "%s",
+    "npm_lifecycle_script": "gatsby develop",
+    "SSH_AUTH_SOCK": "/tmp/ssh-bX5oxoK0jNnM/agent.213",
+    "npm_package_dependencies_gatsby_plugin_smoothscroll": "^1.1.0",
+    "npm_package_dependencies_react_star_ratings": "^2.3.0",
+    "npm_package_scripts_test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_ca": "",
+    "npm_config_cert": "",
+    "npm_config_global": "",
+    "npm_config_link": "",
+    "SHELL": "/usr/bin/zsh",
+    "npm_package_version": "0.1.0",
+    "npm_package_dependencies_gatsby_plugin_sharp": "^2.3.5",
+    "npm_package_repository_url": "git+https://github.com/gatsbyjs/gatsby-starter-default.git",
+    "npm_config_access": "",
+    "npm_config_also": "",
+    "npm_config_save": "true",
+    "npm_config_unicode": "true",
+    "npm_lifecycle_event": "develop",
+    "VERBOSE_LOGGING": "true",
+    "npm_package_dependencies_gatsby_plugin_manifest": "^2.2.31",
+    "npm_package_scripts_build": "gatsby build",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"develop\"],\"original\":[\"run\",\"develop\"]}",
+    "npm_config_before": "",
+    "npm_config_long": "",
+    "npm_config_production": "",
+    "npm_config_searchlimit": "20",
+    "npm_config_unsafe_perm": "true",
+    "npm_config_update_notifier": "true",
+    "npm_package_dependencies__fortawesome_free_brands_svg_icons": "^5.12.0",
+    "npm_package_dependencies_gatsby_plugin_offline": "^3.0.27",
+    "npm_package_dependencies_gatsby_transformer_sharp": "^2.3.7",
+    "npm_package_dependencies_lodash": "^4.17.15",
+    "npm_config_auth_type": "legacy",
+    "npm_config_node_version": "12.16.2",
+    "npm_config_tag": "latest",
+    "npm_package_dependencies_gatsby_image": "^2.2.34",
+    "npm_config_version_git_tag": "true",
+    "npm_config_git_tag_version": "true",
+    "npm_config_commit_hooks": "true",
+    "npm_config_script_shell": "",
+    "npm_config_shrinkwrap": "true",
+    "P9K_SSH": "0",
+    "npm_package_dependencies_framer": "^1.1.7",
+    "npm_package_dependencies_react_helmet": "^5.2.1",
+    "npm_package_license": "MIT",
+    "npm_config_strict_ssl": "true",
+    "npm_config_fetch_retry_factor": "10",
+    "npm_config_save_exact": "",
+    "npm_package_dependencies__fortawesome_free_regular_svg_icons": "^5.12.0",
+    "npm_package_scripts_format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "npm_config_dev": "",
+    "npm_config_globalconfig": "/usr/etc/npmrc",
+    "npm_config_init_module": "/home/tychuu/.npm-init.js",
+    "npm_config_parseable": "",
+    "PWD": "/mnt/f/Projects/chyba-ty-tattoo",
+    "npm_config_globalignorefile": "/usr/etc/npmignore",
+    "npm_execpath": "/usr/lib/node_modules/npm/bin/npm-cli.js",
+    "npm_package_author_name": "Jakub Birnbach | Łukasz Tyszkiewicz",
+    "npm_package_dependencies_gatsby_source_filesystem": "^2.1.40",
+    "npm_config_cache_lock_retries": "10",
+    "npm_config_searchstaleness": "900",
+    "AMD_ENTRYPOINT": "vs/server/remoteExtensionHostProcess",
+    "npm_package_dependencies_prop_types": "^15.7.2",
+    "npm_package_dependencies_styled_components": "^5.1.1",
+    "npm_config_save_prefix": "^",
+    "npm_config_node_options": "",
+    "npm_config_scripts_prepend_node_path": "warn-only",
+    "npm_config_group": "1000",
+    "npm_config_init_author_email": "",
+    "npm_config_searchexclude": "",
+    "HOSTTYPE": "x86_64",
+    "npm_package_dependencies__fortawesome_fontawesome_svg_core": "^1.2.26",
+    "npm_config_git": "git",
+    "npm_config_optional": "true",
+    "INIT_CWD": "/mnt/f/Projects/chyba-ty-tattoo",
+    "WSLENV": "VSCODE_WSL_EXT_LOCATION/up",
+    "npm_package_dependencies_react": "^16.12.0",
+    "npm_config_json": "",
+    "GATSBY_LOGGER": "ink",
+    "gatsby_log_level": "normal",
+    "gatsby_executing_command": "develop",
+    "NODE_ENV": "development",
+    "VIPSHOME": "/target",
+    "GATSBY_BUILD_STAGE": "develop"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 65536,
+      "hard": 65536
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": 8388608
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 7823,
+      "hard": 7823
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/lib/x86_64-linux-gnu/libnss_files.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/sharp.node",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libvips-cpp.so.42",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libvips.so.42",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libglib-2.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgobject-2.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libpng16.so.16",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libz.so.1",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libtiff.so.5",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libjpeg.so.8",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgmodule-2.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libexpat.so.1",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgsf-1.so.114",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libxml2.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/liborc-0.4.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/liblcms2.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgif.so.7",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/librsvg-2.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgio-2.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgdk_pixbuf-2.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libcairo.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libwebpmux.so.3",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libwebpdemux.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libwebp.so.7",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libexif.so.12",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libffi.so.6",
+    "/lib/x86_64-linux-gnu/librt.so.1",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libcairo-gobject.so.2",
+    "/lib/x86_64-linux-gnu/libresolv.so.2",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libpangocairo-1.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libpixman-1.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libpangoft2-1.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libharfbuzz.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libpango-1.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libgthread-2.0.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libfribidi.so.0",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libfontconfig.so.1",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libfreetype.so.6",
+    "/mnt/f/Projects/chyba-ty-tattoo/node_modules/sharp/build/Release/../../vendor/lib/libcroco-0.6.so.3"
+  ]
+}

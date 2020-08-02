@@ -1,5 +1,4 @@
 import React from 'react'
-import SEO from "../components/seo"
 import { Layout } from "../components/Layout"
 import { useStaticQuery } from "gatsby"
 import Image from 'gatsby-image';
@@ -86,8 +85,7 @@ const ContactPage = () => {
   const data = useStaticQuery(contactImageQuery);
   return (
     <>
-      <SEO title="Kontakt" />
-      <Layout>
+      <Layout title="Kontakt">
         <MainWrapper>
           <TextWrapper>
             <Headline>Kontakt</Headline>

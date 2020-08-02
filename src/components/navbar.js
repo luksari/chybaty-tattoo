@@ -1,7 +1,8 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Link } from 'gatsby';
 import { Routes } from "../helpers/routes";
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 const Nav = styled.nav`
   display: flex;
@@ -11,7 +12,7 @@ const Nav = styled.nav`
   height: auto;
   background-color: black;
 `
-const NavItem = styled(Link)`
+const commonNavItemStyles = css`
   color: white;
   margin: 0px 20px;
   cursor: pointer;
@@ -42,11 +43,19 @@ const NavItem = styled(Link)`
     }
   }
 `
+
+const NavItem = styled(Link)`
+  ${commonNavItemStyles};
+`;
+
+const NavItemAnchor = styled.a`
+  ${commonNavItemStyles}
+`
 const Navbar = () => {
   return (
     <Nav>
       <NavItem to={Routes.Root()}>O nas</NavItem>
-      <NavItem to={Routes.Crew()}>Ekipa</NavItem>
+      <NavItem to={Routes.Crew()} onClick={() => scrollTo('#crew')}>Ekipa</NavItem>
       <NavItem to={Routes.FAQ()}>FAQ</NavItem>
       <NavItem to={Routes.Voucher()}>Kup voucher</NavItem>
       <NavItem to={Routes.Contact()}>Kontakt</NavItem>

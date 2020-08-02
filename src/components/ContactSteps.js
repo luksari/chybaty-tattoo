@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { content } from '../content/contactSteps.json';
+import { content } from '../data/contactSteps.json';
 import { ContactStep } from './ContactStep';
 import { device } from '../helpers/mediaQueries';
 import { useStaticQuery } from 'gatsby';
@@ -30,9 +30,8 @@ const StepOne = styled(ContactStep)`
 const StepTwo = styled(ContactStep)`
   align-self: flex-start;
   background: #1D1D1D;
-
   @media ${device.laptop} {
-    width: 750px;
+    width: 60%;
     margin-left: 75px;
   }
 `
@@ -56,6 +55,7 @@ const StepFour = styled(ContactStep)`
   align-self: center;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 72px;
   @media ${device.laptop} {
     width: 950px;
     margin-top: 45px;
@@ -69,7 +69,6 @@ export const ContactSteps = () => {
   const stepTwo = content[1];
   const stepThree = content[2];
   const stepFour = content[3];
-  console.log(data);
   return (
     <StepsWrapper>
       <StepOne 

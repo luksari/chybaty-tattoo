@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   align-items: center;
   position: relative;
   margin-bottom: 25px;
+  width: 100%;
   @media ${device.laptop} {
     margin-bottom: 0;
   }

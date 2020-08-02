@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "luleone",
+    "name": "Luleone",
+    "categories": "sketch / watercolor / tatuaż japoński",
+    "profilePicture": "/profile_luleone/",
+    "mainDescription": "Maciej jest właścicielem studia Chyba Ty Tattoo, które prężnie działa w Katowicach od 2013 roku. Jego przygoda ze sztuką zaczęła się od graffiti, ukończył studia artystyczne, a w międzyczasie w jego życiu pojawił się tatuaż. W swoich pracach ceni sobie swobodę działania, jak sam mówi, jego styl tatuowania i wzory, odzwierciedlają to co aktualnie się u niego dzieje. Wciąż szuka nowych rozwiązań, rysuje i nabija na swoje konto kolejne, przedziarane godziny. Najwięcej satysfakcji daje mu realizowanie autorskich projektów. Aktualnie jego prace to szkicowy styl z akcentami akwarelowymi.",
+    "socialLink": "www.instagram.com/luleonetattoo",
+    "imagesRegex": "/images/luleone/image_luleone/",
+    "backImagesRegex": "/images/luleone/back/"
+  },
+  {
+    "slug": "lapi-lopi",
+    "name": "Łapi Łopi",
+    "categories": "dotwork / blackwork / oldschool",
+    "profilePicture": "/profile_lapi/",
+    "mainDescription": "Soczysty kontur z dodatkiem czerwieni, to element łączący jego ostatnie prace. Zainteresował się też wzorami w stylu oldschool, który jest bliski jego sercu, a teraz i bliski maszynce. W jego sketchbooku znajdziesz piękne twarze, kreskówki z pazurem i uliczne motywy, które na skórze siadają mu naprawdę czysto. Poza tym, można mu zaufać w kwestii wzorów geometrycznych i symetrycznych takich jak mandale.",
+    "socialLink": "www.instagram.com/lapi_lopi",
+    "imagesRegex": "/images/lapilopi/image_lapi/",
+    "backImagesRegex": "/images/luleone/back/"
+  },
+  {
+    "slug": "krzywy",
+    "name": "Krzywy",
+    "categories": "sketch / ignorant ",
+    "profilePicture": "/profile_krzywy/",
+    "mainDescription": "Krzywy, ostatni król brudnego stylu prosto z rybnickich ulic. Jego projekty to prawilne, kontrowersyjne, uliczne motywy w stylu ignorant, w szkicu lżejsze motywy doprawia ostrą kreską. Ciągle łapie nowe zajawki, szuka, podgląda czym może jeszcze zaskoczyć. Sam o sobie mówi „bezsprzecznie najprzystojniejszy z ekipy”!",
+    "socialLink": "www.instagram.com/krzywy_lastking",
+    "imagesRegex": "/images/krzywy/KRZ_/",
+    "backImagesRegex": "/images/luleone/back/"
+  },
+  {
+    "slug": "szoszek",
+    "name": "Szoszek",
+    "categories": "neotraditional / sketch / watercolor",
+    "profilePicture": "/profile_szoszek/",
+    "mainDescription": "Zaczynał od markerów, teraz rozwija umiejętności w digital art. Ma w sobie dużo zapału do rysowania, dlatego ma tak bogate portfolio, w którym widać wypracowaną stylówkę. Lubi pracować z kolorami, a w jego tatuażach powtarzają się twarze, motywy zwierzęce i nawiązania do kreskówek.",
+    "socialLink": "www.instagram.com/szoszek1",
+    "imagesRegex": "/images/szoszek/Szo_/",
+    "backImagesRegex": "/images/luleone/back/"
+  },
+  {
+    "slug": "jpeg13",
+    "name": "Jpeg13",
+    "categories": "realizm",
+    "profilePicture": "/profile_jpeg13/",
+    "mainDescription": "Ten styl wymaga dopieszczenia wielu detali, żeby osiągnąć efekt WOW! a on ma do tego rękę i cierpliwość. Jego prace to kombinacja wizji Klienta z jego pomysłem, przekute w digital art a następnie przeniesione na skórę.",
+    "socialLink": "www.instagram.com/jpeg.13",
+    "imagesRegex": "/images/jpeg13/JPG_/",
+    "backImagesRegex": "/images/luleone/back/"
+  },
+  {
+    "slug": "migot",
+    "name": "Migot",
+    "categories": "sketch / blackwork ",
+    "profilePicture": "/profile_migot/",
+    "mainDescription": "Zaczynał od graffiti, dziś spełnia się w malarstwie sztalugowym, muralach i dziaraniu. Interesuje go kreska i plama, które w jego tatuażach tworzą czytelną formę, najbardziej lubi portretować. Jego styl to zlepek artystycznych doświadczeń.",
+    "socialLink": "",
+    "imagesRegex": "/images/migot/MIG_/",
+    "backImagesRegex": "/images/luleone/back/"
+  },
+  {
+    "slug": "michal",
+    "name": "Michał",
+    "categories": "dotwork / linework",
+    "profilePicture": "/profile_michal/",
+    "mainDescription": "Delikatna kreska, precyzyjnie wykonane detale, tak prezentują się jego tatuaże. Pikantne motywy, wzory roślinne i zwierzaki królują w jego portfolio. Konturowe prace, dotwork i otwarta głowa na tematykę prac, wszystkiego można się po nim spodziewać!",
+    "socialLink": "www.instagram.com/michal_jaroni_tattoo",
+    "imagesRegex": "/images/michal/MI_/",
+    "backImagesRegex": "/images/luleone/back/"
+  }
+]

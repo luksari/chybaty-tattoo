@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby";
 import { device } from '../helpers/mediaQueries.js';
@@ -33,6 +33,18 @@ const AboutUsTitle = styled.h1`
   text-transform: uppercase;
   width: 100%;
 `
+const Description = styled.p`
+  font-size: 20px;
+  color: white;
+  line-height: 2;
+  font-family: 'Unica One', sans-serif;
+`
+
+const AltDescription = styled(Description)`
+  font-size: 17px;
+  font-family: 'Exo 2', sans-serif;
+`
+
 
 const DescriptionTabs = styled.span`
   width: 100%;
@@ -50,11 +62,7 @@ const DescriptionTabs = styled.span`
     transition: transform .2s ease-in-out;
   }
 `;
-const Description = styled.p`
-  font-size: 20px;
-  color: white;
-  line-height: 2;
-`
+
 const AboutUsItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,10 +82,18 @@ const StyledImg = styled(Img)`
 `
 
 const AboutUs = () => {
-  const [isMore, setIsMore] = useState(false)
+  const [isMore, setIsMore] = useState(false);
+
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "ekipa-chybatytattoo.png" }) {
+      descMain: file(relativePath: { regex: "/desc_1/" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      descAlt: file(relativePath: { regex: "/desc_2/" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -86,6 +102,16 @@ const AboutUs = () => {
       }
     }
   `)
+
+  const [image, setImage] = useState(data.descMain.childImageSharp.fluid);
+
+  useEffect(() => {
+    if(isMore) {
+      setImage(data.descAlt.childImageSharp.fluid);
+    } else {
+      setImage(data.descMain.childImageSharp.fluid);
+    }
+  }, [isMore])
 
   return (
     <AboutUsContainer>
@@ -103,7 +129,7 @@ const AboutUs = () => {
             dużo się u nas dzieje!
           </Description>
         ) : (
-          <Description style={{ fontSize: "17px" }}>
+          <AltDescription>
             Tatuaż to często wiele stresu, a dla niektórych jedno z bardziej
             ekstremalnych przeżyć. Wiemy ile wątpliwości pojawia się przy
             wyborze odpowiedniego wzoru i miejsca na ciele. Co będzie dobrze
@@ -115,10 +141,10 @@ const AboutUs = () => {
             wspólnie obiady, rozmawiamy, świętujemy. Dla nas to drugi dom i
             chcielibyśmy, żebyście i Wy czuli się tu swobodnie. Przyjdź, zobacz
             jak pracujemy i daj się wydziarać!
-          </Description>
+          </AltDescription>
         )}
       </AboutUsItem>
-      <StyledImg fluid={data.file.childImageSharp.fluid} style={{ flex: "1", overflow: 'visible' }} />
+      <StyledImg fluid={image} style={{ flex: "1", overflow: 'visible' }} />
     </AboutUsContainer>
   )
 }

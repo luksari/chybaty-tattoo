@@ -138,11 +138,17 @@ const StyledMobileMenuItem = styled(motion.custom(Link)).attrs({ variants: itemV
 `
 
 const NavbarMobile = () => {
-  const [mobileMenu, setMobileMenu] = useState(false)
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+  const handleClick = () => {
+    setMobileMenu(false);
+  }
+
   return (
       <NavbarMobileContainer role="navigation">
         <HamburgerContainer>
           <NavbarInput
+            checked={mobileMenu}
             onClick={e => setMobileMenu(e.target.checked)}
           />
             <HamburgerLines />
@@ -150,11 +156,11 @@ const NavbarMobile = () => {
 
       {mobileMenu && (
           <StyledMobileMenu variants={menuVartiant} initial='exit' animate='enter'>
-            <StyledMobileMenuItem to={Routes.Root()}>O nas</StyledMobileMenuItem>
-            <StyledMobileMenuItem to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
-            <StyledMobileMenuItem to={Routes.FAQ()}>Faq</StyledMobileMenuItem>
-            <StyledMobileMenuItem to={Routes.Voucher()}>Kup Voucher</StyledMobileMenuItem>
-            <StyledMobileMenuItem to={Routes.Contact()}>Kontakt</StyledMobileMenuItem>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.Root()}>O nas</StyledMobileMenuItem>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.FAQ()}>Faq</StyledMobileMenuItem>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.Voucher()}>Kup Voucher</StyledMobileMenuItem>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.Contact()}>Kontakt</StyledMobileMenuItem>
           </StyledMobileMenu>
           )
         }
