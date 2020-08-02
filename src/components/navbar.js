@@ -16,6 +16,7 @@ const commonNavItemStyles = css`
   color: white;
   margin: 0px 20px;
   cursor: pointer;
+  text-decoration: none;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 6px;
