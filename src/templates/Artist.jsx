@@ -110,9 +110,9 @@ const Categories = styled.p`
   color: #4b4b4b;
   font-family: 'Exo 2', sans-serif;
   grid-row: 2/2;
-  @media ${device.laptop} {
-    margin-left: 75px;
-  }
+  grid-column: 2/2;
+  width: 100%;
+  margin-bottom: -15px;
 `
 
 const SocialLink = styled.a`
@@ -120,6 +120,24 @@ const SocialLink = styled.a`
   font-family: 'Exo 2', sans-serif;
   text-decoration: none;
   width: auto;
+  position: relative;
+  &::after {
+    position: absolute;
+    content: '';
+    width: 75%;
+    height: 2px;
+    background: #fff;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 150ms ease-out;
+  }
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
   @media ${device.laptop} {
     text-align: center;
   }
@@ -146,7 +164,7 @@ const StyledCircleButton = styled(CircleArrowButton)`
   grid-row: 5/5;
   @media ${device.laptop} {
     grid-column: 1/1;
-    grid-row: 3/3;
+    grid-row: 2/4;
     margin-left: -20px;
     z-index: 1;
   }

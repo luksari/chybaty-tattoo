@@ -1,14 +1,19 @@
 module.exports = {
   siteMetadata: {
     title: `Chyba Ty Tattoo`,
-    description: `Chyba Ty Tattoo | Styl | Nagrania | Ubrania`,
+    description: `Chyba Ty Tattoo`,
     author: `@gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-scroll-reveal`,
-    `gatsby-plugin-smoothscroll`,
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -100
+      },
+    }
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

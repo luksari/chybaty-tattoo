@@ -4,7 +4,8 @@ import styled from "styled-components"
 import { CircleArrowButton, BtnContainer }  from './CircleArrowButton';
 import { device } from "../helpers/mediaQueries";
 import { CustomImage } from './CustomImage';
-import scrollTo from 'gatsby-plugin-smoothscroll';
+import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { Routes } from "../helpers/routes";
 
 const ArtistBaseContainer = styled.div`
   position: relative;
@@ -322,7 +323,9 @@ export const Artists = () => {
               >
                 Nasza ekipa
               </StyledSectionTitle>
-              <CircleArrowButton label='Poznaj' onClick={() => scrollTo('#faq')} />
+              <AnchorLink to={Routes.FAQ()}>
+                <CircleArrowButton label='Poznaj' />
+              </AnchorLink>
             </section>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
