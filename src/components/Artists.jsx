@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { CircleArrowButton, BtnContainer }  from './CircleArrowButton';
 import { device } from "../helpers/mediaQueries";
 import { CustomImage } from './CustomImage';
-import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { StyledAnchorLink } from "../components/StyledAnchorLink";
 import { Routes } from "../helpers/routes";
 
 const ArtistBaseContainer = styled.div`
@@ -305,7 +305,7 @@ export const Artists = () => {
   const data = useStaticQuery(artistsImagesQuery)
 
   return (
-    <>
+    <div id='crew'>
       <MainArtistContainer
         data-sal="slide-right"
         data-sal-delay="200"
@@ -315,7 +315,7 @@ export const Artists = () => {
           alt='Luleone'
           onClick={() => navigate('/artists/luleone')}
         />
-        <OurCrewContainer id='crew'>
+        <OurCrewContainer>
             <section>
               <StyledSectionTitle 
               data-sal="slide-right"
@@ -323,9 +323,9 @@ export const Artists = () => {
               >
                 Nasza ekipa
               </StyledSectionTitle>
-              <AnchorLink to={Routes.FAQ()}>
+              <StyledAnchorLink to={Routes.FAQ()}>
                 <CircleArrowButton label='Poznaj' />
-              </AnchorLink>
+              </StyledAnchorLink>
             </section>
           <LuleoneNameContainer>
             <ArtistName>LULEONE</ArtistName>
@@ -436,7 +436,7 @@ export const Artists = () => {
           <ContactCTABtn to='/contact'>Dowiedz się więcej</ContactCTABtn>
         </ContactCTAContainer>
       </ArtistContainerHigher>
-    </>
+    </div>
   )
 }
 

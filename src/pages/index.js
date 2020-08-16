@@ -11,7 +11,6 @@ import { Layout } from '../components/Layout';
 import { Artists } from '../components/Artists';
 
 import "../styles/styles.css"
-import { Routes } from "../helpers/routes"
 
 const GoogleMapContainer = styled.div`
   height: 700px;

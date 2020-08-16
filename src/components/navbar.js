@@ -2,6 +2,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Link } from 'gatsby';
 import { Routes } from "../helpers/routes";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 const Nav = styled.nav`
   display: flex;
@@ -44,15 +45,19 @@ const commonNavItemStyles = css`
   }
 `
 
-const NavItem = styled(Link)`
+const AnchorNavItem = styled(AnchorLink)`
   ${commonNavItemStyles};
 `;
+
+const NavItem = styled(Link) `
+  ${commonNavItemStyles};
+`
 
 const Navbar = () => {
   return (
     <Nav>
       <NavItem to={Routes.Root()}>O nas</NavItem>
-      <NavItem to={Routes.Crew()}>Ekipa</NavItem>
+      <AnchorNavItem to={Routes.Crew()}>Ekipa</AnchorNavItem>
       <NavItem to={Routes.FAQ()}>FAQ</NavItem>
       <NavItem to={Routes.Voucher()}>Kup voucher</NavItem>
       <NavItem to={Routes.Contact()}>Kontakt</NavItem>

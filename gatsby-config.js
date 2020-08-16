@@ -8,14 +8,15 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-scroll-reveal`,
-    {
-      resolve: "gatsby-plugin-anchor-links",
-      options: {
-        offset: -100
-      },
-    }
+    
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-plugin-anchor-links',
+      options: {
+        offset: -90,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

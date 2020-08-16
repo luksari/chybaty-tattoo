@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 
 export function useWindowWidth() {
+  if(typeof window === 'undefined') {
+    return;
+  }
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
