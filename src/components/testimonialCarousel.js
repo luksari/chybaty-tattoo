@@ -23,13 +23,13 @@ const TestimonialHeadline = styled.h1`
 `
 
 const SliderContainer = styled.div`
-  margin: 0 auto;
-  padding: 0 50px;
   background-color: black;
   color: white;
+  display: flex;
 `
 const CardWrapper = styled.div`
   padding: 50px;
+  width: 530px !important;
 `
 
 const Card = styled.div`
@@ -101,18 +101,19 @@ function PrevArrow(props) {
 const TestimonialCarousel = () => {
   const settings = {
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
+    slidesToShow: 2,
+    slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     dots: true,
+    centerMode: false,
+    centerPadding: '50px',
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
 
         }
@@ -120,9 +121,9 @@ const TestimonialCarousel = () => {
       {
         breakpoint: 1000,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
           arrows: false,
         }
       },
@@ -143,218 +144,76 @@ const TestimonialCarousel = () => {
     <>
       <TestimonialHeadline>OPINIE</TestimonialHeadline>
       <SliderContainer>
-        <Slider {...settings}>
-          <CardWrapper>
-            <Card>
-              <CardHeader>
-                <div>
-                  <CardHeaderName>Jose Stanley</CardHeaderName>
-                  <CardHeaderDate>01/01/1961</CardHeaderDate>
-                </div>
-                <StarRatings
-                  rating={3}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
-              </CardHeader>
-              <CardBody>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt.
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color="white"
-                  style={{
-                    position: "absolute",
-                    bottom: "-5px",
-                    right: "15px",
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </CardWrapper>
-          <CardWrapper>
-            <Card>
-              <CardHeader>
-                <div>
-                  <CardHeaderName>Jose Stanley</CardHeaderName>
-                  <CardHeaderDate>01/01/1961</CardHeaderDate>
-                </div>
-                <StarRatings
-                  rating={3}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
-              </CardHeader>
-              <CardBody>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt.
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color="white"
-                  style={{
-                    position: "absolute",
-                    bottom: "-5px",
-                    right: "15px",
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </CardWrapper>
-          <CardWrapper>
-            <Card>
-              <CardHeader>
-                <div>
-                  <CardHeaderName>Jose Stanley</CardHeaderName>
-                  <CardHeaderDate>01/01/1961</CardHeaderDate>
-                </div>
-                <StarRatings
-                  rating={3}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
-              </CardHeader>
-              <CardBody>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt.
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color="white"
-                  style={{
-                    position: "absolute",
-                    bottom: "-5px",
-                    right: "15px",
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </CardWrapper>
-          <CardWrapper>
-            <Card>
-              <CardHeader>
-                <div>
-                  <CardHeaderName>Jose Stanley</CardHeaderName>
-                  <CardHeaderDate>01/01/1961</CardHeaderDate>
-                </div>
-                <StarRatings
-                  rating={3}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
-              </CardHeader>
-              <CardBody>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt.
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color="white"
-                  style={{
-                    position: "absolute",
-                    bottom: "-5px",
-                    right: "15px",
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </CardWrapper>
-          <CardWrapper>
-            <Card>
-              <CardHeader>
-                <div>
-                  <CardHeaderName>Jose Stanley</CardHeaderName>
-                  <CardHeaderDate>01/01/1961</CardHeaderDate>
-                </div>
-                <StarRatings
-                  rating={3}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
-              </CardHeader>
-              <CardBody>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt.
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color="white"
-                  style={{
-                    position: "absolute",
-                    bottom: "-5px",
-                    right: "15px",
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </CardWrapper>
-          <CardWrapper>
-            <Card>
-              <CardHeader>
-                <div>
-                  <CardHeaderName>Jose Stanley</CardHeaderName>
-                  <CardHeaderDate>01/01/1961</CardHeaderDate>
-                </div>
-                <StarRatings
-                  rating={3}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
-              </CardHeader>
-              <CardBody>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt.
-                <FontAwesomeIcon
-                  icon={faFacebookSquare}
-                  color="white"
-                  style={{
-                    position: "absolute",
-                    bottom: "-5px",
-                    right: "15px",
-                  }}
-                />
-              </CardBody>
-            </Card>
-          </CardWrapper>
-        </Slider>
+        <CardWrapper>
+          <Card>
+            <CardHeader>
+              <div>
+                <CardHeaderName>Jose Stanley</CardHeaderName>
+                <CardHeaderDate>01/01/1961</CardHeaderDate>
+              </div>
+              <StarRatings
+                rating={3}
+                starRatedColor="#FFFFFF"
+                starDimension="15px"
+                starSpacing="5px"
+                starEmptyColor="#545454"
+              />
+            </CardHeader>
+            <CardBody>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+              diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam erat, sed diam voluptua. At vero eos et accusam et
+              justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+              takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+              dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+              eirmod tempor invidunt.
+              <FontAwesomeIcon
+                icon={faFacebookSquare}
+                color="white"
+                style={{
+                  position: "absolute",
+                  bottom: "-5px",
+                  right: "15px",
+                }}
+              />
+            </CardBody>
+          </Card>
+        </CardWrapper>
+        <CardWrapper>
+          <Card>
+            <CardHeader>
+              <div>
+                <CardHeaderName>Jose Stanley</CardHeaderName>
+                <CardHeaderDate>01/01/1961</CardHeaderDate>
+              </div>
+              <StarRatings
+                rating={3}
+                starRatedColor="#FFFFFF"
+                starDimension="15px"
+                starSpacing="5px"
+                starEmptyColor="#545454"
+              />
+            </CardHeader>
+            <CardBody>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+              diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam erat, sed diam voluptua. At vero eos et accusam et
+              justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+              takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+              dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+              eirmod tempor invidunt.
+              <FontAwesomeIcon
+                icon={faFacebookSquare}
+                color="white"
+                style={{
+                  position: "absolute",
+                  bottom: "-5px",
+                  right: "15px",
+                }}
+              />
+            </CardBody>
+          </Card>
+        </CardWrapper>
       </SliderContainer>
     </>
   )

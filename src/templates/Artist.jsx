@@ -159,14 +159,12 @@ const SocialLinkWrapper = styled.div`
   }
 `
 
-const StyledCircleButton = styled(CircleArrowButton)`
+const PositionedAnchorLink = styled(StyledAnchorLink)`
   align-self: start;
   grid-row: 5/5;
   @media ${device.laptop} {
-    grid-column: 1/1;
-    grid-row: 2/4;
     margin-left: -20px;
-    z-index: 1;
+    grid-row: 2/-1;
   }
 `
 
@@ -183,9 +181,9 @@ export default ({ data }) => {
           <SideWrapper>
             <Heading>{artist.name}</Heading>
             <Categories>{artist.categories}</Categories>
-            <StyledAnchorLink to='/#image_2'>
-              <StyledCircleButton label='Zobacz prace'/>
-            </StyledAnchorLink>
+            <PositionedAnchorLink to='#image_2'>
+              <CircleArrowButton label='Zobacz prace'/>
+            </PositionedAnchorLink>
             <MainParagraph>{artist.mainDescription}</MainParagraph>
             <SocialLinkWrapper>
               <SocialLink href={`https://${artist.socialLink}`}>{artist.socialLink}</SocialLink>
