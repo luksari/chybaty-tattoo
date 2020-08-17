@@ -110,9 +110,15 @@ const Categories = styled.p`
   color: #4b4b4b;
   font-family: 'Exo 2', sans-serif;
   grid-row: 2/2;
-  grid-column: 2/2;
+  grid-column: 1/1;
   width: 100%;
-  margin-bottom: -15px;
+  margin-bottom: 0;
+  text-align: center;
+  @media ${device.laptopL} {
+    grid-column: 2/2;
+    text-align: start;
+    margin-bottom: -15px;
+  }
 `
 
 const SocialLink = styled.a`

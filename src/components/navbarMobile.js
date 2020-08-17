@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import { Routes } from '../helpers/routes'
 import styled from "styled-components"
-import { StyledAnchorLink } from "./StyledAnchorLink";
 
 
 const NavbarMobileContainer = styled.nav`
@@ -138,18 +137,6 @@ const StyledMobileMenuItem = styled(motion.custom(Link)).attrs({ variants: itemV
   }
 `
 
-const AnchorMobile = styled(motion.custom(StyledAnchorLink)).attrs({ variants: itemVariants })`
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 36px;
-  padding: 15px 0;
-  text-decoration: none;
-  color: #2e2e2e;
-  transition: color 0.2s;
-  &:hover {
-    color: #000;
-  }
-`
 
 const NavbarMobile = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -171,7 +158,7 @@ const NavbarMobile = () => {
       {mobileMenu && (
           <StyledMobileMenu variants={menuVartiant} initial='exit' animate='enter'>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Root()}>O nas</StyledMobileMenuItem>
-            <AnchorMobile onClick={handleClick} to={Routes.Crew()}>Ekipa</AnchorMobile>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.FAQ()}>Faq</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Voucher()}>Kup Voucher</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Contact()}>Kontakt</StyledMobileMenuItem>

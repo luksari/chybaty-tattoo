@@ -1,10 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
-import Slider from "react-slick"
 import StarRatings from "react-star-ratings"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons"
 import { device } from '../helpers/mediaQueries';
+import { useKeenSlider } from 'keen-slider/react'
+import testimonials from '../data/testimonials.json';
 
 const TestimonialHeadline = styled.h1`
   padding: 50px 80px 0 80px;
@@ -22,19 +21,23 @@ const TestimonialHeadline = styled.h1`
   }
 `
 
-const SliderContainer = styled.div`
-  background-color: black;
-  color: white;
+const SlidesWrapper = styled.div`
+  height: 100%;
   display: flex;
+  margin-bottom: 50px;
 `
-const CardWrapper = styled.div`
+
+const CardWrapper = styled.div `
+  display: flex;
   padding: 50px;
-  width: 530px !important;
+  justify-content: center;
 `
 
 const Card = styled.div`
   border: 1px solid #707070;
   border-radius: 12px;
+  background-color: black;
+  color: #707070;
 `
 
 const CardHeader = styled.div`
@@ -69,8 +72,6 @@ const StyledArrow = styled.button`
   top: 50%;
   width: 54px;
   height: 54px;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
   cursor: pointer;
   border: 1px solid #707070;
@@ -78,13 +79,14 @@ const StyledArrow = styled.button`
   outline: 0;
   background-color: black;
   color: #707070;
+  z-index: 1;
 `
 const StyledNextArrow = styled(StyledArrow)`
-  right: -20px;
+  right: 20px;
 `
 
 const StyledPrevArrow = styled(StyledArrow)`
-  left: -20px;
+  left: 20px;
   z-index: 10;
 `
 
@@ -99,122 +101,70 @@ function PrevArrow(props) {
 }
 
 const TestimonialCarousel = () => {
-  const settings = {
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    dots: true,
-    centerMode: false,
-    centerPadding: '50px',
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-
-        }
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [sliderRef, slider] = useKeenSlider({
+    spacing: 0,
+    slidesPerView: 1,
+    mode: "snap",
+    breakpoints: {
+      '(min-width: 768px)': {
+        slidesPerView: 3,
       },
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          nextArrow: null,
-          prevArrow: null,
-          arrows: false,
-        }
+      '(min-width: 1200px)': {
+        slidesPerView: 3,
       }
-    ]
-  }
-  
+    },
+    slideChanged(s) {
+      setCurrentSlide(s.details().relativeSlide);
+    },
+  });
+
   return (
     <>
       <TestimonialHeadline>OPINIE</TestimonialHeadline>
-      <SliderContainer>
-        <CardWrapper>
-          <Card>
-            <CardHeader>
-              <div>
-                <CardHeaderName>Jose Stanley</CardHeaderName>
-                <CardHeaderDate>01/01/1961</CardHeaderDate>
-              </div>
-              <StarRatings
-                rating={3}
-                starRatedColor="#FFFFFF"
-                starDimension="15px"
-                starSpacing="5px"
-                starEmptyColor="#545454"
+      <SlidesWrapper ref={sliderRef} className='keen-slider'>
+        {testimonials.map((testimonial) => (
+          <CardWrapper className='keen-slider__slide'>
+            <Card>
+              <CardHeader>
+                <div>
+                  <CardHeaderName>{testimonial.name}</CardHeaderName>
+                  <CardHeaderDate>{testimonial.date}</CardHeaderDate>
+                </div>
+                <StarRatings
+                  rating={testimonial.rating}
+                  starRatedColor="#FFFFFF"
+                  starDimension="15px"
+                  starSpacing="5px"
+                  starEmptyColor="#545454"
+                />
+              </CardHeader>
+              <CardBody>
+                {testimonial.description}
+              </CardBody>
+            </Card>
+          </CardWrapper>
+        ))}
+        {slider && (
+          <>
+            {
+              currentSlide !== 0 && 
+              <PrevArrow
+                onClick={e => e.stopPropagation() || slider.prev()}
+                disabled={currentSlide === 0}
               />
-            </CardHeader>
-            <CardBody>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-              diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua. At vero eos et accusam et
-              justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-              takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-              dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-              eirmod tempor invidunt.
-              <FontAwesomeIcon
-                icon={faFacebookSquare}
-                color="white"
-                style={{
-                  position: "absolute",
-                  bottom: "-5px",
-                  right: "15px",
-                }}
+            }
+            {
+              currentSlide !== slider.details().size -1 && 
+              <NextArrow
+                onClick={e => e.stopPropagation() || slider.next()}
+                disabled={currentSlide === slider.details().size - 1}
               />
-            </CardBody>
-          </Card>
-        </CardWrapper>
-        <CardWrapper>
-          <Card>
-            <CardHeader>
-              <div>
-                <CardHeaderName>Jose Stanley</CardHeaderName>
-                <CardHeaderDate>01/01/1961</CardHeaderDate>
-              </div>
-              <StarRatings
-                rating={3}
-                starRatedColor="#FFFFFF"
-                starDimension="15px"
-                starSpacing="5px"
-                starEmptyColor="#545454"
-              />
-            </CardHeader>
-            <CardBody>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-              diam nonumy eirmod tempor invidunt ut labore et dolore magna
-              aliquyam erat, sed diam voluptua. At vero eos et accusam et
-              justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-              takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-              dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-              eirmod tempor invidunt.
-              <FontAwesomeIcon
-                icon={faFacebookSquare}
-                color="white"
-                style={{
-                  position: "absolute",
-                  bottom: "-5px",
-                  right: "15px",
-                }}
-              />
-            </CardBody>
-          </Card>
-        </CardWrapper>
-      </SliderContainer>
+            }
+          </>
+        )}
+      </SlidesWrapper>
+      
     </>
   )
 }
