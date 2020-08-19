@@ -123,8 +123,8 @@ const TestimonialCarousel = () => {
     <>
       <TestimonialHeadline>OPINIE</TestimonialHeadline>
       <SlidesWrapper ref={sliderRef} className='keen-slider'>
-        {testimonials.map((testimonial) => (
-          <CardWrapper className='keen-slider__slide'>
+        {testimonials.map((testimonial, idx) => (
+          <CardWrapper className='keen-slider__slide' key={idx}>
             <Card>
               <CardHeader>
                 <div>

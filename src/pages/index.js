@@ -28,7 +28,7 @@ const IndexPage = () => {
         <Artists />
         <GoogleMapContainer>
           <GoogleMapReact
-            bootstrapURLKeys={{ key: "" }}
+            bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_API_KEY }}
             defaultCenter={{
               lat: 59.95,
               lng: 30.33,
