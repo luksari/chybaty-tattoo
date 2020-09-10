@@ -2,13 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import GoogleMapReact from "google-map-react"
 import { Helmet } from "react-helmet"
-
-
 import HeaderHome from "../components/headerHome"
 import AboutUs from "../components/aboutUs"
 import TestimonialCarousel from "../components/testimonialCarousel"
 import { Layout } from '../components/Layout';
 import { Artists } from '../components/Artists';
+import { LogoMarker } from '../components/LogoMarker';
 
 import "../styles/styles.css"
 
@@ -30,11 +29,17 @@ const IndexPage = ({ location }) => {
           <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_API_KEY }}
             defaultCenter={{
-              lat: 59.95,
-              lng: 30.33,
+              lat: 50.258253,
+              lng: 19.014620,
             }}
-            defaultZoom={11}
-          ></GoogleMapReact>
+
+            defaultZoom={15}
+          >
+            <LogoMarker 
+              lat={50.258253}
+              lng={19.014620}
+            />
+          </GoogleMapReact>
         </GoogleMapContainer>
       </Layout>
     </>
