@@ -15,13 +15,13 @@ import "../styles/styles.css"
 const GoogleMapContainer = styled.div`
   height: 700px;
 `
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   return (
     <>
       <Helmet>
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.min.css" />
       </Helmet>
-      <Layout title="O nas">
+      <Layout title="O nas" location={location}>
         <HeaderHome />
         <AboutUs />
         <TestimonialCarousel />

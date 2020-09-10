@@ -13,13 +13,14 @@ const LayoutWrapper = styled.main`
   max-height: 100%;
 `;
 
-export const Layout = ({ children, title }) =>{ 
+export const Layout = ({ children, title, location }) =>{ 
   const width = useWindowWidth();
+  const isMain = location.pathname === '/'
   return (
     <>
       <SEO title={title} />
       <LayoutWrapper>
-        {width >= 700 ? <Navbar /> : <NavbarMobile />}
+        {width >= 700 ? <Navbar isMain={isMain}/> : <NavbarMobile />}
         {children}
         <Footer />
       </LayoutWrapper>

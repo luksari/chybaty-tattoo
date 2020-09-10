@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import { Routes } from '../helpers/routes'
 import styled from "styled-components"
-
+import Logo from "../images/logo.inline.svg";
 
 const NavbarMobileContainer = styled.nav`
   display: flex;
@@ -124,6 +124,7 @@ const itemVariants = {
   exit: { y: 20, opacity: 0 },
 }
 
+
 const StyledMobileMenuItem = styled(motion.custom(Link)).attrs({ variants: itemVariants })`
   text-align: center;
   text-transform: uppercase;
@@ -136,7 +137,24 @@ const StyledMobileMenuItem = styled(motion.custom(Link)).attrs({ variants: itemV
     color: #000;
   }
 `
+const logoVariants = {
+  enter: { x: 0, opacity: 1 },
+  exit: { x: -700, opacity: 0 },
+}
 
+const StyledLogoLink = styled(motion.custom(Link)).attrs({ variants: logoVariants })`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  svg {
+    /** SVG was not properly centered */
+    margin-right: 12px;
+    path {
+      fill: #000;
+    }
+  }
+`
 
 const NavbarMobile = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -157,6 +175,9 @@ const NavbarMobile = () => {
 
       {mobileMenu && (
           <StyledMobileMenu variants={menuVartiant} initial='exit' animate='enter'>
+            <StyledLogoLink to={Routes.Root()} onClick={handleClick}>
+              <Logo/>
+            </StyledLogoLink>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Root()}>O nas</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.FAQ()}>Faq</StyledMobileMenuItem>

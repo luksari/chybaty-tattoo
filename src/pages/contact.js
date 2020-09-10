@@ -81,11 +81,11 @@ const MainParagraph = styled.p`
   }
 `
 
-const ContactPage = () => {
+const ContactPage = ({ location }) => {
   const data = useStaticQuery(contactImageQuery);
   return (
     <>
-      <Layout title="Kontakt">
+      <Layout title="Kontakt" location={location}>
         <MainWrapper>
           <TextWrapper>
             <Headline>Kontakt</Headline>

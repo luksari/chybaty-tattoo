@@ -174,13 +174,13 @@ const PositionedAnchorLink = styled(StyledAnchorLink)`
   }
 `
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const artist = data.allSitePage.edges[0].node.context;
   const artistPhotos = data.photos.edges;
   const backPhotos = data.backPhotos.edges;
   const artistProfile = data.file.childImageSharp.fluid;
   return (
-    <Layout title={artist.name}>
+    <Layout title={artist.name} location={location}>
       <Wrapper>
         <HeaderWrapper>
           <ProfileImage fluid={artistProfile} />

@@ -1,25 +1,15 @@
 import React from "react"
 import styled from "styled-components"
+import { Layout } from "../components/Layout";
 import { graphql, useStaticQuery, navigate } from "gatsby"
 import { device } from "../helpers/mediaQueries"
 import Img from "gatsby-image"
-
-import SEO from "../components/seo"
-import HeaderVoucher from "../components/headerSubpage"
 import IconsBackground from "../images/voucher_tlo.png"
 import Gift from "../images/VoucherIcons/gift.svg"
 import Hands from "../images/VoucherIcons/hands.svg"
 import Shipping from "../images/VoucherIcons/shipping.svg"
-
 import "../styles/styles.css"
 import Footer from "../components/footer"
-
-const Layout = styled.main`
-  max-width: 100vw;
-  width: 100%;
-  min-height: 100vh;
-  max-height: 100%;
-`
 
 const VoucherContainer = styled.div`
   position: relative;
@@ -163,7 +153,7 @@ const VoucherIcons = styled.div`
   }
 `
 
-const VoucherPage = () => {
+const VoucherPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
       hero: file(relativePath: { regex: "/Voucher.png/" }) {
@@ -178,9 +168,7 @@ const VoucherPage = () => {
 
   return (
     <>
-      <SEO title="Voucher" />
-      <Layout>
-        <HeaderVoucher />
+      <Layout location={location}>
         <VoucherContainer>
           <VoucherTextContainer>
             <TextContainer>

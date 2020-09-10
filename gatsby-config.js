@@ -31,12 +31,20 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
-    }, 
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\inline\.svg/ // See below to configure properly
+        }
+      }
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Unica One', 'Exo 2']
+          families: ['Unica One', 'Exo 2', 'Montserrat']
         }
       }
     }

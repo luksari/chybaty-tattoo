@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-
+import { Layout } from "../components/Layout";
 import SEO from "../components/seo"
-import HeaderFaq from "../components/headerSubpage"
 import Footer from "../components/footer"
 import Project from "../images/FaqIcons/Projekt.svg"
 import Before from "../images/FaqIcons/CoPrzed.svg"
@@ -25,13 +24,6 @@ import FaqAnswersBackground from "../images/tlo.png"
 import JSONData from "../data/faqQuestions.json"
 
 import "../styles/styles.css"
-
-const Layout = styled.main`
-  max-width: 100vw;
-  width: 100%;
-  min-height: 100vh;
-  max-height: 100%;
-`
 
 const FaqContainer = styled.div`
   position: relative;
@@ -158,7 +150,7 @@ const FaqSearchItemAnswer = styled.p`
   line-height: 1.8;
 `
 
-const FaqPage = () => {
+const FaqPage = ({ location }) => {
   const [category, setCategory] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
@@ -185,8 +177,7 @@ const FaqPage = () => {
   return (
     <>
       <SEO title="FAQ" />
-      <Layout>
-        <HeaderFaq />
+      <Layout location={location}>
         <FaqContainer>
         <FaqCategoriesContainer>
           <FaqCategorieTextContainer>
