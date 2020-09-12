@@ -18,6 +18,7 @@ deploy_production:
   script:
     - npm install
     - export GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY
+    - echo $GOOGLE_MAP_API_KEY
     - node_modules/.bin/gatsby build --prefix-paths
     - sshpass -V
     - export SSHPASS=$USER_PASS 
