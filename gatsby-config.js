@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: process.env.ENV_PRODUCTION ? process.env.ENV_PRODUCTION : `.env.${process.env.NODE_ENV}`,
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -8,7 +8,6 @@ module.exports = {
     description: `Chyba Ty Tattoo`,
     author: `@gatsbyjs`,
   },
-  pathPrefix: `/chyba-ty-tattoo`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,

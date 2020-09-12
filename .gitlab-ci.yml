@@ -9,7 +9,8 @@ before_script:
 
 deploy_production:
   stage: deploy
-  environment: Production
+  environment: 
+    name: production
   only:
     - master
   script:
