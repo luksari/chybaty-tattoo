@@ -9,7 +9,6 @@ import Gift from "../images/VoucherIcons/gift.svg"
 import Hands from "../images/VoucherIcons/hands.svg"
 import Shipping from "../images/VoucherIcons/shipping.svg"
 import "../styles/styles.css"
-import Footer from "../components/footer"
 
 const VoucherContainer = styled.div`
   position: relative;
@@ -153,6 +152,15 @@ const VoucherIcons = styled.div`
   }
 `
 
+const VoucherIcon = styled.img`
+  margin-bottom: 0px;
+`
+
+const VoucherIconText = styled.p`
+  text-align: center;
+  margin-top: 10px;
+`
+
 const VoucherPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -192,13 +200,16 @@ const VoucherPage = ({ location }) => {
             </TextContainer>
             <VoucherIcons>
               <div>
-                <img src={Gift} />
+                <VoucherIcon src={Gift} />
+                <VoucherIconText>POMYSŁ NA PREZENT</VoucherIconText>
               </div>
               <div>
-                <img src={Shipping} />
+                <VoucherIcon src={Shipping} />
+                <VoucherIconText>WYSYŁKA</VoucherIconText>
               </div>
               <div>
-                <img src={Hands} />
+                <VoucherIcon src={Hands} />
+                <VoucherIconText>ODBIÓR OSOBISTY</VoucherIconText>
               </div>
             </VoucherIcons>
           </VoucherTextContainer>
@@ -212,8 +223,6 @@ const VoucherPage = ({ location }) => {
             </CTAContainer>
           </VoucherImgContainer>
         </VoucherContainer>
-
-        <Footer />
       </Layout>
     </>
   )

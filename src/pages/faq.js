@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Layout } from "../components/Layout";
 import SEO from "../components/seo"
-import Footer from "../components/footer"
 import Project from "../images/FaqIcons/Projekt.svg"
 import Before from "../images/FaqIcons/CoPrzed.svg"
 import Heal from "../images/FaqIcons/Gojenie.svg"
@@ -281,7 +280,6 @@ const FaqPage = ({ location }) => {
                 })}
           </FaqAnswersContainer>
         ) : null}
-        <Footer />
       </Layout>
     </>
   )

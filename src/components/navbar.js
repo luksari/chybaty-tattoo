@@ -16,14 +16,18 @@ const StyledLogoLink = styled(Link)`
   justify-content: center;
   ${({ $isMain }) => $isMain 
     ? css`
-      position: absolute;
       left: 75px;
       top: 25px;
       height: 220px;
+
+      @media ${device.laptop} {
+        position: absolute;
+      }
     `
     : css`
       margin-right: auto;
       height: 135px;
+      
     `
   }
   top: 25px;
@@ -82,10 +86,6 @@ const commonNavItemStyles = css`
     }
   }
 `
-
-
-
-
 
 const AnchorNavItem = styled(AnchorLink)`
   ${commonNavItemStyles};

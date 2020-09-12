@@ -5,7 +5,7 @@ import { Routes } from '../helpers/routes'
 import styled from "styled-components"
 import Logo from "../images/logo.inline.svg";
 
-const NavbarMobileContainer = styled.nav`
+const NavbarMobileContainer = styled.div`
   display: flex;
   z-index: 12;
   padding: 20px;
