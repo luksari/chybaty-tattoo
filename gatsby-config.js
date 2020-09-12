@@ -8,6 +8,7 @@ module.exports = {
     description: `Chyba Ty Tattoo`,
     author: `@gatsbyjs`,
   },
+  pathPrefix: `/chyba-ty-tattoo`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
