@@ -8,23 +8,21 @@ import { motion } from "framer-motion"
 const HeaderContainer = styled.header`
   position: relative;
   height: 100vh;
-  background-color: black;
   width: 100%;
 `
 const HeaderImg = styled(Img)`
-    width: 100%;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  @media ${device.tablet} {
     height: auto;
     bottom: 0;
-    @media ${device.tablet} {
-      height: auto;
-      bottom: 0;
-    }
-    @media ${device.laptop} {
-      height: 75%;
-      width: 57%;
-      bottom: 0;
-    }
-    
+  }
+  @media ${device.laptop} {
+    height: 75%;
+    width: 57%;
+    bottom: 0;
+  }
 `
 
 const headerVariants = {

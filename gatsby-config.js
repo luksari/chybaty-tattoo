@@ -1,20 +1,22 @@
 module.exports = {
   siteMetadata: {
     title: `Chyba Ty Tattoo`,
-    description: `Chyba Ty Tattoo | Styl | Nagrania | Ubrania`,
+    description: `Chyba Ty Tattoo`,
     author: `@gatsbyjs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-scroll-reveal`,
-    `gatsby-plugin-smoothscroll`,
+    
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-plugin-anchor-links',
+    },
+    {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
+      options: { 
         path: `${__dirname}/src/images`,
       },
     },
@@ -24,17 +26,25 @@ module.exports = {
         name: `Chyba Ty Tattoo`,
         short_name: `Chyba Ty`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#000000`,
+        theme_color: `#D3D3D3`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\inline\.svg/ // See below to configure properly
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Unica One', 'Exo 2']
+          families: ['Unica One', 'Exo 2', 'Montserrat']
         }
       }
     }

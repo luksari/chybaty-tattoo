@@ -6,7 +6,7 @@ import Image from 'gatsby-image';
 import { CircleArrowButton } from '../components/CircleArrowButton';
 import { ArtistPhotosGrid } from '../components/ArtistPhotosGrid';
 import { device } from "../helpers/mediaQueries";
-import scrollTo from 'gatsby-plugin-smoothscroll';
+import { StyledAnchorLink } from '../components/StyledAnchorLink';
 
 const Wrapper = styled.section`
   display: flex;
@@ -110,8 +110,14 @@ const Categories = styled.p`
   color: #4b4b4b;
   font-family: 'Exo 2', sans-serif;
   grid-row: 2/2;
-  @media ${device.laptop} {
-    margin-left: 75px;
+  grid-column: 1/1;
+  width: 100%;
+  margin-bottom: 0;
+  text-align: center;
+  @media ${device.laptopL} {
+    grid-column: 2/2;
+    text-align: start;
+    margin-bottom: -15px;
   }
 `
 
@@ -120,6 +126,24 @@ const SocialLink = styled.a`
   font-family: 'Exo 2', sans-serif;
   text-decoration: none;
   width: auto;
+  position: relative;
+  &::after {
+    position: absolute;
+    content: '';
+    width: 75%;
+    height: 2px;
+    background: #fff;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 150ms ease-out;
+  }
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
   @media ${device.laptop} {
     text-align: center;
   }
@@ -141,31 +165,31 @@ const SocialLinkWrapper = styled.div`
   }
 `
 
-const StyledCircleButton = styled(CircleArrowButton)`
+const PositionedAnchorLink = styled(StyledAnchorLink)`
   align-self: start;
   grid-row: 5/5;
   @media ${device.laptop} {
-    grid-column: 1/1;
-    grid-row: 3/3;
     margin-left: -20px;
-    z-index: 1;
+    grid-row: 2/-1;
   }
 `
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const artist = data.allSitePage.edges[0].node.context;
   const artistPhotos = data.photos.edges;
   const backPhotos = data.backPhotos.edges;
   const artistProfile = data.file.childImageSharp.fluid;
   return (
-    <Layout title={artist.name}>
+    <Layout title={artist.name} location={location}>
       <Wrapper>
         <HeaderWrapper>
           <ProfileImage fluid={artistProfile} />
           <SideWrapper>
             <Heading>{artist.name}</Heading>
             <Categories>{artist.categories}</Categories>
-            <StyledCircleButton label='Zobacz prace' onClick={() => scrollTo('#image_2')}/>
+            <PositionedAnchorLink to='#image_2'>
+              <CircleArrowButton label='Zobacz prace'/>
+            </PositionedAnchorLink>
             <MainParagraph>{artist.mainDescription}</MainParagraph>
             <SocialLinkWrapper>
               <SocialLink href={`https://${artist.socialLink}`}>{artist.socialLink}</SocialLink>

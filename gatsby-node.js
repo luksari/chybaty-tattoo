@@ -14,7 +14,6 @@ exports.createPages = async ({
       path,
       component: artistTemplate,
       context: {
-        path,
         ...artist
       }
     })

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout } from "../components/Layout"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Image from 'gatsby-image';
 import styled from 'styled-components';
 import { ContactSteps } from '../components/ContactSteps';
@@ -81,11 +81,11 @@ const MainParagraph = styled.p`
   }
 `
 
-const ContactPage = () => {
+const ContactPage = ({ location }) => {
   const data = useStaticQuery(contactImageQuery);
   return (
     <>
-      <Layout title="Kontakt">
+      <Layout title="Kontakt" location={location}>
         <MainWrapper>
           <TextWrapper>
             <Headline>Kontakt</Headline>
