@@ -8,8 +8,6 @@ cache:
 
 before_script:
     - apt-get update -qq && apt-get install -y -qq sshpass
-    - source .env.${CI_ENVIRONMENT_NAME}
-
 
 deploy_production:
   stage: deploy
@@ -19,7 +17,8 @@ deploy_production:
     - master
   script:
     - npm install
-    - export GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY
+    - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY"
+    - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY" > "$(pwd)/.env.production"
     - node_modules/.bin/gatsby build --prefix-paths
     - sshpass -V
     - export SSHPASS=$USER_PASS 
