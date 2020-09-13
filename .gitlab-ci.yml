@@ -20,7 +20,7 @@ deploy_production:
     - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY"
     - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY" > "$(pwd)/.env.production"
     - cat .env.production
-    - ls -ll
+    - ls -al
     - node_modules/.bin/gatsby build --prefix-paths
     - sshpass -V
     - export SSHPASS=$USER_PASS 
