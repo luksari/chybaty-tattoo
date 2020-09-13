@@ -25,7 +25,12 @@ deploy_production:
 >>>>>>> 84e4d5b... env config changed 16
 =======
     - export GATSBY_GOOGLE_MAP_API_KEY=$GATSBY_GOOGLE_MAP_API_KEY
+<<<<<<< HEAD
 >>>>>>> d1c0d1e... env config changed 19
+=======
+    - echo GATSBY_GOOGLE_MAP_API_KEY=$GATSBY_GOOGLE_MAP_API_KEY > .env.production
+    - ls -al
+>>>>>>> 781e06b... env config changed 21
     - node_modules/.bin/gatsby build
     - sshpass -V
     - export SSHPASS=$USER_PASS 

@@ -29,7 +29,6 @@
     "gatsby-plugin-styled-components": "^3.1.17",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.1.40",
-    "gatsby-source-googlemaps-geocoding": "^1.0.0",
     "gatsby-transformer-sharp": "^2.3.7",
     "google-map-react": "^1.1.5",
     "keen-slider": "^5.2.2",

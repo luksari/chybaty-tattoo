@@ -1,4 +1,10 @@
-console.log("ENV GOOGLE", process.env.GATSBY_GOOGLE_MAP_API_KEY)
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -10,21 +16,15 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-scroll-reveal`,
-
+    
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: "gatsby-plugin-anchor-links",
-    },
-    {
-      resolve: "gatsby-source-googlemaps-geocoding",
-      options: {
-        key: `${process.env.GATSBY_GOOGLE_MAP_API_KEY}`,
-      },
+      resolve: 'gatsby-plugin-anchor-links',
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
+      options: { 
         path: `${__dirname}/src/images`,
       },
     },
@@ -44,17 +44,17 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /\inline\.svg/, // See below to configure properly
-        },
-      },
+          include: /\inline\.svg/ // See below to configure properly
+        }
+      }
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ["Unica One", "Exo 2", "Montserrat"],
-        },
-      },
-    },
+          families: ['Unica One', 'Exo 2', 'Montserrat']
+        }
+      }
+    }
   ],
 }
