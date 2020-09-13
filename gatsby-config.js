@@ -1,5 +1,5 @@
 console.log("ENV", process.env)
-console.log("ENV GOOGLE", process.env.process.env.GOOGLE_MAP_API_KEY)
+console.log("ENV GOOGLE", process.env.GOOGLE_MAP_API_KEY)
 
 module.exports = {
   siteMetadata: {
