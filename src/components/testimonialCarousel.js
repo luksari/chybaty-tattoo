@@ -92,7 +92,7 @@ const StyledPrevArrow = styled(StyledArrow)`
 
 function NextArrow(props) {
   const { onClick } = props
-  return <StyledNextArrow onClick={onClick}>></StyledNextArrow>
+  return <StyledNextArrow onClick={onClick}>&gt;</StyledNextArrow>
 }
 
 function PrevArrow(props) {
@@ -107,9 +107,6 @@ const TestimonialCarousel = () => {
     slidesPerView: 1,
     mode: "snap",
     breakpoints: {
-      '(min-width: 768px)': {
-        slidesPerView: 3,
-      },
       '(min-width: 1200px)': {
         slidesPerView: 3,
       }
