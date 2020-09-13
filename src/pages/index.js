@@ -19,6 +19,7 @@ const IndexPage = ({ location }) => {
   const mapOptions = {
     styles: googleMapStyles
   }
+
   return (
     <>
       <Helmet>

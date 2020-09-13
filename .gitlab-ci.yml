@@ -17,13 +17,14 @@ deploy_production:
     - master
   script:
     - npm install
+<<<<<<< HEAD
     - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY" > "$(pwd)/.env.production"
     - cat .env.production
     - ls -al
+=======
+    - export GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY
+>>>>>>> 84e4d5b... env config changed 16
     - node_modules/.bin/gatsby build
     - sshpass -V
     - export SSHPASS=$USER_PASS 
     - sshpass -e scp -o stricthostkeychecking=no -r /builds/kubabirnbach/chyba-ty-tattoo/public root@46.101.215.125:/var/www/html/chyba-ty-tattoo
-  artifacts:
-    paths:
-      - public
