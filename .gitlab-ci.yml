@@ -16,12 +16,16 @@ deploy_production:
   script:
     - npm install
 <<<<<<< HEAD
+<<<<<<< HEAD
     - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY" > "$(pwd)/.env.production"
     - cat .env.production
     - ls -al
 =======
     - export GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY
 >>>>>>> 84e4d5b... env config changed 16
+=======
+    - export GATSBY_GOOGLE_MAP_API_KEY=$GATSBY_GOOGLE_MAP_API_KEY
+>>>>>>> d1c0d1e... env config changed 19
     - node_modules/.bin/gatsby build
     - sshpass -V
     - export SSHPASS=$USER_PASS 
