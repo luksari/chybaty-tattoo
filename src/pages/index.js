@@ -20,8 +20,6 @@ const IndexPage = ({ location }) => {
     styles: googleMapStyles
   }
 
-  console.log("Index", process.env)
-
   return (
     <>
       <Helmet>
@@ -37,7 +35,6 @@ const IndexPage = ({ location }) => {
         <Artists />
         <GoogleMapContainer>
           <GoogleMapReact
-            bootstrapURLKeys={{ key: process.env.GATSBY_GOOGLE_MAP_API_KEY }}
             defaultCenter={{
               lat: 50.258253,
               lng: 19.01462,
