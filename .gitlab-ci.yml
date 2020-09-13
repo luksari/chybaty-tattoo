@@ -3,6 +3,8 @@ image: node:latest
 cache:
   paths:
     - node_modules/
+    - .cache/
+    - public/
 
 before_script:
     - apt-get update -qq && apt-get install -y -qq sshpass
@@ -17,6 +19,7 @@ deploy_production:
     - npm install
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - echo "GOOGLE_MAP_API_KEY=$GOOGLE_MAP_API_KEY" > "$(pwd)/.env.production"
     - cat .env.production
     - ls -al
@@ -28,6 +31,8 @@ deploy_production:
 <<<<<<< HEAD
 >>>>>>> d1c0d1e... env config changed 19
 =======
+=======
+>>>>>>> 08792d9... env config changed 22
     - echo GATSBY_GOOGLE_MAP_API_KEY=$GATSBY_GOOGLE_MAP_API_KEY > .env.production
     - ls -al
 >>>>>>> 781e06b... env config changed 21

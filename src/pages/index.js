@@ -20,8 +20,6 @@ const IndexPage = ({ location }) => {
     styles: googleMapStyles
   }
 
-  console.log('ENV INDEX', process.env.GATSBY_GOOGLE_MAP_API_KEY)
-  
   return (
     <>
       <Helmet>
