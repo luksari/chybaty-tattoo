@@ -93,25 +93,8 @@ const AboutUs = () => {
           }
         }
       }
-      descAlt: file(relativePath: { regex: "/desc_2/" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
     }
   `)
-
-  const [image, setImage] = useState(data.descMain.childImageSharp.fluid);
-
-  useEffect(() => {
-    if(isMore) {
-      setImage(data.descAlt.childImageSharp.fluid);
-    } else {
-      setImage(data.descMain.childImageSharp.fluid);
-    }
-  }, [isMore])
 
   return (
     <AboutUsContainer>
@@ -144,7 +127,7 @@ const AboutUs = () => {
           </AltDescription>
         )}
       </AboutUsItem>
-      <StyledImg fluid={image} style={{ flex: "1", overflow: 'visible' }} />
+      <StyledImg fluid={data.descMain.childImageSharp.fluid} style={{ flex: "1", overflow: 'visible' }} />
     </AboutUsContainer>
   )
 }

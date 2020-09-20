@@ -7,6 +7,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faClock } from "@fortawesome/free-solid-svg-icons"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons"
+import { faMoneyBillWaveAlt } from "@fortawesome/free-solid-svg-icons"
 import { device } from "../helpers/mediaQueries"
 
 const FooterWrapper = styled.footer`
@@ -78,10 +79,15 @@ const Footer = () => {
         </FooterTextContainer>
       </FooterItem>
       <FooterItem>
-        <FontAwesomeIcon icon={faClock} color="white" />
-        <FooterTextContainer displeyColumn>
-          <FooterText marginBottom>Godziny otwarcia</FooterText>
-          <FooterText>poniedziałek-piątek 10:00-18:00</FooterText>
+        <FooterTextContainer displeyBlock>
+          <FooterTextContainerCenter>
+            <FontAwesomeIcon icon={faClock} color="white" />
+            <FooterText>Działamy: pon.-pt. 10:00-18:00</FooterText>
+          </FooterTextContainerCenter>
+          <FooterTextContainerCenter>
+            <FontAwesomeIcon icon={faMoneyBillWaveAlt} color="white" />
+            <FooterText>Płatność tylko gotówką</FooterText>
+          </FooterTextContainerCenter>
         </FooterTextContainer>
       </FooterItem>
     </FooterWrapper>

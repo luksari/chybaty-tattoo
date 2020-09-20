@@ -176,7 +176,7 @@ const VoucherPage = ({ location }) => {
 
   return (
     <>
-      <Layout location={location}>
+      <Layout title="Wouczer"location={location}>
         <VoucherContainer>
           <VoucherTextContainer>
             <TextContainer>

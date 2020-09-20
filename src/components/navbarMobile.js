@@ -181,7 +181,7 @@ const NavbarMobile = () => {
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Root()}>O nas</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Crew()}>Ekipa</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.FAQ()}>Faq</StyledMobileMenuItem>
-            <StyledMobileMenuItem onClick={handleClick} to={Routes.Voucher()}>Kup Voucher</StyledMobileMenuItem>
+            <StyledMobileMenuItem onClick={handleClick} to={Routes.Voucher()}>Kup Woucher</StyledMobileMenuItem>
             <StyledMobileMenuItem onClick={handleClick} to={Routes.Contact()}>Kontakt</StyledMobileMenuItem>
           </StyledMobileMenu>
           )

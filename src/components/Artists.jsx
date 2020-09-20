@@ -395,10 +395,10 @@ export const Artists = () => {
             data-sal-delay="200"
             >
               <ArtistImg 
-                fluid={data.evolHome.childImageSharp.fluid}
+                fluid={data.michalHome.childImageSharp.fluid} onClick={() => navigate('/artists/michal')}
               />
             <EvolNameContainer>
-              <ArtistName>EVOL</ArtistName>
+              <ArtistName>Michał</ArtistName>
             </EvolNameContainer>
           </EvolContainer>
           <MigotContainer 
@@ -414,6 +414,7 @@ export const Artists = () => {
             <ArtistImg 
             onClick={() => navigate('/artists/migot')}
               fluid={data.migotHome.childImageSharp.fluid}
+              
             />
             <MigotNameContainer>
               <ArtistName>MIGOT</ArtistName>
@@ -425,9 +426,9 @@ export const Artists = () => {
             data-sal="slide-right"
             data-sal-delay="200"
           style={{ flex: "1", position: 'relative'}}>
-          <ArtistImg fluid={data.michalHome.childImageSharp.fluid} onClick={() => navigate('/artists/michal')} />
+          <ArtistImg  fluid={data.evolHome.childImageSharp.fluid}/>
           <MichalNameContainer>
-            <ArtistName>MICHAŁ</ArtistName>
+            <ArtistName>EVOL</ArtistName>
           </MichalNameContainer>
         </div>
         <ContactCTAContainer>

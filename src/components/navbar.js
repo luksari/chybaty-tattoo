@@ -104,7 +104,7 @@ const Navbar = ({ isMain }) => {
       <NavItem to={Routes.Root()}>O nas</NavItem>
       <AnchorNavItem to={Routes.Crew()}>Ekipa</AnchorNavItem>
       <NavItem to={Routes.FAQ()}>FAQ</NavItem>
-      <NavItem to={Routes.Voucher()}>Kup voucher</NavItem>
+      <NavItem to={Routes.Voucher()}>Kup woucher</NavItem>
       <NavItem to={Routes.Contact()}>Kontakt</NavItem>
     </Nav>
   )

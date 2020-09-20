@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { Layout } from "../components/Layout";
-import SEO from "../components/seo"
 import Project from "../images/FaqIcons/Projekt.svg"
 import Before from "../images/FaqIcons/CoPrzed.svg"
 import Heal from "../images/FaqIcons/Gojenie.svg"
@@ -175,8 +174,7 @@ const FaqPage = ({ location }) => {
 
   return (
     <>
-      <SEO title="FAQ" />
-      <Layout location={location}>
+      <Layout title="FAQ" location={location}>
         <FaqContainer>
         <FaqCategoriesContainer>
           <FaqCategorieTextContainer>
@@ -200,15 +198,15 @@ const FaqPage = ({ location }) => {
           <FaqCategoriesOptions>
             <FaqCategoriesItemContainer>
               <FaqCategoriesItem onClick={() => setCategory("Project")}>
-                <img src={category === "Project" ? ProjectActiv : Project} />
+                <img src={category === "Project" ? ProjectActiv : Project} alt="chyba-ty-tattoo-project"/>
                 <p>PROJEKT</p>
               </FaqCategoriesItem>
               <FaqCategoriesItem onClick={() => setCategory("Payment")}>
-                <img src={category === "Payment" ? PaymentActiv : Payment} />
+                <img src={category === "Payment" ? PaymentActiv : Payment} alt="chyba-ty-tattoo-payment"/>
                 <p>PŁATNOŚCI</p>
               </FaqCategoriesItem>
               <FaqCategoriesItem onClick={() => setCategory("Heal")}>
-                <img src={category === "Heal" ? HealActiv : Heal} />
+                <img src={category === "Heal" ? HealActiv : Heal} alt="chyba-ty-tattoo-heal"/>
                 <p>GOJENIE</p>
               </FaqCategoriesItem>
             </FaqCategoriesItemContainer>
@@ -218,25 +216,26 @@ const FaqPage = ({ location }) => {
                   src={
                     category === "Appointment" ? AppointmentActiv : Appointment
                   }
+                  alt="chyba-ty-tattoo-appointment"
                 />
                 <p>JAK SIĘ UMÓWIĆ?</p>
               </FaqCategoriesItem>
               <FaqCategoriesItem onClick={() => setCategory("Laser")}>
-                <img src={category === "Laser" ? LaserActiv : Laser} />
+                <img src={category === "Laser" ? LaserActiv : Laser} alt="chyba-ty-tattoo-laser"/>
                 <p>LASEROWE USUWANIE TATUAŻY</p>
               </FaqCategoriesItem>
               <FaqCategoriesItem onClick={() => setCategory("Before")}>
-                <img src={category === "Before" ? BeforeActiv : Before} />
+                <img src={category === "Before" ? BeforeActiv : Before} alt="chyba-ty-tattoo-before"/>
                 <p>CO PRZED DZIARANIEM</p>
               </FaqCategoriesItem>
             </FaqCategoriesItemContainer>
             <FaqCategoriesItemContainer>
               <FaqCategoriesItem onClick={() => setCategory("Health")}>
-                <img src={category === "Health" ? HealthActiv : Health} />
+                <img src={category === "Health" ? HealthActiv : Health} alt="chyba-ty-tattoo-health"/>
                 <p>ZDROWIE</p>
               </FaqCategoriesItem>
               <FaqCategoriesItem onClick={() => setCategory("Other")}>
-                <img src={category === "Other" ? OtherActiv : Other} />
+                <img src={category === "Other" ? OtherActiv : Other} alt="chyba-ty-tattoo-other"/>
                 <p>INNE</p>
               </FaqCategoriesItem>
               <FaqCategoriesItem />

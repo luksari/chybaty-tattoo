@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import StarRatings from "react-star-ratings"
 import { device } from '../helpers/mediaQueries';
 import { useKeenSlider } from 'keen-slider/react'
 import testimonials from '../data/testimonials.json';
@@ -53,11 +52,6 @@ const CardHeaderName = styled.p`
   font-size: 16px;
   font-weight: bold;
 
-`
-
-const CardHeaderDate = styled.p`
-  font-size: 16px;
-  font-weight: 300;
 `
 const CardBody = styled.p`
   position: relative;
@@ -126,15 +120,7 @@ const TestimonialCarousel = () => {
               <CardHeader>
                 <div>
                   <CardHeaderName>{testimonial.name}</CardHeaderName>
-                  <CardHeaderDate>{testimonial.date}</CardHeaderDate>
                 </div>
-                <StarRatings
-                  rating={testimonial.rating}
-                  starRatedColor="#FFFFFF"
-                  starDimension="15px"
-                  starSpacing="5px"
-                  starEmptyColor="#545454"
-                />
               </CardHeader>
               <CardBody>
                 {testimonial.description}
