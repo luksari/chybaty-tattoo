@@ -7,6 +7,8 @@ import { CircleArrowButton } from '../components/CircleArrowButton';
 import { ArtistPhotosGrid } from '../components/ArtistPhotosGrid';
 import { device } from "../helpers/mediaQueries";
 import { StyledAnchorLink } from '../components/StyledAnchorLink';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 const Wrapper = styled.section`
   display: flex;
@@ -150,8 +152,14 @@ const SocialLink = styled.a`
 `
 
 const SocialLinkWrapper = styled.div`
-  display: flex;
+  display: grid;
   justify-content: center;
+  align-items: flex-end;
+  grid-template-columns: auto auto;
+  grid-column-gap: 16px;
+  letter-spacing: 0.48px;
+  font-size: 24px;
+  font-weight: bold;
   grid-column: 1/-1;
   grid-row: 4/4;
   font-size: 14px;
@@ -192,7 +200,8 @@ export default ({ data, location }) => {
             </PositionedAnchorLink>
             <MainParagraph>{artist.mainDescription}</MainParagraph>
             <SocialLinkWrapper>
-              <SocialLink href={`https://${artist.socialLink}`}>{artist.socialLink}</SocialLink>
+              <FontAwesomeIcon icon={faInstagram} color="white" />
+              <SocialLink href={`https://instagram.com/${artist.socialLink}`}>{artist.socialLink}</SocialLink>
             </SocialLinkWrapper>
           </SideWrapper>
         </HeaderWrapper>

@@ -75,7 +75,6 @@ const StyledImage = styled(CustomImage)`
   
     ${({ index }) => index === 5 && css`
       width: 50%;
-      height: 800px
     `}
   
     ${({ index, total }) => index === total - 1 && css`
@@ -97,16 +96,15 @@ export const BackgroundImage = styled(Image)`
 
   ${({ index }) => index === 3 && css`
     width: 60%;
-    height: 700px;
+    height: 1000px;
     right: 0;
-    top: 1800px;
+    top: 28%;
   `}
 
   ${({ index }) => index === 6 && css`
-    width: 70%;
-    height: 1100px;
-    left: 0;
-    bottom: 0;
+    width: 50%;
+    height: 1500px;
+    top: 55%;
   `}
 `
 
@@ -119,14 +117,14 @@ const CTAContainer = styled.div`
   justify-content: center;
   align-items: center;
   right: 50%;
-  bottom: 0;
+  bottom: 50%;
   z-index: 5;
   margin: 0 45px;
   margin-bottom: 45px;
   @media ${device.laptop} {
     position: absolute;
     margin: 0;
-    bottom: 1000px;
+    bottom: 1600px;
     padding: 100px 72px;
     right: 300px;
   }
