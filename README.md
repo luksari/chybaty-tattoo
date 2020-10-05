@@ -5,7 +5,7 @@
 
 <div align="center">
   <h1>
-    ChybaTy Tatto website
+    ChybaTy Tattoo website
   </h1>
 </div>
 
